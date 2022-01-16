@@ -1,0 +1,76 @@
+{% extends "page/base.html" %}
+{% block content %}
+{% load static %}
+<style>
+    .fullcontainer {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .fullcontainer > div {
+        margin: 10px;
+        padding: 10px;
+        width: 350px;
+    }
+    .card:hover {
+     transform: scale(1.05);
+     box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+    }
+    .card {
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    padding: 14px 25px 18px 36px;
+    cursor: pointer;
+    }
+    hr {
+    margin: 0
+    }
+    .homepg {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+</style>
+<hr>
+<div class="da">
+    <div class="jumbotron p-3 p-md-5 text-white bg-dark">
+        <div class="homepg">
+        <div class="col-md-8 px-0">
+            <h1 class="display-4 font-italic">Let's find an Internship for you here!!</h1>
+            <p class="lead my-3">"Let's start to gain a good insight into how the industry works already"</p>
+            <p class="lead my-3">"We provide you a bucket full of internships just to prove that you were not
+                useless in your college days"</p>
+        </div>
+        <img
+                src="{% static 'images/logo1.jpg' %}"
+                alt=""
+                 width="250" height="250"
+        />
+            </div>
+    </div>
+</div>
+<div class="container">
+    <div class="fullcontainer">
+        {% for post in posts %}
+        <div class="grid">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Title: {{ post.title }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Role: {{ post.role }}</h6>
+                    <p class="card-text ">{{ post.description }}</p>
+                    <hr>
+                    <p class="card-text text-success">Registration open: {{ post.registration_open}}</p>
+                    <p class="card-text text-danger">Registration close: {{ post.registration_close}}</p>
+                    <hr>
+                    <p>Referral Link: <a href=https://{{ post.refer_link }} class="card-link">{{ post.refer_link }}</a>
+                    </p>
+                    <div class="card-footer text-muted" style="font-size:10px; text-align:left">Posted on: {{ post.date_posted }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,50 @@
+{% extends "page/base.html" %}
+{% block content %}
+<style>
+    .fullcontainer{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .fullcontainer > div{
+        margin: auto;
+        padding: 10px;
+        width: 45%;
+    }
+    .card:hover{
+     transform: scale(1.05);
+     box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+    }
+     .card{
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    padding: 14px 25px 18px 36px;
+    cursor: pointer;
+    }
+</style>
+<div class="container">
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">OUR PREVIOUS EVENTS</h1>
+    <p class="lead">We Got It All Covered</p>
+</div>
+    <div class="fullcontainer">
+        {% for event in events %}
+       <div class="card flex-md-row box-shadow">
+            <div class="card-body d-flex flex-column align-items-start">
+              <!--<strong class="d-inline-block mb-2 text-success"></strong> -->
+              <h3 class="mb-0">
+                <a class="text-dark" href="#">{{ event.event_name }}</a>
+              </h3>
+              <div class="mb-1 text-muted">Nov 11</div>
+              <p class="card-text mb-auto">{{ event.description }}</p>
+              <a href=https://{{ event.event_link }} class="btn btn-primary">checkout event recording</a>
+            </div>
+            <img class="card-img-right flex-auto d-none d-md-block" src="{{ event.image.url }}"  data-holder-rendered="true" style="width: 200px; height: 250px;">
+          </div>
+        <br>
+        {% endfor %}
+    </div>
+    <br>
+</div>
+{% endblock content %}
