@@ -89,6 +89,7 @@ class Scolarships(models.Model):
     end_date = models.DateField()
     country = models.CharField(max_length=50)
     date_posted = models.DateTimeField(default=timezone.now, blank=False)
+    referral_link = models.CharField(max_length=150, null=True)
 
     def __str__(self):
         return f'Title: {self.name}'
