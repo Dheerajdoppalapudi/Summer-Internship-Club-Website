@@ -34,30 +34,30 @@ def feedback(request):
 
 def scholarships(request):
     context = {
-        'posts': Scolarships.objects.all()
+        'scholarships': Scolarships.objects.all()
     }
     return render(request, 'page/scholarships.html', context)
 
 def certifications(request):
     context = {
-        'posts': Certifications.objects.all()
+        'certifications': Certifications.objects.all()
     }
     return render(request, 'page/certifications.html', context)
 
 def competitive(request):
     context = {
-        'posts': Competetive.objects.all()
+        'competitive': Competetive.objects.all()
     }
     return render(request, 'page/competitive.html', context)
 
 def hackathons(request):
     context = {
-        'posts': Hackathons.objects.all()
+        'hackathons': Hackathons.objects.all()
     }
     return render(request, 'page/hackathons.html', context)
 
 def fellowships(request):
     context = {
-        'posts': Fellowships.objects.all()
+        'fellowships': Fellowships.objects.all()
     }
     return render(request, 'page/fellowships.html', context)
