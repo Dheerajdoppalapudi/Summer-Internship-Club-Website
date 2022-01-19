@@ -52,14 +52,15 @@ class Fellowships(models.Model):
     name = models.CharField(max_length=150)
     description = models.TextField()
     # in description we can also put the provider name
-    tenure = models.CharField(max_length=15)
+    tenure = models.CharField(max_length=35)
     # tenure or duration
     eligibility = models.CharField(max_length=50)
-    format = models.CharField(max_length=20)
+    format = models.CharField(max_length=60)
     # online or offline(mention venue)
     date_of_expiry = models.DateField()
     date_posted = models.DateTimeField(default=timezone.now, blank=False)
     # can add another column stipend
+    institution = models.CharField(max_length=100, null=True)
     referral_link = models.CharField(max_length=150)
 
     def __str__(self):
