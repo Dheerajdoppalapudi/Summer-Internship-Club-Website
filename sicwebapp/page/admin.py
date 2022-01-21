@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Post, Member, Suggestions, Certifications, Scolarships, Hackathons, Fellowships, Competetive
+from .models import Internship, Member, Suggestions, Certifications, Scolarships, Hackathons, Fellowships, Competetive
 
 # Register your models here.
-admin.site.register(Post)
+admin.site.register(Internship)
 admin.site.register(Member)
 admin.site.register(Suggestions)
 admin.site.register(Certifications)

@@ -1,0 +1,77 @@
+{% extends "page/base.html" %}
+{% block content %}
+{% load static %}
+<style>
+    .fullcontainer {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .fullcontainer > div {
+        margin: 10px;
+        padding: 10px;
+        width: 350px;
+    }
+    .card:hover {
+     transform: scale(1.05);
+     box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+    }
+    .card {
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    padding: 14px 25px 18px 36px;
+    cursor: pointer;
+    }
+    hr {
+    margin: 0
+    }
+    .homepg {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+</style>
+<div>
+    title: {{ post.title }}
+    <br><br>
+    company_org: {{ post.comapny_org }}
+    <br><br>
+    role: {{ post.role }}
+    <br><br>
+    description: {{ post.description }}
+    <br><br>
+    date posted: {{ post.date_posted }}
+    <br><br>
+    registration open: {{ post.registration_open }}
+    <br><br>
+    registration close{{ post.registration_close }}
+    <br><br>
+    eligibility: {{ post.eligibility }}
+    <br><br>
+    refferal_link: {{ post.referral_link }}
+    <br><br>
+</div>
+<div class="container">
+    <div class="fullcontainer">
+        <div class="grid">
+            <div class="card cardtwo">
+                <div class="hover_color_bubble"></div>
+                <div class="card-body">
+                    <h5 class="card-title">Title: {{ post.title }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Role: {{ post.role }}</h6>
+                    <p class="card-text ">"{{ post.description }}"</p>
+                    <hr>
+                    <p class="card-texttwo ">Registration open: {{ post.registration_open}}</p>
+                    <p class="card-texttwo ">Registration close: {{ post.registration_close}}</p>
+                    <hr>
+                    <p>Referral Link: <a href=https://{{ post.referral_link }} class="card-link">{{ post.referral_link }}</a>
+                    </p>
+                    <div class="card-footer text-muted" style="font-size:10px; text-align:left">Posted on: {{ post.date_posted }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

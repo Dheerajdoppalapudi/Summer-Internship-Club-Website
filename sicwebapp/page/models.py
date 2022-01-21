@@ -1,14 +1,27 @@
 from django.db import models
 from django.utils import timezone
 
-class Post(models.Model):
-    title = models.CharField(max_length=50, blank=False)
+BRANCH_CHOICES = (
+    ('Engineering', 'Engineering'),
+    ('Management', 'Management'),
+    ('Medical and Para-medical', 'Medical and Para-medical'),
+    ('Humanities and Social Sciences', 'Humanities and Social Sciences'),
+    ('Law', 'Law'),
+    ('Sciences', 'Sciences'),
+)
+
+class Internship(models.Model):
+    title = models.CharField(max_length=75, blank=False)
+    comapny_org = models.CharField(max_length=150, blank=True)
     role = models.CharField(max_length=50, blank=False)
+    format = models.CharField(max_length=50, blank=False)
     description = models.TextField()
-    date_posted = models.DateTimeField(default=timezone.now, blank=False)
     registration_open = models.DateField()
     registration_close = models.DateField()
-    refer_link = models.CharField(max_length=100, blank=False)
+    eligibility = models.TextField()
+    referral_link = models.CharField(max_length=100, blank=False)
+    branch = models.CharField(max_length=50, choices=BRANCH_CHOICES, default='Everyone')
+    date_posted = models.DateTimeField(default=timezone.now, blank=False)
 
     def __str__(self):
         return f'Title: {self.title} ---> {self.role}'
