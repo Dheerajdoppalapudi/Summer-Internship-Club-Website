@@ -38,6 +38,8 @@ def feedback(request):
 
 def scholarships(request):
     context = {
+        'branches': branches,
+        'count': Scolarships.objects.all().count(),
         'scholarships': Scolarships.objects.all()
     }
     return render(request, 'page/scholarships.html', context)
@@ -62,6 +64,7 @@ def hackathons(request):
 
 def fellowships(request):
     context = {
+        'count': Fellowships.objects.all().count(),
         'fellowships': Fellowships.objects.all()
     }
     return render(request, 'page/fellowships.html', context)
@@ -82,3 +85,30 @@ def internship_branch(request, branch):
         "posts": Internship.objects.filter(branch=branch)
     }
     return render(request, 'page/internships.html', context)
+
+def specific_fellowship(request, name):
+    try:
+        post = Fellowships.objects.get(name=name)
+    except post.DoesNotExist:
+        raise Http404("Fellowship Does Not Exist")
+    context = {
+            "post": post
+        }
+    return render(request, 'page/specific_fellowship.html', context)
+
+def specific_scholarship(request, name):
+    try:
+        post = Scolarships.objects.get(name=name)
+    except post.DoesNotExist:
+        raise Http404("Fellowship Does Not Exist")
+    context = {
+            "post": post
+        }
+    return render(request, 'page/specific_scholarship.html', context)
+
+def scolarship_branch(request, branch):
+    context = {
+        'count': Scolarships.objects.filter(branch=branch).count(),
+        "posts": Scolarships.objects.filter(branch=branch)
+    }
+    return render(request, 'page/scholarships.html', context)

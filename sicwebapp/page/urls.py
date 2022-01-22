@@ -13,4 +13,7 @@ urlpatterns = [
     path('fellowships/', views.fellowships, name='page-fellowships'),
     path('internships/search/<str:title>/', views.specific_internship, name='specific_internship'),
     path('internships/<str:branch>/', views.internship_branch, name='internship_branch'),
+    path('fellowships/search/<str:name>/', views.specific_fellowship, name='specific_fellowship'),
+    path('scholarships/search/<str:name>/', views.specific_scholarship, name='specific_scholarship'),
+    path('scholarships/<str:branch>/', views.scolarship_branch, name='scholarship_branch'),
 ]

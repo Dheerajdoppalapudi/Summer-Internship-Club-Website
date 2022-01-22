@@ -32,29 +32,51 @@
       align-items: center;
     }
 </style>
+<div>
+    name: {{ post.name }}
+    <br>
+    description: {{ post.description }}
+    <br>
+    duration: {{ post.duration }}
+    <br>
+    eligibillity: {{ post.eligibility }}
+    <br>
+    location: {{ post.location_and_format }}
+    <br>
+    university/org: {{ post.university_organization }}
+    <br>
+    funding: {{ post.funding }}
+    <br>
+    benifits: {{ post.benifits }}
+    <br>
+    end date: {{ post.date_of_expiry }}
+    <br>
+    date_posted: {{ post.date_posted }}
+    <br>
+    referral_link: {{ post.referral_link }}
+    <br>
+    linktoapply: {{ post.link_to_apply }}
+    <br>
+</div>
 <div class="container">
-    <div>Total count Scolarships: {{ count }}</div>
     <div class="fullcontainer">
-        {% for post in scholarships %}
         <div class="grid">
-            <div class="card">
+            <div class="card cardtwo">
+                <div class="hover_color_bubble"></div>
                 <div class="card-body">
-                    <h5><a class="card-title" href="{% url 'specific_scholarship' post.name %}">Title: {{ post.name }}</a></h5>
-                    <h6 class="card-subtitle mb-2 text-muted">country: {{ post.country }}</h6>
-                    <p class="card-text ">{{ post.description }}</p>
+                    <h5 class="card-title">Title: {{ post.title }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Role: {{ post.duration }}</h6>
+                    <p class="card-text ">"{{ post.description }}"</p>
                     <hr>
-                    <p class="card-text text-success">eligibility: {{ post.eligibility }}</p>
-                    <p class="card-text text-info">stipend: {{ post.stipend }}</p>
-                    <p class="card-text text-danger">Registration close: {{ post.end_date }}</p>
+                    <p class="card-texttwo ">Registration close: {{ post.date_of_expiry}}</p>
                     <hr>
-                    <p>Referral Link: <a href=https://{{ post.refer_link }} class="card-link">{{ post.referral_link }}</a>
+                    <p>Referral Link: <a href=https://{{ post.referral_link }} class="card-link">{{ post.referral_link }}</a>
                     </p>
                     <div class="card-footer text-muted" style="font-size:10px; text-align:left">Posted on: {{ post.date_posted }}
                     </div>
                 </div>
             </div>
         </div>
-        {% endfor %}
     </div>
 </div>
 {% endblock content %}

@@ -33,7 +33,7 @@
     }
 </style>
 <div>
-    title: {{ post.title }}
+    title: {{ post.name }}
     <br><br>
     company_org: {{ post.comapny_org }}
     <br><br>
@@ -51,6 +51,7 @@
     <br><br>
     refferal_link: {{ post.referral_link }}
     <br><br>
+    branch: {{ post.branch }}
 </div>
 <div class="container">
     <div class="fullcontainer">
@@ -58,12 +59,12 @@
             <div class="card cardtwo">
                 <div class="hover_color_bubble"></div>
                 <div class="card-body">
-                    <h5 class="card-title">Title: {{ post.title }}</h5>
+                    <h5 class="card-title">Title: {{ post.name }}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Role: {{ post.role }}</h6>
                     <p class="card-text ">"{{ post.description }}"</p>
                     <hr>
                     <p class="card-texttwo ">Registration open: {{ post.registration_open}}</p>
-                    <p class="card-texttwo ">Registration close: {{ post.registration_close}}</p>
+
                     <hr>
                     <p>Referral Link: <a href=https://{{ post.referral_link }} class="card-link">{{ post.referral_link }}</a>
                     </p>

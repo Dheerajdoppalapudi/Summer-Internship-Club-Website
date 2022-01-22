@@ -24,7 +24,7 @@ class Internship(models.Model):
     date_posted = models.DateTimeField(default=timezone.now, blank=False)
 
     def __str__(self):
-        return f'Title: {self.title} ---> {self.role}'
+        return f'Title: {self.title}'
 
 class Member(models.Model):
     name = models.CharField(max_length=50, blank=False)
@@ -64,17 +64,16 @@ class Competetive(models.Model):
 class Fellowships(models.Model):
     name = models.CharField(max_length=150)
     description = models.TextField()
-    # in description we can also put the provider name
-    tenure = models.CharField(max_length=35)
-    # tenure or duration
-    eligibility = models.CharField(max_length=50)
-    format = models.CharField(max_length=60)
-    # online or offline(mention venue)
+    duration = models.CharField(max_length=35)
+    eligibility = models.TextField()
+    location_and_format = models.CharField(max_length=100)
+    university_organization = models.CharField(max_length=100, null=True)
+    funding = models.CharField(max_length=10, null=True)
+    benifits = models.TextField()
     date_of_expiry = models.DateField()
     date_posted = models.DateTimeField(default=timezone.now, blank=False)
-    # can add another column stipend
-    institution = models.CharField(max_length=100, null=True)
     referral_link = models.CharField(max_length=150)
+    link_to_apply = models.CharField(max_length=150)
 
     def __str__(self):
         return f'Title: {self.name}'
@@ -98,11 +97,15 @@ class Scolarships(models.Model):
     name = models.CharField(max_length=150)
     eligibility = models.CharField(max_length=150)
     description = models.TextField()
-    stipend = models.CharField(max_length=10)
+    university_organization = models.CharField(max_length=100, null=True)
+    stipend = models.CharField(max_length=80)
+    duration = models.CharField(max_length=80)
     end_date = models.DateField()
     country = models.CharField(max_length=50)
-    date_posted = models.DateTimeField(default=timezone.now, blank=False)
+    branch = models.CharField(max_length=50, choices=BRANCH_CHOICES, default='Everyone')
     referral_link = models.CharField(max_length=150, null=True)
+    link_to_apply = models.CharField(max_length=150)
+    date_posted = models.DateTimeField(default=timezone.now, blank=False)
 
     def __str__(self):
         return f'Title: {self.name}'
