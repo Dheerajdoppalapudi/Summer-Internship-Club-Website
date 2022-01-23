@@ -363,7 +363,28 @@
     text-transform: uppercase;
   }
 </style>
+<div>
+    <!--<div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown button
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {% for branch in branches %}
+                    <a class="dropdown-item" href="{% url 'internship_branch' branch %}">{{ branch }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>-->
+    <div>
+        {% for branch in branches %}
+            <a class="dropdown-item" href="{% url 'scholarship_branch' branch %}">{{ branch }}</a>
+        {% endfor %}
+    </div>
+</div>
 <div class="container">
+<<<<<<< HEAD
   <div class="row">
     {% for post in scholarships %}
     <div class="col-lg-4">
@@ -398,6 +419,27 @@
               <a href="#" class="btn btn-sm btn-flash-border-primary"
                 >View All</a
               >
+=======
+    <div>Total count Scolarships: {{ count }}</div>
+    <div class="fullcontainer">
+        {% for post in scholarships %}
+        <div class="grid">
+            <div class="card">
+                <div class="card-body">
+                    <h5><a class="card-title" href="{% url 'specific_scholarship' post.name %}">Title: {{ post.name }}</a></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">country: {{ post.country }}</h6>
+                    <p class="card-text ">{{ post.description }}</p>
+                    <hr>
+                    <p class="card-text text-success">eligibility: {{ post.eligibility }}</p>
+                    <p class="card-text text-info">stipend: {{ post.stipend }}</p>
+                    <p class="card-text text-danger">Registration close: {{ post.end_date }}</p>
+                    <hr>
+                    <p>Referral Link: <a href=https://{{ post.refer_link }} class="card-link">{{ post.referral_link }}</a>
+                    </p>
+                    <div class="card-footer text-muted" style="font-size:10px; text-align:left">Posted on: {{ post.date_posted }}
+                    </div>
+                </div>
+>>>>>>> 7727af5193d212347fb26e3d1b76b69fbfb83d3d
             </div>
           </div>
         </div>
