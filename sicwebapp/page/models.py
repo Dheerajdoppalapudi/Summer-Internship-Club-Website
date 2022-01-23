@@ -80,14 +80,15 @@ class Fellowships(models.Model):
 
 class Hackathons(models.Model):
     name = models.CharField(max_length=50)
+    hosted_by = models.CharField(max_length=50)
+    eligibility = models.TextField(blank=True)
     start_date = models.DateField()
     end_date = models.DateField()
     topics = models.CharField(max_length=150)
     # enter "," separated values
-    hosted_by = models.CharField(max_length=50)
-    application_link = models.CharField(max_length=150)
     format = models.CharField(max_length=50)
-    prize_money = models.CharField(max_length=50)
+    prize_money_description = models.TextField(blank=True)
+    link_to_apply = models.CharField(max_length=150, blank=True)
     date_posted = models.DateTimeField(default=timezone.now, blank=False)
 
     def __str__(self):

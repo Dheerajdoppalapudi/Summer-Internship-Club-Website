@@ -13,6 +13,7 @@ class Profile(models.Model):
 class Event(models.Model):
     event_name = models.CharField(max_length=100, blank=False)
     description = models.TextField(blank=False)
+    date = models.DateField(null=True)
     event_link = models.CharField(max_length=200)
     image = models.ImageField(upload_to='images/', blank=True, null=True)
 
