@@ -32,6 +32,26 @@
       align-items: center;
     }
 </style>
+<div>
+    <!--<div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown button
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {% for branch in branches %}
+                    <a class="dropdown-item" href="{% url 'internship_branch' branch %}">{{ branch }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>-->
+    <div>
+        {% for branch in branches %}
+            <a class="dropdown-item" href="{% url 'scholarship_branch' branch %}">{{ branch }}</a>
+        {% endfor %}
+    </div>
+</div>
 <div class="container">
     <div>Total count Scolarships: {{ count }}</div>
     <div class="fullcontainer">

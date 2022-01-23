@@ -109,6 +109,6 @@ def specific_scholarship(request, name):
 def scolarship_branch(request, branch):
     context = {
         'count': Scolarships.objects.filter(branch=branch).count(),
-        "posts": Scolarships.objects.filter(branch=branch)
+        "scholarships": Scolarships.objects.filter(branch=branch)
     }
     return render(request, 'page/scholarships.html', context)
