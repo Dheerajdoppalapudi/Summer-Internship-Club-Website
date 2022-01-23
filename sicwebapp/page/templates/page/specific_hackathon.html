@@ -32,13 +32,35 @@
       align-items: center;
     }
 </style>
+<div>
+    name: {{ post.name }}
+    <br>
+    hosted_by: {{ post.hosted_by }}
+    <br>
+    eligibility: {{ post.eligibility }}
+    <br>
+    start_Date: {{ post.start_date }}
+    <br>
+    end_Date: {{ post.end_date }}
+    <br>
+    topics: {{ post.topics }}
+    <br>
+    format: {{ post.format }}
+    <br>
+    description: {{ post.prize_money_description }}
+    <br>
+    link to apply: {{ post.link_to_apply }}
+    <br>
+    date_ posted: {{ post.date_posted }}
+    <br>
+</div>
 <div class="container">
     <div class="fullcontainer">
         {% for post in hackathons %}
         <div class="grid">
             <div class="card">
                 <div class="card-body">
-                    <h5><a href="{% url 'specific_hackathon' post.name %}" class="card-title">Title: {{ post.name }}</a></h5>
+                    <h5 class="card-title">Title: {{ post.name }}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">prize: {{ post.prize_money }}</h6>
                     <p class="card-text ">Topics: {{ post.topics }}</p>
                     <p class="card-text ">Hosted By: {{ post.hosted_by }}</p>

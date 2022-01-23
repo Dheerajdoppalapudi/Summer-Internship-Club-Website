@@ -16,4 +16,5 @@ urlpatterns = [
     path('fellowships/search/<str:name>/', views.specific_fellowship, name='specific_fellowship'),
     path('scholarships/search/<str:name>/', views.specific_scholarship, name='specific_scholarship'),
     path('scholarships/<str:branch>/', views.scolarship_branch, name='scholarship_branch'),
+    path('hackathons/search/<str:name>/', views.specific_hackathon, name='specific_hackathon'),
 ]

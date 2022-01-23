@@ -10,7 +10,7 @@ def internships(request):
     context = {
         'branches': branches,
         'count': Internship.objects.all().count(),
-        'posts': Internship.objects.all()
+        'posts': Internship.objects.order_by('-date_posted')
     }
     return render(request, 'page/internships.html', context)
 
@@ -40,7 +40,7 @@ def scholarships(request):
     context = {
         'branches': branches,
         'count': Scolarships.objects.all().count(),
-        'scholarships': Scolarships.objects.all()
+        'scholarships': Scolarships.objects.order_by('-date_posted')
     }
     return render(request, 'page/scholarships.html', context)
 
@@ -58,14 +58,15 @@ def competitive(request):
 
 def hackathons(request):
     context = {
-        'hackathons': Hackathons.objects.all()
+        'count': Hackathons.objects.all().count(),
+        'hackathons': Hackathons.objects.order_by('-date_posted')
     }
     return render(request, 'page/hackathons.html', context)
 
 def fellowships(request):
     context = {
         'count': Fellowships.objects.all().count(),
-        'fellowships': Fellowships.objects.all()
+        'fellowships': Fellowships.objects.order_by('-date_posted')
     }
     return render(request, 'page/fellowships.html', context)
 
@@ -81,8 +82,9 @@ def specific_internship(request, title):
 
 def internship_branch(request, branch):
     context = {
+        'branches': branches,
         'count': Internship.objects.filter(branch=branch).count(),
-        "posts": Internship.objects.filter(branch=branch)
+        "posts": Internship.objects.filter(branch=branch).order_by('-date_posted')
     }
     return render(request, 'page/internships.html', context)
 
@@ -109,6 +111,16 @@ def specific_scholarship(request, name):
 def scolarship_branch(request, branch):
     context = {
         'count': Scolarships.objects.filter(branch=branch).count(),
-        "scholarships": Scolarships.objects.filter(branch=branch)
+        "scholarships": Scolarships.objects.filter(branch=branch).order_by('-date_posted')
     }
     return render(request, 'page/scholarships.html', context)
+
+def specific_hackathon(request, name):
+    try:
+        post = Hackathons.objects.get(name=name)
+    except post.DoesNotExist:
+        raise Http404("Hackathons Does Not Exist")
+    context = {
+            "post": post
+        }
+    return render(request, 'page/specific_hackathon.html', context)
