@@ -1,78 +1,487 @@
-{% extends "page/base.html" %}
-{% block content %}
-{% load static %}
+{% extends "page/base.html" %} {% block content %} {% load static %}
 <style>
-    .fullcontainer {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .fullcontainer > div {
-        margin: 10px;
-        padding: 10px;
-        width: 350px;
-    }
-    .card:hover {
-     transform: scale(1.05);
-     box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
-    }
-    .card {
-    border-radius: 4px;
-    background: #fff;
-    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
-    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
-    padding: 14px 25px 18px 36px;
-    cursor: pointer;
-    }
-    hr {
-    margin: 0
-    }
-    .homepg {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-    }
-</style>
-<div>
-    title: {{ post.name }}
-    <br><br>
-    company_org: {{ post.comapny_org }}
-    <br><br>
-    role: {{ post.role }}
-    <br><br>
-    description: {{ post.description }}
-    <br><br>
-    date posted: {{ post.date_posted }}
-    <br><br>
-    registration open: {{ post.registration_open }}
-    <br><br>
-    registration close{{ post.registration_close }}
-    <br><br>
-    eligibility: {{ post.eligibility }}
-    <br><br>
-    refferal_link: {{ post.referral_link }}
-    <br><br>
-    branch: {{ post.branch }}
-</div>
-<div class="container">
-    <div class="fullcontainer">
-        <div class="grid">
-            <div class="card cardtwo">
-                <div class="hover_color_bubble"></div>
-                <div class="card-body">
-                    <h5 class="card-title">Title: {{ post.name }}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Role: {{ post.role }}</h6>
-                    <p class="card-text ">"{{ post.description }}"</p>
-                    <hr>
-                    <p class="card-texttwo ">Registration open: {{ post.registration_open}}</p>
+  @import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
 
-                    <hr>
-                    <p>Referral Link: <a href=https://{{ post.referral_link }} class="card-link">{{ post.referral_link }}</a>
-                    </p>
-                    <div class="card-footer text-muted" style="font-size:10px; text-align:left">Posted on: {{ post.date_posted }}
-                    </div>
-                </div>
-            </div>
+    body {
+    font-family: "Baloo 2", cursive;
+    font-size: 16px;
+    color: #ffffff;
+    text-rendering: optimizeLegibility;
+    font-weight: initial;
+  }
+
+  .dark {
+    background: #110f16;
+  }
+
+  .light {
+    background: #f3f5f7;
+  }
+  a,
+  a:hover {
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+  }
+
+  #pageHeaderTitle {
+    margin: 2rem 0;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 2.5rem;
+  }
+
+  /* Cards */
+  .postcard {
+    flex-wrap: wrap;
+    display: flex;
+    box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
+    border-radius: 10px;
+    margin: 0 0 3px 0;
+    overflow: hidden;
+    position: relative;
+    color: #ffffff;
+  }
+  .postcard.dark {
+    background-color: #18151f;
+  }
+  .postcard.light {
+    background-color: #e1e5ea;
+  }
+  .postcard .t-dark {
+    color: #18151f;
+  }
+  .postcard a {
+    color: inherit;
+  }
+  .postcard h1,
+  .postcard .h1 {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  .postcard .small {
+    font-size: 80%;
+  }
+  .postcard .postcard__title {
+    font-size: 1.75rem;
+  }
+  .postcard .postcard__img {
+    max-height: 180px;
+    width: 100%;
+    object-fit: cover;
+    position: relative;
+  }
+  .postcard .postcard__img_link {
+    display: contents;
+  }
+  .postcard .postcard__bar {
+    width: 50px;
+    height: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: #424242;
+    transition: width 0.2s ease;
+  }
+  .postcard .postcard__text {
+    padding: 1.5rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .postcard .postcard__preview-txt {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: justify;
+    height: 100%;
+  }
+  .postcard .postcard__tagbox {
+    display: flex;
+    flex-flow: row wrap;
+    font-size: 14px;
+    margin: 20px 0 0 0;
+    padding: 0;
+    justify-content: center;
+  }
+  .postcard .postcard__tagbox .tag__item {
+    display: inline-block;
+    background: rgba(83, 83, 83, 0.4);
+    border-radius: 3px;
+    padding: 2.5px 10px;
+    margin: 0 5px 5px 0;
+    cursor: default;
+    user-select: none;
+    transition: background-color 0.3s;
+  }
+  .postcard .postcard__tagbox .tag__item:hover {
+    background: rgba(83, 83, 83, 0.8);
+  }
+  .postcard:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(-70deg, #424242, transparent 50%);
+    opacity: 1;
+    border-radius: 10px;
+  }
+  .postcard:hover .postcard__bar {
+    width: 100px;
+  }
+
+  @media screen and (min-width: 769px) {
+    .postcard {
+      flex-wrap: inherit;
+    }
+    .postcard .postcard__title {
+      font-size: 2rem;
+    }
+    .postcard .postcard__tagbox {
+      justify-content: start;
+    }
+    .postcard .postcard__img {
+      max-width: 300px;
+      max-height: 100%;
+      transition: transform 0.3s ease;
+    }
+    .postcard .postcard__text {
+      padding: 3rem;
+      width: 100%;
+    }
+    .postcard .media.postcard__text:before {
+      content: "";
+      position: absolute;
+      display: block;
+      background: #18151f;
+      top: -20%;
+      height: 130%;
+      width: 55px;
+    }
+    .postcard:hover .postcard__img {
+      transform: scale(1.1);
+    }
+    .postcard:nth-child(2n + 1) {
+      flex-direction: row;
+    }
+    .postcard:nth-child(2n + 0) {
+      flex-direction: row-reverse;
+    }
+    .postcard:nth-child(2n + 1) .postcard__text::before {
+      left: -12px !important;
+      transform: rotate(4deg);
+    }
+    .postcard:nth-child(2n + 0) .postcard__text::before {
+      right: -12px !important;
+      transform: rotate(-4deg);
+    }
+  }
+  @media screen and (min-width: 1024px) {
+
+    .postcard__text {
+      padding: 2rem 3.5rem;
+    }
+    .postcard__text2 {
+        padding: 2rem 3.5rem;
+      }
+
+    .postcard__text:before {
+      content: "";
+      position: absolute;
+      display: block;
+      top: -20%;
+      height: 130%;
+      width: 55px;
+    }
+
+    .postcard.dark .postcard__text:before {
+      background: #18151f;
+    }
+
+    .postcard.light .postcard__text:before {
+      background: #e1e5ea;
+    }
+  }
+  /* COLORS */
+  .postcard .postcard__tagbox .green.play:hover {
+    background: #79dd09;
+    color: black;
+  }
+
+  .green .postcard__title:hover {
+    color: #79dd09;
+  }
+
+  .green .postcard__bar {
+    background-color: #79dd09;
+  }
+
+  .green::before {
+    background-image: linear-gradient(
+      -30deg,
+      rgba(121, 221, 9, 0.1),
+      transparent 50%
+    );
+  }
+
+  .green:nth-child(2n)::before {
+    background-image: linear-gradient(
+      30deg,
+      rgba(121, 221, 9, 0.1),
+      transparent 50%
+    );
+  }
+
+  .postcard .postcard__tagbox .blue.play:hover {
+    background: #0076bd;
+  }
+
+  .blue .postcard__title:hover {
+    color: #0076bd;
+  }
+
+  .blue .postcard__bar {
+    background-color: #0076bd;
+  }
+
+  .blue::before {
+    background-image: linear-gradient(
+      -30deg,
+      rgba(0, 118, 189, 0.1),
+      transparent 50%
+    );
+  }
+
+  .blue:nth-child(2n)::before {
+    background-image: linear-gradient(
+      30deg,
+      rgba(0, 118, 189, 0.1),
+      transparent 50%
+    );
+  }
+
+  .postcard .postcard__tagbox .red.play:hover {
+    background: #bd150b;
+  }
+
+  .red .postcard__title:hover {
+    color: #bd150b;
+  }
+
+  .red .postcard__bar {
+    background-color: #bd150b;
+  }
+
+  .red::before {
+    background-image: linear-gradient(
+      -30deg,
+      rgba(189, 21, 11, 0.1),
+      transparent 50%
+    );
+  }
+
+  .red:nth-child(2n)::before {
+    background-image: linear-gradient(
+      30deg,
+      rgba(189, 21, 11, 0.1),
+      transparent 50%
+    );
+  }
+
+  .postcard .postcard__tagbox .yellow.play:hover {
+    background: #bdbb49;
+    color: black;
+  }
+
+  .yellow .postcard__title:hover {
+    color: #bdbb49;
+  }
+
+  .yellow .postcard__bar {
+    background-color: #bdbb49;
+  }
+
+  .yellow::before {
+    background-image: linear-gradient(
+      -30deg,
+      rgba(189, 187, 73, 0.1),
+      transparent 50%
+    );
+  }
+
+  .yellow:nth-child(2n)::before {
+    background-image: linear-gradient(
+      30deg,
+      rgba(189, 187, 73, 0.1),
+      transparent 50%
+    );
+  }
+
+  @media screen and (min-width: 769px) {
+    .green::before {
+      background-image: linear-gradient(
+        -80deg,
+        rgba(121, 221, 9, 0.1),
+        transparent 50%
+      );
+    }
+
+    .green:nth-child(2n)::before {
+      background-image: linear-gradient(
+        80deg,
+        rgba(121, 221, 9, 0.1),
+        transparent 50%
+      );
+    }
+
+    .blue::before {
+      background-image: linear-gradient(
+        -80deg,
+        rgba(0, 118, 189, 0.1),
+        transparent 50%
+      );
+    }
+
+    .blue:nth-child(2n)::before {
+      background-image: linear-gradient(
+        80deg,
+        rgba(0, 118, 189, 0.1),
+        transparent 50%
+      );
+    }
+
+    .red::before {
+      background-image: linear-gradient(
+        -80deg,
+        rgba(189, 21, 11, 0.1),
+        transparent 50%
+      );
+    }
+
+    .red:nth-child(2n)::before {
+      background-image: linear-gradient(
+        80deg,
+        rgba(189, 21, 11, 0.1),
+        transparent 50%
+      );
+    }
+
+    .yellow::before {
+      background-image: linear-gradient(
+        -80deg,
+        rgba(189, 187, 73, 0.1),
+        transparent 50%
+      );
+    }
+
+    .yellow:nth-child(2n)::before {
+      background-image: linear-gradient(
+        80deg,
+        rgba(189, 187, 73, 0.1),
+        transparent 50%
+      );
+    }
+    .postcard .postcard__text2 {
+        padding: 1.5rem;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+      }
+      .postcard .postcard__text2 {
+        padding: 3rem;
+        width: 100%;
+      }
+      .postcard .media.postcard__text2:before {
+        content: "";
+        position: absolute;
+        display: block;
+        background: #18151f;
+        top: -20%;
+        height: 130%;
+        width: 55px;
+      }
+  }
+
+</style>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+<section class="dark">
+    <div class="container py-4">
+      <h1 class="h1 text-center" id="pageHeaderTitle">Internship Details</h1>
+      <article class="postcard dark blue">
+        <a class="postcard__img_link" href="#">
+          <img
+            class="postcard__img"
+            src="https://picsum.photos/501/501"
+            alt="Image Title"
+          />
+        </a>
+        <div class="postcard__text">
+          <h1 class="postcard__title blue">
+            FrontEnd Developer
+          </h1>
+          <div class="postcard__subtitle small">
+            <time datetime="2020-05-25 12:00:00">
+              <i class="fas fa-calendar-alt mr-2"></i>{{ post.date }} December 24, 2021
+            </time>
+          </div>
+          <div class="postcard__bar"></div>
+          <div class="postcard__preview-txt"><ul class="list-unstyled list pl-5">
+            <li class="mb-3 d-flex align-items-center"><i class="fa fa-building mr-3 text-primary"></i> company_org: {{ post.comapny_org }}</li>
+            <li class="mb-3 d-flex align-items-center"><i class="fa fa-hourglass-end mr-3 text-primary"></i>registration open: {{ post.registration_open }}</li>
+            <li class="mb-3 d-flex align-items-center"><i class="fa fa-inbox mr-3 text-primary"></i>registration close{{ post.registration_close }}</li>
+            <li class="mb-3 d-flex align-items-center"><i class="fa fa-rocket mr-3 text-primary"></i>eligibility: {{ post.eligibility }} </li>
+            <li class="mb-3 d-flex align-items-center"><i class="fa fa-trophy mr-3 text-primary"></i>branch: {{ post.branch }}</li>
+            <button type="button" class="btn btn-info">Info</button>
+        </ul></div>
+          <ul class="postcard__tagbox">
+            <li class="tag__item"><i class="fas fa-tag mr-2"></i>Engineering</li>
+            <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
+            <li class="tag__item play blue">
+              <a href=https://{{ event.event_link }}><i class="fas fa-calendar-day"></i>Play Event</a>
+            </li>
+          </ul>
         </div>
+      </article>
+      <article class="postcard dark blue">
+        <div class="postcard__text2">
+          <h1 class="postcard__title blue">
+            JOB OVERVIEW
+          </h1>
+          <hr>
+          <div class="postcard__preview-txt"><ul class="list-unstyled list pl-5">
+            <h5>Event: USA-India Summer Research Experience in Manufacturing Security (Indian Applicants)</h5>
+            <h5>Event Host: USA-India Summer Research Experience in Manufacturing Security (Indian Applicants)</h5>
+            <hr>
+            <h6>Eligibility : Majoring in Mechanical Engineering, Materials Science, Chemical Engineering or Electrical and Computer Engineering. Interest in 3D printing. Some familiarity with any CAD software. Enrolment in a Bachelor's degree program at an accredited institution is required for Indian applicants.</h6>
+            <hr>
+
+            <h5>Link to register: https://www.nsfetap.org/award/39/opportunity/137</h5>
+            <hr>
+
+            <li class="mb-3 d-flex align-items-center"><i class="fa fa-hourglass-end mr-3 text-primary"></i>registration open: {{ post.registration_open }}</li>
+            <li class="mb-3 d-flex align-items-center"><i class="fa fa-inbox mr-3 text-primary"></i>registration close{{ post.registration_close }}</li>
+            <hr>
+
+            <h6>Description: This NSF funded 8 week summer research program will provide the US students an opportunity work on cybersecurity in manufacturing problems.
+
+ 
+
+                Due to COVID-19 related travel restrictions, the program will be conducted in the remote mode in Summer 2022. If travel restrictions are lifted, students will have an option for a 2-week visit to India to interact with the industry and visit cultural landmarks. The trip expenses will be paid by the program.
+                
+                 
+                
+                Selected Indian students will be paired with the US students during the internship to work collaboratively.</h6>
+            <button type="button" class="btn btn-info">Click here to Register</button>
+        </ul></div>
+          <ul class="postcard__tagbox">
+            <li class="tag__item"><i class="fas fa-tag mr-2"></i>Engineering</li>
+            <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
+            <li class="tag__item play blue">
+              <a href=https://{{ event.event_link }}><i class="fas fa-calendar-day"></i>Play Event</a>
+            </li>
+          </ul>
+        </div>
+      </article>
     </div>
-</div>
+</section>
 {% endblock content %}

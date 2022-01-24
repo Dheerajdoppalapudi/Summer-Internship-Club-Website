@@ -10,13 +10,6 @@
   }
 
   .card {
-    border: 0;
-    box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
-    -webkit-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
-    -moz-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
-    -ms-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
-  }
-  .card {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -26,6 +19,16 @@
     background-clip: border-box;
     border: 1px solid #e6e4e9;
     border-radius: 8px;
+    transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+      0.3s box-shadow,
+      0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+  }
+  .card:hover {
+    transform: scale(1.05);
+    transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+      0.3s box-shadow,
+      0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
   }
 
   .card .card-header.no-border {
@@ -391,7 +394,7 @@
     <div class="col-lg-4">
       <div class="card card-margin">
         <div class="card-header no-border">
-          <h5 class="card-title">{{ post.name }}</h5>
+          <h6 class="card-title">{{ post.name }}</h6>
         </div>
         <div class="card-body pt-0">
           <div class="widget-49">
@@ -402,23 +405,23 @@
               </div>
               <div class="widget-49-meeting-info">
                 <span class="widget-49-pro-title">{{ post.country }}</span>
-                <span class="widget-49-meeting-time">12:00 to 13.30 Hrs</span>
+                <span class="widget-49-meeting-time">{{ post.end_date }}</span>
               </div>
             </div>
             <ol class="widget-49-meeting-points">
               <li class="widget-49-meeting-item">
-                <span>Expand module is removed</span>
+                <span>stipend: {{ post.stipend }} </span>
               </li>
               <li class="widget-49-meeting-item">
-                <span>Data migration is in scope</span>
+                <span>eligibility: {{ post.eligibility }}</span>
               </li>
               <li class="widget-49-meeting-item">
-                <span>Session timeout increase to 30 minutes</span>
+                <span>branch: {{ post.branch }}</span>
               </li>
             </ol>
             <div class="widget-49-meeting-action">
               <a href="#" class="btn btn-sm btn-flash-border-primary"
-                >View All</a
+                >View Details</a
               >
             </div>
           </div>

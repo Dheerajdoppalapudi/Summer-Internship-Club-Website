@@ -1,63 +1,29 @@
-{% extends "page/base.html" %}
-{% block content %}
-{% load static %}
+{% extends "page/base.html" %} {% block content %} {% load static %}
 <style>
-    .fullcontainer {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .fullcontainer > div {
-        margin: 10px;
-        padding: 10px;
-        width: 350px;
-    }
-    .card:hover {
-     transform: scale(1.05);
-     box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
-    }
-    .card {
-    border-radius: 4px;
-    background: #fff;
-    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
-    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
-    padding: 14px 25px 18px 36px;
-    cursor: pointer;
-    }
-    hr {
-    margin: 0
-    }
-    .homepg {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-    }
+  .banner {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(176, 176, 250);
+  }
+  .banner2 {
+    display: flex;
+    margin: 10px 5px 0px 5px;
+  }
+  .banner2 i {
+    margin-right: 5px;
+  }
+  .card-header {
+    background-color: blueviolet;
+    color: white;
+  }
 </style>
-<div>
-    name: {{ post.name }}
-    <br>
-    eligibility: {{ post.eligibility }}
-    <br>
-    description: {{ post.description }}
-    <br>
-    university_organization: {{ post.university_organization }}
-    <br>
-    stipend: {{ post.stipend }}
-    <br>
-    duration: {{ post.duration }}
-    <br>
-    end_date: {{ post.end_date }}
-    <br>
-    country: {{ post.country }}
-    <br>
-    referral_link: {{ post.referral_link }}
-    <br>
-    link_to_apply: {{ post.link_to_apply }}
-    <br>
-    date_posted: {{ post.date_posted }}
-    <br>
-    branch: {{ post.branch }}
-</div>
-<div class="container">
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+  rel="stylesheet"
+/>
+
+<!-- <div class="container">
     <div class="fullcontainer">
         <div class="grid">
             <div class="card cardtwo">
@@ -77,5 +43,88 @@
             </div>
         </div>
     </div>
+</div> -->
+<div class="heading">
+  <h1>
+    IIM Ahmedabad Research Associateship in Logistics Infrastructure Master Plan
+    2021
+  </h1>
 </div>
+<div class="banner">
+  <div class="banner2">
+    <i class="fas fa-graduation-cap fa-3x"></i>
+    <div>
+      <span><b>This and that</b></span>
+      <p>Master's degree holders</p>
+    </div>
+  </div>
+  <div class="banner2">
+    <i class="fas fa-globe-americas fa-3x"></i>
+    <div>
+      <span><b>This and that</b></span>
+      <p>Master's degree holders</p>
+    </div>
+  </div>
+  <div class="banner2">
+    <i class="fas fa-trophy fa-3x"></i>
+    <div>
+      <span><b>This and that</b></span>
+      <p>Master's degree holders</p>
+    </div>
+  </div>
+  <div class="banner2">
+    <i class="fas fa-calendar-week fa-3x"></i>
+    <div>
+      <span><b>This and that</b></span>
+      <p>Master's degree holders</p>
+    </div>
+  </div>
+</div>
+
+<div class="about">
+  <h3>About the Program</h3>
+  <p>
+    IIM Ahmedabad Research Associateship in Logistics Infrastructure Master Plan
+    2021 is a research opportunity offered to master’s degree holders. The
+    selected fellow will receive compensation that will be commensurate with the
+    qualification and experience.
+  </p>
+</div>
+
+<div class="card">
+  <h5 class="card-header">Featured</h5>
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">
+      With supporting text below as a natural lead-in to additional content.
+    </p>
+    <div>
+      name: {{ post.name }}
+      <br />
+      eligibility: {{ post.eligibility }}
+      <br />
+      description: {{ post.description }}
+      <br />
+      university_organization: {{ post.university_organization }}
+      <br />
+      stipend: {{ post.stipend }}
+      <br />
+      duration: {{ post.duration }}
+      <br />
+      end_date: {{ post.end_date }}
+      <br />
+      country: {{ post.country }}
+      <br />
+      referral_link: {{ post.referral_link }}
+      <br />
+      link_to_apply: {{ post.link_to_apply }}
+      <br />
+      date_posted: {{ post.date_posted }}
+      <br />
+      branch: {{ post.branch }}
+    </div>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
 {% endblock content %}
