@@ -4,6 +4,7 @@ from .models import Internship, Member, Suggestions, Scolarships, Hackathons, Fe
 from django.http import JsonResponse, Http404
 
 branches = ['Engineering', 'Management', 'Medical and  Para-medical', 'Humanities and Social Sciences', 'Law', 'Sciences']
+all_archives = ['Internships', 'Scolarships', 'Fellowships', 'Hackathons']
 
 @login_required
 def internships(request):
@@ -124,3 +125,40 @@ def specific_hackathon(request, name):
             "post": post
         }
     return render(request, 'page/specific_hackathon.html', context)
+
+def archives(request):
+    context = {
+        'allarchives': all_archives
+    }
+    return render(request, 'page/archives.html', context)
+
+def archives_branch(request, section):
+    if section == "Internships":
+        context = {
+            'allarchives': all_archives,
+            'count': Internship.objects.all().count(),
+            'posts': Internship.objects.order_by('-date_posted')
+        }
+        return render(request, 'page/archives.html', context)
+    elif section == 'Scolarships':
+        context = {
+            'allarchives': all_archives,
+            'count': Scolarships.objects.all().count(),
+            'scholarships': Scolarships.objects.order_by('-date_posted')
+        }
+        return render(request, 'page/archives.html', context)
+    elif section == 'Fellowships':
+        context = {
+            'allarchives': all_archives,
+            'count': Fellowships.objects.all().count(),
+            'fellowships': Fellowships.objects.order_by('-date_posted')
+        }
+        return render(request, 'page/archives.html', context)
+    elif section == 'Hackathons':
+        context = {
+            'allarchives': all_archives,
+            'count': Hackathons.objects.all().count(),
+            'hackathons': Hackathons.objects.order_by('-date_posted')
+        }
+        return render(request, 'page/archives.html', context)
+    return render(request, 'page/archives.html', context)
