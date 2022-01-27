@@ -17,4 +17,6 @@ urlpatterns = [
     path('scholarships/search/<str:name>/', views.specific_scholarship, name='specific_scholarship'),
     path('scholarships/<str:branch>/', views.scolarship_branch, name='scholarship_branch'),
     path('hackathons/search/<str:name>/', views.specific_hackathon, name='specific_hackathon'),
+    path('archives/', views.archives, name='archives'),
+    path('archives/<str:section>/', views.archives_branch, name='archives-branch'),
 ]
