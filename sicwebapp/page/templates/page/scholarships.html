@@ -4,7 +4,15 @@
     background: #f4f7fd;
     /* margin-top: 20px; */
   }
-
+  .heading {
+    font-family: "Inter", sans-serif;
+    margin: 50px;
+  }
+  .heading h1 {
+    font-weight: bolder;
+    text-align: center;
+    margin: 20px;
+  }
   .card-margin {
     margin-bottom: 1.875rem;
   }
@@ -29,6 +37,33 @@
       0.3s box-shadow,
       0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+  }
+  .card-title {
+    margin: 10px;
+  }
+
+  .hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color: #0087ca;
+  }
+
+  .hover-underline-animation:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0087ca;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+
+  .hover-underline-animation:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
   }
 
   .card .card-header.no-border {
@@ -365,8 +400,70 @@
   .widget-49 .widget-49-meeting-action a {
     text-transform: uppercase;
   }
+  .selectButtons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+  }
+  .selectButtons a {
+    margin: 5px;
+  }
+  .bn30 {
+    border: 5em;
+    cursor: pointer;
+    outline: none;
+    font-size: 16px;
+    -webkit-transform: translate(0);
+    transform: translate(0);
+    background-image: linear-gradient(45deg, #4568dc, #b06ab3);
+    padding: 0.7em 2em;
+    border-radius: 65px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.438);
+    -webkit-transition: box-shadow 0.25s;
+    transition: box-shadow 0.25s;
+    color: rgba(255, 255, 255, 0.623);
+  }
+
+  .bn30 .text {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(45deg, #4568dc, #b06ab3);
+  }
+
+  .bn30:after {
+    content: "";
+    border-radius: 18px;
+    position: absolute;
+    margin: 4px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    background: #101010;
+  }
+
+  .bn30:hover {
+    background-image: linear-gradient(-45deg, #4568dc, #b06ab3);
+    box-shadow: 0 12px 24px rgba(128, 128, 128, 0.1);
+  }
+
+  .bn30:hover .text {
+    background-image: linear-gradient(-45deg, #4568dc, #b06ab3);
+  }
+  .count {
+    font-size: larger;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 1rem;
+    font-family: "Courier New", Courier, monospace;
+  }
 </style>
 <div>
+  <div class="heading"><h1>SCHOLARSHIPS 😀</h1></div>
   <!--<div>
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
@@ -380,11 +477,12 @@
             </div>
         </div>
     </div>-->
-  <div>
+  <div class="selectButtons">
     {% for branch in branches %}
-    <a class="dropdown-item" href="{% url 'scholarship_branch' branch %}"
-      >{{ branch }}</a
+    <a class="bn40" href="{% url 'internship_branch' branch %}"
+      ><button class="bn30">{{branch}}</button></a
     >
+
     {% endfor %}
   </div>
 </div>
@@ -394,7 +492,7 @@
     <div class="col-lg-4">
       <div class="card card-margin">
         <div class="card-header no-border">
-          <h6 class="card-title">{{ post.name }}</h6>
+          <h6 class="card-title hover-underline-animation">{{ post.name }}</h6>
         </div>
         <div class="card-body pt-0">
           <div class="widget-49">
@@ -420,7 +518,9 @@
               </li>
             </ol>
             <div class="widget-49-meeting-action">
-              <a href="#" class="btn btn-sm btn-flash-border-primary"
+              <a
+                href="http://localhost:8000/scholarships/search/{{post.name}}"
+                class="btn btn-sm btn-flash-border-primary"
                 >View Details</a
               >
             </div>

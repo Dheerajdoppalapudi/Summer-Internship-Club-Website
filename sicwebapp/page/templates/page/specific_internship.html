@@ -88,6 +88,9 @@
     display: flex;
     flex-direction: column;
   }
+  .postcard__preview-txt i{
+    margin-right: 10px;
+  }
   .postcard .postcard__preview-txt {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -101,6 +104,9 @@
     margin: 20px 0 0 0;
     padding: 0;
     justify-content: center;
+  }
+  .postcard__tagbox i{
+    margin-right: 10px;
   }
   .postcard .postcard__tagbox .tag__item {
     display: inline-block;
@@ -426,12 +432,12 @@
           </div>
           <div class="postcard__bar"></div>
           <div class="postcard__preview-txt"><ul class="list-unstyled list pl-5">
-            <li class="mb-3 d-flex align-items-center"><i class="fa fa-building mr-3 text-primary"></i> company_org: {{ post.comapny_org }}</li>
-            <li class="mb-3 d-flex align-items-center"><i class="fa fa-hourglass-end mr-3 text-primary"></i>registration open: {{ post.registration_open }}</li>
-            <li class="mb-3 d-flex align-items-center"><i class="fa fa-inbox mr-3 text-primary"></i>registration close{{ post.registration_close }}</li>
-            <li class="mb-3 d-flex align-items-center"><i class="fa fa-rocket mr-3 text-primary"></i>eligibility: {{ post.eligibility }} </li>
-            <li class="mb-3 d-flex align-items-center"><i class="fa fa-trophy mr-3 text-primary"></i>branch: {{ post.branch }}</li>
-            <button type="button" class="btn btn-info">Info</button>
+            <li class="mb-3 d-flex align-items-center"><i class="fa fa-building mr-3 text-primary"></i> &nbsp;company : {{ post.comapny_org }}</li>
+            <li class="mb-3 d-flex align-items-center"><i class="fa fa-hourglass-end mr-3 text-primary"></i>&nbsp;registration open : {{ post.registration_open }}</li>
+            <li class="mb-3 d-flex align-items-center"><i class="fa fa-inbox mr-3 text-primary"></i>&nbsp;registration close :{{ post.registration_close }}</li>
+            <li class="mb-3 d-flex align-items-center"><i class="fa fa-rocket mr-3 text-primary"></i>&nbsp;Eligibility : {{ post.eligibility }} </li>
+            <li class="mb-3 d-flex align-items-center"><i class="fa fa-trophy mr-3 text-primary"></i>&nbsp;Branch : {{ post.branch }}</li>
+            <button type="button" class="btn btn-info">Apply</button>
         </ul></div>
           <ul class="postcard__tagbox">
             <li class="tag__item"><i class="fas fa-tag mr-2"></i>Engineering</li>

@@ -2,8 +2,22 @@
 {% block content %}
 {% load static %}
 <style>
+  .card-body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+  }
+    .heading {
+    font-family: "Inter", sans-serif;
+    margin: 50px;
+  }
+  .heading h1 {
+    font-weight: bolder;
+    text-align: center;
+    margin: 20px;
+  }
     .fullcontainer {
         display: flex;
+        justify-content: center;
         flex-wrap: wrap;
     }
     .fullcontainer > div {
@@ -11,18 +25,90 @@
         padding: 10px;
         width: 350px;
     }
-    .card:hover {
-     transform: scale(1.05);
-     box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+    .card-title{
+        color: rgb(61, 61, 61);
+        text-decoration: none;
     }
-    .card {
-    border-radius: 4px;
-    background: #fff;
-    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
-    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
-    padding: 14px 25px 18px 36px;
-    cursor: pointer;
+    .card-subtitle{
+        color: #2092ed;
     }
+   
+    .cardtwo {
+   
+    box-shadow: 0 2px 4px 0 rgba(136, 144, 195, 0.2),
+      0 5px 15px 0 rgba(37, 44, 97, 0.15);
+    border-radius: 15px;
+    margin: 8px;
+    padding: 10px 15px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    min-height: 265px;
+    transition: 0.7s;
+    font-family: 'Inter', sans-serif;
+
+    
+    }
+    .cardtwo:hover {
+        /* background: #46a3eb; */
+        background-color: #89d4cf;
+background-image: linear-gradient(315deg, #89d4cf 0%, #6e45e1 74%);
+
+    color: #fff;
+    transform: scale(1.1);
+    z-index: 9;
+    }
+    .cardtwo:hover::before{
+        background: rgb(85 108 214 / 10%);
+    }
+    .cardtwo:before {
+    content: "";
+    position: absolute;
+    background: rgb(85 108 214 / 5%);
+    width: 170px;
+    height: 400px;
+    z-index: -1;
+    transform: rotate(42deg);
+    right: -56px;
+    top: -23px;
+    border-radius: 35px;
+  }
+
+  .hover_color_bubble {
+    position: absolute;
+    background: rgb(54 81 207 / 15%);
+    width: 100rem;
+    height: 100rem;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    top: 16rem;
+    border-radius: 50%;
+    transform: rotate(-36deg);
+    left: -18rem;
+    transition: 0.7s;
+  }
+  .cardtwo:hover .hover_color_bubble {
+    top: 0rem;
+  }
+    h5{
+        font-weight:bolder;
+    }
+    .card-text{
+        font-size: small;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .card-texttwo{
+        font-family: 'Courier New', Courier, monospace;
+        font-size: small;
+        font-weight: bold;
+
+    }
+   
+ 
+    
+   .cardtwo 
     hr {
     margin: 0
     }
@@ -30,25 +116,34 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
+    
     }
+     .count {
+    font-size: larger;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 1rem;
+    font-family: "Courier New", Courier, monospace;
+  }
 </style>
 
 <div class="container">
-    <div>Total count Fellowships: {{ count }}</div>
+  <div class="heading"><h1>FELLOWSHIPS 🤖</h1></div>
+
+  <div class="count">Fellowships Count: {{ count }} 😲</div>
     <div class="fullcontainer">
         {% for post in fellowships %}
         <div class="grid">
-            <div class="card">
+            <div class="card cardtwo">
+                <div class="hover_color_bubble"></div>
                 <div class="card-body">
-                    <h5><a class="card-title" href="{% url 'specific_fellowship' post.name %}">Title: {{ post.name }}</a></h5>
-                    <h6 class="card-subtitle mb-2 text-muted">university_organization: {{ post.university_organization }}</h6>
-                    <p class="card-text ">{{ post.description }}</p>
+                    <h4>{{ post.name }}</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Role: {{ post.role }}</h6>
+                    <p class="card-text ">COMPANY:{{ post.comapny_org }}</p>
+                    <p class="card-text">Eligibility:{{post.eligibility}}</p>
+                   
                     <hr>
-                    <p class="card-text text-success">Eligibility: {{ post.eligibility }}</p>
-                    <p class="card-subtitle mb-2 text-muted">tenure: {{ post.duration }}</p>
-                    <p class="card-text text-danger">date of expiry: {{ post.date_of_expiry}}</p>
-                    <hr>
-                    <p>Referral Link: <a href=https://{{ post.refer_link }} class="card-link">{{ post.referral_link }}</a>
+                    <!-- <p>Referral Link: <a href=https://{{ post.referral_link }} class="card-l ink">{{ post.referral_link }}</a> -->
                     </p>
                     <div class="card-footer text-muted" style="font-size:10px; text-align:left">Posted on: {{ post.date_posted }}
                     </div>

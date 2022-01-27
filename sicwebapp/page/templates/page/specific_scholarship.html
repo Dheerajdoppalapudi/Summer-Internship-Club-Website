@@ -1,10 +1,28 @@
 {% extends "page/base.html" %} {% block content %} {% load static %}
 <style>
+  @import url("https://rsms.me/inter/inter.css");
+  .container {
+    font-family: "Inter", sans-serif;
+  }
+  .heading h1 {
+    font-weight: bolder;
+    color: rgb(34, 34, 34);
+  }
+  .about h3 {
+    font-weight: bold;
+  }
+  .about span {
+    color: rgb(248, 191, 45);
+  }
+  .about p {
+    font-weight: 500;
+  }
   .banner {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: rgb(176, 176, 250);
+
+    margin: 20px 0px 15px 0px;
   }
   .banner2 {
     display: flex;
@@ -12,10 +30,54 @@
   }
   .banner2 i {
     margin-right: 5px;
+    color: #06000a;
+  }
+  .banner2 span {
+    color: #a15dce;
+  }
+  .banner2 p {
+    color: #a15dce;
   }
   .card-header {
-    background-color: blueviolet;
+    background: #a15dce;
+    background: -webkit-linear-gradient(top left, #a15dce, #9f78cc);
+    background: -moz-linear-gradient(top left, #a15dce, #9f78cc);
+    background: linear-gradient(to bottom right, #a15dce, #9f78cc);
     color: white;
+  }
+  .check-list {
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+
+  .check-list li {
+    position: relative;
+    list-style-type: none;
+    padding-left: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+
+  .check-list li:before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: -2px;
+    width: 5px;
+    height: 11px;
+    border-width: 0 2px 2px 0;
+    border-style: solid;
+    border-color: #00a8a8;
+    transform-origin: bottom left;
+    transform: rotate(45deg);
+  }
+  .card-body a {
+    border: 2px solid #a15dce;
+    background: #a15dce;
+    background: -webkit-linear-gradient(top left, #a15dce, #9f78cc);
+    background: -moz-linear-gradient(top left, #a15dce, #9f78cc);
+    background: linear-gradient(to bottom right, #a15dce, #9f78cc);
   }
 </style>
 <link
@@ -23,108 +85,77 @@
   rel="stylesheet"
 />
 
-<!-- <div class="container">
-    <div class="fullcontainer">
-        <div class="grid">
-            <div class="card cardtwo">
-                <div class="hover_color_bubble"></div>
-                <div class="card-body">
-                    <h5 class="card-title">Title: {{ post.name }}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Role: {{ post.duration }}</h6>
-                    <p class="card-text ">"{{ post.description }}"</p>
-                    <hr>
-                    <p class="card-texttwo ">Registration close: {{ post.end_date}}</p>
-                    <hr>
-                    <p>Referral Link: <a href=https://{{ post.referral_link }} class="card-link">{{ post.referral_link }}</a>
-                    </p>
-                    <div class="card-footer text-muted" style="font-size:10px; text-align:left">Posted on: {{ post.date_posted }}
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="container p-5">
+  <div class="heading">
+    <h1>
+      IIM Ahmedabad Research Associateship in Logistics Infrastructure Master
+      Plan 2021
+    </h1>
+  </div>
+  <div class="banner">
+    <div class="banner2">
+      <i class="fas fa-graduation-cap fa-3x"></i>
+      <div>
+        <span><b>Eligibility</b></span>
+        <p>{{ post.eligibility }}</p>
+      </div>
     </div>
-</div> -->
-<div class="heading">
-  <h1>
-    IIM Ahmedabad Research Associateship in Logistics Infrastructure Master Plan
-    2021
-  </h1>
-</div>
-<div class="banner">
-  <div class="banner2">
-    <i class="fas fa-graduation-cap fa-3x"></i>
-    <div>
-      <span><b>This and that</b></span>
-      <p>Master's degree holders</p>
+    <div class="banner2">
+      <i class="fas fa-globe-americas fa-3x"></i>
+      <div>
+        <span><b>Location</b></span>
+        <p>{{ post.country }}</p>
+      </div>
+    </div>
+    <div class="banner2">
+      <i class="fas fa-trophy fa-3x"></i>
+      <div>
+        <span><b>Stipend</b></span>
+        <p>{{ post.stipend }}</p>
+      </div>
+    </div>
+    <div class="banner2">
+      <i class="fas fa-calendar-week fa-3x"></i>
+      <div>
+        <span><b>Last Date</b></span>
+        <p>{{ post.end_date }}</p>
+      </div>
     </div>
   </div>
-  <div class="banner2">
-    <i class="fas fa-globe-americas fa-3x"></i>
-    <div>
-      <span><b>This and that</b></span>
-      <p>Master's degree holders</p>
-    </div>
-  </div>
-  <div class="banner2">
-    <i class="fas fa-trophy fa-3x"></i>
-    <div>
-      <span><b>This and that</b></span>
-      <p>Master's degree holders</p>
-    </div>
-  </div>
-  <div class="banner2">
-    <i class="fas fa-calendar-week fa-3x"></i>
-    <div>
-      <span><b>This and that</b></span>
-      <p>Master's degree holders</p>
-    </div>
-  </div>
-</div>
 
-<div class="about">
-  <h3>About the Program</h3>
-  <p>
-    IIM Ahmedabad Research Associateship in Logistics Infrastructure Master Plan
-    2021 is a research opportunity offered to master’s degree holders. The
-    selected fellow will receive compensation that will be commensurate with the
-    qualification and experience.
-  </p>
-</div>
-
-<div class="card">
-  <h5 class="card-header">Featured</h5>
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">
-      With supporting text below as a natural lead-in to additional content.
+  <div class="about">
+    <h3>About the <span>Program</span></h3>
+    <p>
+      IIM Ahmedabad Research Associateship in Logistics Infrastructure Master
+      Plan 2021 is a research opportunity offered to master’s degree holders.
+      The selected fellow will receive compensation that will be commensurate
+      with the qualification and experience.
     </p>
-    <div>
-      name: {{ post.name }}
-      <br />
-      eligibility: {{ post.eligibility }}
-      <br />
-      description: {{ post.description }}
-      <br />
-      university_organization: {{ post.university_organization }}
-      <br />
-      stipend: {{ post.stipend }}
-      <br />
-      duration: {{ post.duration }}
-      <br />
-      end_date: {{ post.end_date }}
-      <br />
-      country: {{ post.country }}
-      <br />
-      referral_link: {{ post.referral_link }}
-      <br />
-      link_to_apply: {{ post.link_to_apply }}
-      <br />
-      date_posted: {{ post.date_posted }}
-      <br />
-      branch: {{ post.branch }}
+  </div>
+
+  <div class="card">
+    <h5 class="card-header">Featured</h5>
+    <div class="card-body">
+      <h5 class="card-title">Special title treatment</h5>
+      <p class="card-text">
+        With supporting text below as a natural lead-in to additional content.
+      </p>
+      <div>
+        <ul class="check-list">
+          <li>STIPEND: {{ post.stipend }}</li>
+          <li>DURATION: {{ post.duration }}</li>
+          <li>END DATE: {{ post.end_date }}</li>
+          <li>COUNTRY: {{ post.country }}</li>
+          <li>REFERRAL LINK: {{ post.referral_link }}</li>
+          <li>LINK TO APPLY: {{ post.link_to_apply }}</li>
+          <li>DATE POSTED: {{ post.date_posted }}</li>
+          <li>BRANCH: {{ post.branch }}</li>
+        </ul>
+      </div>
+      <a href="{{ post.link_to_apply }}" class="btn btn-primary"
+        >Link to apply</a
+      >
     </div>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
-
 {% endblock content %}

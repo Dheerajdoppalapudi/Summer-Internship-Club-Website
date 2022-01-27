@@ -2,8 +2,10 @@
 {% block content %}
 {% load static %}
 <style>
+  @import url("https://rsms.me/inter/inter.css");
     .fullcontainer {
         display: flex;
+        justify-content: center;
         flex-wrap: wrap;
     }
     .fullcontainer > div {
@@ -13,6 +15,7 @@
     }
     .card-title{
         color: rgb(61, 61, 61);
+        text-decoration: none;
     }
     .card-subtitle{
         color: #2092ed;
@@ -30,16 +33,20 @@
     overflow: hidden;
     min-height: 265px;
     transition: 0.7s;
-    font-family: 'Inter', sans-serif;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
     
     }
     .cardtwo:hover {
-        background: #46a3eb;
-    color: #fff;
+        /* background: #46a3eb; */
+        /* background-color: #000000;
+    background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%); */
+
+    color: rgb(47, 47, 47);
     transform: scale(1.1);
     z-index: 9;
     }
+    
     .cardtwo:hover::before{
         background: rgb(85 108 214 / 10%);
     }
@@ -76,18 +83,59 @@
         font-weight:bolder;
     }
     .card-text{
-        font-style: italic;
+        font-size: small;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
         
     }
     .card-texttwo{
+        font-family: 'Courier New', Courier, monospace;
         font-size: small;
         font-weight: bold;
-        color: orange;
+
     }
+    .red{
+        color: rgb(182, 1, 1);
+    }
+    .green{
+        color: #28a745;
+    }
+    .bn41 {
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: large;
+  padding: 4px 6px;
+  color: rgb(51, 51, 51) !important;
+}
+
+.bn41::after {
+  max-width: 100%;
+  height: 2px;
+  display: block;
+  content: "";
+  background: linear-gradient(-90deg, #ff9100 0%, #f10366 50%, #6173ff 100%);
+  opacity: 1;
+  margin-bottom: -6px;
+  margin-top: 1px;
+}
+
+.bn40div {
+  display: flex;
+}
+
+    /* .card-texttwo:nth-of-type(1){
+        color: #28a745;
+    }
+    .card-texttwo:nth-of-type(2){
+        color: rgb(182, 1, 1);
+    } */
     
    .cardtwo 
     hr {
     margin: 0
+    }
+    .cardtwo 
+    p {
+    font-weight: 500;
     }
     .homepg {
       display: flex;
@@ -103,8 +151,12 @@
 .masthead {
     padding: 3rem 0 7rem;
     position: relative;
-    background-color: #dd3d31;
-    background-image: url(https://startbootstrap.com/assets/img/overlay.svg), linear-gradient(45deg, #dd3d31 0%, #d22f23 100%);
+    /* background-color: #dd3d31;
+    background-image: url(https://startbootstrap.com/assets/img/overlay.svg), linear-gradient(45deg, #dd3d31 0%, #d22f23 100%); */
+    background-color: #00DBDE;
+background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+
+
     background-size: cover;
     z-index: 0
 }
@@ -208,6 +260,58 @@
 .masthead-page {
     padding: 1rem 0 4rem
 }
+.bn30 {
+  border: 5em;
+  cursor: pointer;
+  outline: none;
+  font-size: 16px;
+  -webkit-transform: translate(0);
+  transform: translate(0);
+  background-image: linear-gradient(45deg, #4568dc, #b06ab3);
+  padding: 0.7em 2em;
+  border-radius: 65px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.438);
+  -webkit-transition: box-shadow 0.25s;
+  transition: box-shadow 0.25s;
+  color: rgba(255, 255, 255, 0.623);
+}
+
+.bn30 .text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(45deg, #4568dc, #b06ab3);
+}
+
+.bn30:after {
+  content: "";
+  border-radius: 18px;
+  position: absolute;
+  margin: 4px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  background: #101010;
+}
+
+.bn30:hover {
+  background-image: linear-gradient(-45deg, #4568dc, #b06ab3);
+  box-shadow: 0 12px 24px rgba(128, 128, 128, 0.1);
+}
+
+.bn30:hover .text {
+  background-image: linear-gradient(-45deg, #4568dc, #b06ab3);
+}
+.count{
+    font-size: larger;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
 
 @media(min-width:992px) {
     .masthead-page h1 {
@@ -253,7 +357,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-7 py-5">
-                <h1 class="mb-4">Let's find an Internship for you here!!</h1>
+                <h1 class="mb-4">Let's Find An Internship For You!!</h1>
                 <h2 class="m-0">"Let's start to gain a good insight into how the industry works already." <a
                         href="/themes">Exams</a>, <a href="/templates">Certifications</a>, and <a href="/snippets">Hackathons</a>
                     for you to use on any project, <a href="/guides">Events</a> to help you learn more about designing
@@ -357,8 +461,7 @@
         </g>
     </svg>
 </header>
-<div class="container">
-    <div>Total count internships: {{ count }}</div>
+<div class="container py-4">
     <!--<div>
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
@@ -372,10 +475,13 @@
             </div>
         </div>
     </div>-->
-    <div>
         {% for branch in branches %}
-            <a class="dropdown-item" href="{% url 'internship_branch' branch %}">{{ branch }}</a>
+       
+            <a class="bn40" href="{% url 'internship_branch' branch %}"><button class="bn30">{{branch}}</button></a>
         {% endfor %}
+
+    <div class="count">Internships Count: {{ count }} 😲</div>
+
     </div>
     <div class="fullcontainer">
         {% for post in posts %}
@@ -383,12 +489,13 @@
             <div class="card cardtwo">
                 <div class="hover_color_bubble"></div>
                 <div class="card-body">
-                    <h5><a class="card-title" href="{% url 'specific_internship' post.title %}">{{ post.title }}</a></h5>
+                    <h5 class="bn40div"><a class="card-title bn41" href="{% url 'specific_internship' post.title %}">{{ post.title }}</a></h5>
                     <h6 class="card-subtitle mb-2 text-muted">Role: {{ post.role }}</h6>
-                    <!-- <p class="card-text ">"{{ post.description }}"</p> -->
+                    <p class="card-text "><i class="fa fa-building mr-3 text-primary"></i>      <b>Company</b>:<br/>{{ post.comapny_org }}</p>
+                    <p class="card-text"> <i class="fa fa-graduation-cap mr-3 text-primary"></i> <b>Eligibility</b>:<br/>{{post.eligibility}}</p>
                     <hr>
-                    <p class="card-texttwo ">Registration open: {{ post.registration_open}}</p>
-                    <p class="card-texttwo ">Registration close: {{ post.registration_close}}</p>
+                    <p class="card-texttwo green"><b>Registration open</b>: {{ post.registration_open}}</p>
+                    <p class="card-texttwo red"><b>Registration close</b>: {{ post.registration_close}}</p>
                     <hr>
                     <!-- <p>Referral Link: <a href=https://{{ post.referral_link }} class="card-l ink">{{ post.referral_link }}</a> -->
                     </p>
