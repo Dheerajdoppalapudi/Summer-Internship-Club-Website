@@ -100,6 +100,11 @@ def specific_fellowship(request, name):
     return render(request, 'page/specific_fellowship.html', context)
 
 def specific_scholarship(request, name):
+    print("================================")
+    print("function triggered")
+    print("name: ", name)
+    print("type: ", type(name))
+    print("================================")
     try:
         post = Scolarships.objects.get(name=name)
     except post.DoesNotExist:
