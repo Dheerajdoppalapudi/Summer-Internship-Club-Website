@@ -8,6 +8,8 @@ BRANCH_CHOICES = (
     ('Humanities and Social Sciences', 'Humanities and Social Sciences'),
     ('Law', 'Law'),
     ('Sciences', 'Sciences'),
+    ('Pharmacy', 'Pharmacy'),
+    ('Nursing', 'Nursing')
 )
 
 class Internship(models.Model):

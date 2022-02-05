@@ -60,13 +60,13 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'page-about' %}">About Us</a>
+          </li>
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'page-internships' %}"
               >Internships <span class="sr-only"></span
             ></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'page-about' %}">About Us</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'page-scholarships' %}"
@@ -108,7 +108,7 @@
             <a
               class="nav-link"
               href="{% url 'logout' %}"
-              style="align-items: right; padding-left: 455%"
+              style="align-items: right; padding-left: 350%"
               >Logout</a
             >
           </li>

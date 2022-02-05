@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Internship, Member, Suggestions, Scolarships, Hackathons, Fellowships, Certifications, Competetive
 from django.http import JsonResponse, Http404
 
-branches = ['Engineering', 'Management', 'Medical and  Para-medical', 'Humanities and Social Sciences', 'Law', 'Sciences']
+branches = ['Engineering', 'Management', 'Sciences', 'Humanities and Social Sciences', 'Law', 'Medical and  Para-medical', 'Pharmacy', 'Nursing']
 all_archives = ['Internships', 'Scolarships', 'Fellowships', 'Hackathons']
 
 @login_required
