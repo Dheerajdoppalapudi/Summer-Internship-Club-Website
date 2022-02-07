@@ -2,6 +2,7 @@
 {% block content %}
 {% load static %}
 ARCHIVES
+
 <div>
     {% for archive in allarchives %}
     <a class="dropdown-item" href="{% url 'archives-branch' archive %}">{{ archive }}</a>
@@ -9,8 +10,19 @@ ARCHIVES
 </div>
 
 <div class="fullcontainer">
+<!--    {{ request.path }} url of this page-->
+    <div class="container">
     <div class="internships">
-        {% for post in posts %}
+        {% if internships %}
+            <form action="{% url 'selector' %}" method="post">
+                {% csrf_token %}
+                <input type="text" name='selection' value="Internship" style="visibility: hidden">
+                <label for="date">Internship:</label>
+                <input type="date" id="date" name="date">
+                <button type="submit">Submit</button>
+            </form>
+        {% endif %}
+        {% for post in internships %}
         <div class="grid">
             <div class="card cardtwo">
                 <div class="hover_color_bubble"></div>
@@ -31,7 +43,18 @@ ARCHIVES
         </div>
         {% endfor %}
     </div>
+    </div>
+    <div class="container">
     <div class="fellowships">
+        {% if fellowships %}
+            <form action="{% url 'selector' %}" method="post">
+                {% csrf_token %}
+                <input type="text" name='selection' value="Fellowships" style="visibility: hidden">
+                <label for="date">Fellowships: </label>
+                <input type="date" id="date" name="date">
+                <button type="submit">Submit</button>
+            </form>
+        {% endif %}
         {% for post in fellowships %}
         <div class="grid">
             <div class="card">
@@ -53,7 +76,18 @@ ARCHIVES
         </div>
         {% endfor %}
     </div>
+    </div>
+    <div class="container">
     <div class="hackathons">
+        {% if hackathons %}
+            <form action="{% url 'selector' %}" method="post">
+                {% csrf_token %}
+                <input type="text" name='selection' value="Hackathons" style="visibility: hidden">
+                <label for="date">Hackathons: </label>
+                <input type="date" id="date" name="date">
+                <button type="submit">Submit</button>
+            </form>
+        {% endif %}
         {% for post in hackathons %}
         <div class="grid">
             <div class="card">
@@ -76,7 +110,18 @@ ARCHIVES
         </div>
         {% endfor %}
     </div>
+    </div>
+    <div class="container">
     <div class="scholarships">
+        {% if scholarships %}
+            <form action="{% url 'selector' %}" method="post">
+                {% csrf_token %}
+                <input type="text" name='selection' value="Scholarships" style="visibility: hidden">
+                <label for="date">Scholarships: </label>
+                <input type="date" id="date" name="date" required>
+                <button type="submit">Submit</button>
+            </form>
+        {% endif %}
         {% for post in scholarships %}
         <div class="grid">
             <div class="card">
@@ -98,8 +143,6 @@ ARCHIVES
         </div>
         {% endfor %}
     </div>
+    </div>
 </div>
-
-
-
 {% endblock content %}

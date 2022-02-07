@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import Internship, Member, Suggestions, Scolarships, Hackathons, Fellowships, Certifications, Competetive
 from django.http import JsonResponse, Http404
+from .forms import Dateform
 
 branches = ['Engineering', 'Management', 'Sciences', 'Humanities and Social Sciences', 'Law', 'Medical and  Para-medical', 'Pharmacy', 'Nursing']
 all_archives = ['Internships', 'Scolarships', 'Fellowships', 'Hackathons']
@@ -142,7 +143,7 @@ def archives_branch(request, section):
         context = {
             'allarchives': all_archives,
             'count': Internship.objects.all().count(),
-            'posts': Internship.objects.order_by('-date_posted')
+            'internships': Internship.objects.order_by('-date_posted')
         }
         return render(request, 'page/archives.html', context)
     elif section == 'Scolarships':
@@ -166,4 +167,48 @@ def archives_branch(request, section):
             'hackathons': Hackathons.objects.order_by('-date_posted')
         }
         return render(request, 'page/archives.html', context)
+    return render(request, 'page/archives.html', context)
+
+def try2(request):
+    if request.method == "POST":
+        date = request.POST['date']
+        selection = request.POST['selection']
+        print("==============  ", date, type(date), "==================")
+        # print("==============", selection, "===============")
+        if selection == "Internship":
+            posts = Internship.objects.filter(date_posted__lte=date)
+            print("=========== ok entering ============", posts)
+            context = {
+                'allarchives': all_archives,
+                'internships': posts,
+                'count': Internship.objects.filter(date_posted__lte=date).count(),
+                }
+            return render(request, 'page/archives.html', context)
+        elif selection == 'Scolarships':
+            posts = Scolarships.objects.filter(date_posted__lte=date)
+            context = {
+                'allarchives': all_archives,
+                'scolarships': posts,
+                'count': Scolarships.objects.filter(date_posted__lte=date).count(),
+            }
+            return render(request, 'page/archives.html', context)
+        elif selection == 'Fellowships':
+            posts = Fellowships.objects.filter(date_posted__lte=date)
+            context = {
+                'allarchives': all_archives,
+                'fellowships': posts,
+                'count': Fellowships.objects.filter(date_posted__lte=date).count(),
+            }
+            return render(request, 'page/archives.html', context)
+        elif selection == 'Hackathons':
+            posts = Hackathons.objects.filter(date_posted__lte=date)
+            context = {
+                'allarchives': all_archives,
+                'hackathons': posts,
+                'count': Hackathons.objects.filter(date_posted__lte=date).count(),
+            }
+            return render(request, 'page/archives.html', context)
+    context = {
+        'allarchives': all_archives
+    }
     return render(request, 'page/archives.html', context)

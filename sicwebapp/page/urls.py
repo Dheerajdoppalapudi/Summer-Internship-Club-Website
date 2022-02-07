@@ -19,4 +19,5 @@ urlpatterns = [
     path('hackathons/search/<str:name>/', views.specific_hackathon, name='specific_hackathon'),
     path('archives/', views.archives, name='archives'),
     path('archives/<str:section>/', views.archives_branch, name='archives-branch'),
+    path('archives/selection/result', views.try2, name='selector')
 ]
