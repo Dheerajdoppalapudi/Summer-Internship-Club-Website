@@ -88,8 +88,7 @@
 <div class="container p-5">
   <div class="heading">
     <h1>
-      IIM Ahmedabad Research Associateship in Logistics Infrastructure Master
-      Plan 2021
+      {{ post.name }}
     </h1>
   </div>
   <div class="banner">
@@ -126,10 +125,7 @@
   <div class="about">
     <h3>About the <span>Program</span></h3>
     <p>
-      IIM Ahmedabad Research Associateship in Logistics Infrastructure Master
-      Plan 2021 is a research opportunity offered to master’s degree holders.
-      The selected fellow will receive compensation that will be commensurate
-      with the qualification and experience.
+      {{ post.description }}
     </p>
   </div>
 
@@ -149,7 +145,6 @@
           <li>REFERRAL LINK: {{ post.referral_link }}</li>
           <li>LINK TO APPLY: {{ post.link_to_apply }}</li>
           <li>DATE POSTED: {{ post.date_posted }}</li>
-          <li>BRANCH: {{ post.branch }}</li>
         </ul>
       </div>
       <a href="{{ post.link_to_apply }}" class="btn btn-primary"

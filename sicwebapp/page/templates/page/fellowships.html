@@ -137,7 +137,7 @@ background-image: linear-gradient(315deg, #89d4cf 0%, #6e45e1 74%);
             <div class="card cardtwo">
                 <div class="hover_color_bubble"></div>
                 <div class="card-body">
-                    <h4>{{ post.name }}</h4>
+                    <h4><a href="{% url 'specific_fellowship' post.name %}">{{ post.name }}</a></h4>
                     <h6 class="card-subtitle mb-2 text-muted">Role: {{ post.role }}</h6>
                     <p class="card-text ">COMPANY:{{ post.comapny_org }}</p>
                     <p class="card-text">Eligibility:{{post.eligibility}}</p>

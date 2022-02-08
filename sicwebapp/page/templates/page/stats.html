@@ -1,0 +1,18 @@
+{% extends "page/base.html" %}
+{% block content %}
+{% load static %}
+<div class="container">
+    <br><br>
+    {% for list in Internships %}
+        <h3>{{ list.0  }}: {{ list.1 }}</h3>
+    {% endfor %}
+    <br><br>
+    {% for list in Scolarships %}
+        <h3>{{ list.0  }}: {{ list.1 }}</h3>
+    {% endfor %}
+    <br><br>
+    <h3>Hackathons: {{ Hackathons }}</h3>
+    <br><br>
+    <h3>Fellowships: {{ Fellowships }}</h3>
+</div>
+{% endblock content %}

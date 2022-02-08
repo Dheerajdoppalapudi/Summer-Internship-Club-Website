@@ -78,16 +78,14 @@
               >Fellowships</a
             >
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'page-certifications' %}"
-              >Certifications</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'page-competitive' %}"
-              >Competitive Exams</a
-            >
-          </li>
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" href="{% url 'page-certifications' %}"-->
+<!--              >Certifications</a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" href="{% url 'page-competitive' %}"-->
+<!--              >Competitive Exams</a>-->
+<!--          </li>-->
           <li class="nav-item">
             <a class="nav-link" href="{% url 'page-hackathons' %}"
               >Hackathons</a>
@@ -97,6 +95,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'archives' %}">Archives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'stats' %}">Statistics</a>
           </li>
           {% if user.is_authenticated %}
           <li class="nav-item">
@@ -108,7 +109,7 @@
             <a
               class="nav-link"
               href="{% url 'logout' %}"
-              style="align-items: right; padding-left: 350%"
+              style="align-items: right; padding-left: 660%"
               >Logout</a
             >
           </li>

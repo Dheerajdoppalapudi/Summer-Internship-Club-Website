@@ -7,6 +7,7 @@ from .forms import Dateform
 branches = ['Engineering', 'Management', 'Sciences', 'Humanities and Social Sciences', 'Law', 'Medical and  Para-medical', 'Pharmacy', 'Nursing']
 all_archives = ['Internships', 'Scolarships', 'Fellowships', 'Hackathons']
 
+
 @login_required
 def internships(request):
     context = {
@@ -212,3 +213,52 @@ def try2(request):
         'allarchives': all_archives
     }
     return render(request, 'page/archives.html', context)
+
+def stats(request):
+
+    context = {
+        'Internship-count': Internship.objects.all().count(),
+        'Scolarships-count': Scolarships.objects.all().count(),
+        'Hackathons': Hackathons.objects.all().count(),
+        'Fellowships': Fellowships.objects.all().count(),
+    }
+
+    # internship model
+    internshipsobj = []
+    total_count = Internship.objects.all().count()
+    internshipsobj.append(['Total Internships', total_count])
+    for branch in branches:
+        intern_str = "Internship "+branch+" count"
+        intern_str_val = Internship.objects.filter(branch=branch).count()
+        internshipsobj.append([intern_str, intern_str_val])
+
+    # scolarship model
+    scholarshipobj = []
+    total_count = Scolarships.objects.all().count()
+    scholarshipobj.append(['Total Scholarships', total_count])
+    for branch in branches:
+        scolar_str = "Scolarship "+branch+" count"
+        scolar_str_val = Scolarships.objects.filter(branch=branch).count()
+        context[intern_str] = intern_str_val
+        scholarshipobj.append([scolar_str, scolar_str_val])
+
+    # hackathon model
+    # for branch in branches:
+    #     intern_str = "Hackathon "+branch+" count"
+    #     intern_str_val = Hackathons.objects.filter(branch=branch).count()
+    #     context[intern_str] = intern_str_val
+    # fellowship model
+    # for branch in branches:
+    #     intern_str = "Fellowship "+branch+" count"
+    #     intern_str_val = Fellowships.objects.filter(branch=branch).count()
+    #     context[intern_str] = intern_str_val
+
+    context = {
+        'Internships': internshipsobj,
+        'Scolarships': scholarshipobj,
+        'Hackathons': Hackathons.objects.all().count(),
+        'Fellowships': Fellowships.objects.all().count(),
+    }
+
+
+    return render(request, 'page/stats.html', context)
