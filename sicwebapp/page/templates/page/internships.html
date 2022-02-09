@@ -476,9 +476,18 @@ background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
         </div>
     </div>-->
         {% for branch in branches %}
-       
             <a class="bn40" href="{% url 'internship_branch' branch %}"><button class="bn30">{{branch}}</button></a>
         {% endfor %}
+
+    <div>
+        <form action="{% url 'page-internships' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Search Here" name="search-bar" autocomplete="off">
+            <button type="submit" class="btn btn-dark">Search</button>
+        </form>
+    </div>
+
+    <div><h1>{{ message }}</h1></div>
 
     <div class="count">Internships Count: {{ count }} 😲</div>
 

@@ -10,6 +10,22 @@ all_archives = ['Internships', 'Scolarships', 'Fellowships', 'Hackathons']
 
 @login_required
 def internships(request):
+    if request.method == "POST":
+        form_data = request.POST.get('search-bar')
+        try:
+            post = Internship.objects.filter(title__contains=form_data)
+            context = {
+                'branches': branches,
+                'posts': post,
+                'count': Internship.objects.filter(title__contains=form_data).count()
+            }
+            return render(request, 'page/internships.html', context)
+        except Post.DoesNotExist:
+            context = {
+                'branches': branches,
+                'message': 'No Internship avaliable with that name.',
+            }
+            return render(request, 'page/internships.html', context)
     context = {
         'branches': branches,
         'count': Internship.objects.all().count(),
