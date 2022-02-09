@@ -60,7 +60,6 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
-<<<<<<< HEAD
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'page-internships' %}"
               >Internships <span class="sr-only"></span
@@ -119,53 +118,6 @@
             <a class="nav-link" href="{% url 'register' %}">Register</a>
           </li>
           {% endif %}
-=======
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'page-internships' %}">Internships <span class="sr-only"></span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'page-about' %}">About Us</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'page-scholarships' %}">Scholarships</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'page-fellowships' %}">Fellowships</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'page-certifications' %}">Certifications</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'page-competitive' %}">Competitive Exams</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'page-hackathons' %}">Hackathons</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'contact-us' %}">Contact Us</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'archives' %}">Archives</a>
-            </li>
-            {% if user.is_authenticated %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'events' user.username %}">Events</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout' %}" style="
-                    align-items: right;
-                    padding-left: 455%;
-                ">Logout</a>
-            </li>
-            {% else %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'login' %}">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'register' %}">Register</a>
-            </li>
-            {% endif %}
->>>>>>> 940e942ad3c924a5f8bfdbc9cb7656c8c1aa7576
         </ul>
       </div>
     </nav>
