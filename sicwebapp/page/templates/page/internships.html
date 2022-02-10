@@ -260,6 +260,9 @@ background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
 .masthead-page {
     padding: 1rem 0 4rem
 }
+.selectStreamButtons button{
+    margin-bottom: 20px;
+}
 .bn30 {
   border: 5em;
   cursor: pointer;
@@ -344,7 +347,36 @@ background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
 .border-0 {
     border: 0!important;
 }
+.search {
+    position: relative;
+    box-shadow: 0 0 40px rgba(51, 51, 51, .1)
+}
 
+.search input {
+    height: 60px;
+    text-indent: 25px;
+    border: 2px solid #d6d4d4
+}
+
+.search input:focus {
+    box-shadow: none;
+    border: 2px solid blue
+}
+
+.search .fa-search {
+    position: absolute;
+    top: 20px;
+    left: 16px
+}
+
+.search button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 50px;
+    width: 110px;
+    background: blue
+}
 
 </style>
 
@@ -475,10 +507,29 @@ background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
             </div>
         </div>
     </div>-->
-        {% for branch in branches %}
+    <div class="selectStreamButtons">
        
+    {% for branch in branches %}
             <a class="bn40" href="{% url 'internship_branch' branch %}"><button class="bn30">{{branch}}</button></a>
         {% endfor %}
+    </div>
+    <hr/>
+    <div>
+        <form action="{% url 'page-internships' %}" method="POST">
+            {% csrf_token %}
+            <!-- <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Search Here" name="search-bar" autocomplete="off">
+            <button type="submit" class="btn btn-dark">Search</button> -->
+            <div class="container">
+                <div class="row height d-flex justify-content-center align-items-center">
+                    <div class="col-md-8">
+                        <div class="search"> <i class="fa fa-search"></i> <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Search Here" name="search-bar" autocomplete="off"> <button type="submit" class="btn btn-primary">Search</button> </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div><h1>{{ message }}</h1></div>
 
     <div class="count">Internships Count: {{ count }} 😲</div>
 

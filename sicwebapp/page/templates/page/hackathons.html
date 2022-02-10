@@ -1,20 +1,12 @@
 {% extends "page/base.html" %} {% block content %} {% load static %}
 <style>
-  :root {
-    --gradient: linear-gradient(
-      to left top,
-      #dd2476 10%,
-      #ff512f 90%
-    ) !important;
-  }
-
   body {
-    background: #111 !important;
+    background-color: #8ec5fc;
+    background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
   }
 
   .card {
     background: #222;
-    border: 1px solid #dd2476;
     color: rgba(250, 250, 250, 0.8);
     margin-bottom: 2rem;
   }
@@ -22,56 +14,35 @@
   .btn {
     border: 5px solid;
     border-image-slice: 1;
-    background: var(--gradient) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    border-image-source: var(--gradient) !important;
+    background: #e0c3fc;
     text-decoration: none;
     transition: all 0.4s ease;
   }
 
-  .btn:hover,
-  .btn:focus {
-    background: var(--gradient) !important;
-    -webkit-background-clip: none !important;
-    -webkit-text-fill-color: #fff !important;
-    border: 5px solid #fff !important;
-    box-shadow: #222 1px 0 10px;
-    text-decoration: underline;
-  }
   h1 {
-    color: whitesmoke;
+    color: black;
     text-align: center;
     margin: 3rem;
     font-weight: bolder;
     font-size: xx-large;
   }
+  .card-title {
+    color: gold;
+    font-weight: bold;
+  }
+  .card-custom-avatar img {
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(10, 10, 10, 0.3);
+    position: absolute;
+    top: 110px;
+    right: 1rem;
+    width: 90px;
+    height: 90px;
+  }
+  /* .card-body {
+    margin-top: 10px;
+  } */
 </style>
-<!-- <div class="container">
-    <div class="fullcontainer">
-        {% for post in hackathons %}
-        <div class="grid">
-            <div class="card">
-                <div class="card-body">
-                    <h5><a href="{% url 'specific_hackathon' post.name %}" class="card-title">Title: {{ post.name }}</a></h5>
-                    <h6 class="card-subtitle mb-2 text-muted">prize: {{ post.prize_money }}</h6>
-                    <p class="card-text ">Topics: {{ post.topics }}</p>
-                    <p class="card-text ">Hosted By: {{ post.hosted_by }}</p>
-                    <hr>
-                    <p class="card-text text-success">Start Date: {{ post.start_date }}</p>
-                    <p class="card-text text-danger">End Date: {{ post.end_date }}</p>
-                    <hr>
-                    <p>application link: <a href=https://{{ post.refer_link }} class="card-link">{{ post.application_link }}</a>
-                    <h6 class="card-subtitle mb-2 text-muted">format: {{ post.format }}</h6>
-                    </p>
-                    <div class="card-footer text-muted" style="font-size:10px; text-align:left">Posted on: {{ post.date_posted }}
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</div> -->
 
 <div class="container mx-auto mt-4">
   <h1>HACKATHONS 🚀</h1>
@@ -84,6 +55,13 @@
           class="card-img-top"
           alt="..."
         />
+        <div class="card-custom-avatar">
+          <img
+            class="img-fluid"
+            src="https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2.0,f_auto,g_center,h_1080,q_100,w_1080/v1/gcs/platform-data-dsc/chapter_banners/GDSC%20MERU.png"
+            alt="Avatar"
+          />
+        </div>
         <div class="card-body">
           <h5 class="card-title">{{ post.name }}</h5>
           <h6 class="card-subtitle mb-2 text-muted">{{ post.hosted_by }}</h6>
@@ -100,242 +78,7 @@
       </div>
     </div>
     {% endfor %}
-    <div class="col-md-4">
-      <div class="card" style="width: 18rem">
-        <img
-          src="https://miro.medium.com/max/2000/1*AXF8IYKqC3Y7JxYRaUrCPQ.png"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn mr-2"
-            ><i class="fas fa-link"></i> Visit Site</a
-          >
-          <a href="#" class="btn"><i class="fab fa-github"></i> Github</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card" style="width: 18rem">
-        <img
-          src="https://miro.medium.com/max/2000/1*AXF8IYKqC3Y7JxYRaUrCPQ.png"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn mr-2"
-            ><i class="fas fa-link"></i> Visit Site</a
-          >
-          <a href="#" class="btn"><i class="fab fa-github"></i> Github</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card" style="width: 18rem">
-        <img
-          src="https://miro.medium.com/max/2000/1*AXF8IYKqC3Y7JxYRaUrCPQ.png"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn mr-2"
-            ><i class="fas fa-link"></i> Visit Site</a
-          >
-          <a href="#" class="btn"><i class="fab fa-github"></i> Github</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card" style="width: 18rem">
-        <img
-          src="https://miro.medium.com/max/2000/1*AXF8IYKqC3Y7JxYRaUrCPQ.png"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn mr-2"
-            ><i class="fas fa-link"></i> Visit Site</a
-          >
-          <a href="#" class="btn"><i class="fab fa-github"></i> Github</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card" style="width: 18rem">
-        <img
-          src="https://miro.medium.com/max/2000/1*AXF8IYKqC3Y7JxYRaUrCPQ.png"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn mr-2"
-            ><i class="fas fa-link"></i> Visit Site</a
-          >
-          <a href="#" class="btn"><i class="fab fa-github"></i> Github</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card" style="width: 18rem">
-        <img
-          src="https://miro.medium.com/max/2000/1*AXF8IYKqC3Y7JxYRaUrCPQ.png"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn mr-2"
-            ><i class="fas fa-link"></i> Visit Site</a
-          >
-          <a href="#" class="btn"><i class="fab fa-github"></i> Github</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card" style="width: 18rem">
-        <img
-          src="https://miro.medium.com/max/2000/1*AXF8IYKqC3Y7JxYRaUrCPQ.png"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn mr-2"
-            ><i class="fas fa-link"></i> Visit Site</a
-          >
-          <a href="#" class="btn"><i class="fab fa-github"></i> Github</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card" style="width: 18rem">
-        <img
-          src="https://miro.medium.com/max/2000/1*AXF8IYKqC3Y7JxYRaUrCPQ.png"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn btn-primary mr-2"
-            ><i class="fas fa-link"></i> Visit Site</a
-          >
-          <a href="#" class="btn btn-primary"
-            ><i class="fab fa-github"></i> Github</a
-          >
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card" style="width: 18rem">
-        <img
-          src="https://miro.medium.com/max/2000/1*AXF8IYKqC3Y7JxYRaUrCPQ.png"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn mr-2"
-            ><i class="fas fa-link"></i> Visit Site</a
-          >
-          <a href="#" class="btn"><i class="fab fa-github"></i> Github</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card" style="width: 18rem">
-        <img
-          src="https://miro.medium.com/max/2000/1*AXF8IYKqC3Y7JxYRaUrCPQ.png"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn mr-2"
-            ><i class="fas fa-link"></i> Visit Site</a
-          >
-          <a href="#" class="btn"><i class="fab fa-github"></i> Github</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card" style="width: 18rem">
-        <img
-          src="https://miro.medium.com/max/2000/1*AXF8IYKqC3Y7JxYRaUrCPQ.png"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" class="btn mr-2"
-            ><i class="fas fa-link"></i> Visit Site</a
-          >
-          <a href="#" class="btn"><i class="fab fa-github"></i> Github</a>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
+
 {% endblock content %}
