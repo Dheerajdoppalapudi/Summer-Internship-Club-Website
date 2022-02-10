@@ -28,6 +28,7 @@
     text-transform: uppercase;
     text-align: center;
     font-size: 2.5rem;
+    color: black;
   }
 
   /* Cards */
@@ -39,7 +40,7 @@
     margin: 0 0 3px 0;
     overflow: hidden;
     position: relative;
-    color: #ffffff;
+    color: black
   }
   .postcard.dark {
     background-color: #18151f;
@@ -110,7 +111,10 @@
   }
   .postcard .postcard__tagbox .tag__item {
     display: inline-block;
-    background: rgba(83, 83, 83, 0.4);
+    background-color: #f6ecc4;
+    background-image: linear-gradient(
+315deg
+, #f6ecc4 0%, #f7d4d4 74%);
     border-radius: 3px;
     padding: 2.5px 10px;
     margin: 0 5px 5px 0;
@@ -128,12 +132,22 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-image: linear-gradient(-70deg, #424242, transparent 50%);
-    opacity: 1;
-    border-radius: 10px;
+    background-color: #f6f6f6;
+background-image: linear-gradient(90deg, #e3ffe7 0%, #d0e1ff 100%);
+/* background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%); */
   }
   .postcard:hover .postcard__bar {
     width: 100px;
+  }
+  .btn-info{
+    color: white;
+    font-weight: bold;
+    width: 310px;
+    border-color: #4d4d4e9f;
+    /* background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%); */
+    background-color: #485461;
+background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
+
   }
 
   @media screen and (min-width: 769px) {
@@ -201,7 +215,8 @@
     }
 
     .postcard.dark .postcard__text:before {
-      background: #18151f;
+      background-color: #f6f6f6;
+/* background-image: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%); */
     }
 
     .postcard.light .postcard__text:before {
@@ -247,7 +262,8 @@
   }
 
   .blue .postcard__bar {
-    background-color: #0076bd;
+    background: linear-gradient(-90deg, #ff9100 0%, #f10366 50%, #6173ff 100%);
+
   }
 
   .blue::before {
@@ -410,7 +426,7 @@
 
 </style>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-<section class="dark">
+<section class="light">
     <div class="container py-4">
       <h1 class="h1 text-center" id="pageHeaderTitle">Internship Details</h1>
       <article class="postcard dark blue">
@@ -432,11 +448,11 @@
           </div>
           <div class="postcard__bar"></div>
           <div class="postcard__preview-txt"><ul class="list-unstyled list pl-5">
-            <li class="mb-3 d-flex align-items-center"><i class="fa fa-building mr-3 text-primary"></i> &nbsp;company : {{ post.comapny_org }}</li>
-            <li class="mb-3 d-flex align-items-center"><i class="fa fa-hourglass-end mr-3 text-primary"></i>&nbsp;registration open : {{ post.registration_open }}</li>
-            <li class="mb-3 d-flex align-items-center"><i class="fa fa-inbox mr-3 text-primary"></i>&nbsp;registration close :{{ post.registration_close }}</li>
-            <li class="mb-3 d-flex align-items-center"><i class="fa fa-rocket mr-3 text-primary"></i>&nbsp;Eligibility : {{ post.eligibility }} </li>
-            <li class="mb-3 d-flex align-items-center"><i class="fa fa-trophy mr-3 text-primary"></i>&nbsp;Branch : {{ post.branch }}</li>
+            <li class="mb-3 d-flex align-items-center"><i class="fa fa-building mr-3 "></i> &nbsp;company : {{ post.comapny_org }}</li>
+            <li class="mb-3 d-flex align-items-center"><i class="fa fa-hourglass-end mr-3 "></i>&nbsp;registration open : {{ post.registration_open }}</li>
+            <li class="mb-3 d-flex align-items-center"><i class="fa fa-inbox mr-3 "></i>&nbsp;registration close :{{ post.registration_close }}</li>
+            <li class="mb-3 d-flex align-items-center"><i class="fa fa-rocket mr-3 "></i>&nbsp;Eligibility : {{ post.eligibility }} </li>
+            <li class="mb-3 d-flex align-items-center"><i class="fa fa-trophy mr-3 "></i>&nbsp;Branch : {{ post.branch }}</li>
             <button type="button" class="btn btn-info">Apply</button>
         </ul></div>
           <ul class="postcard__tagbox">
