@@ -2,10 +2,16 @@
 {% block content %}
 {% load static %}
 <style>
+  html {
+  scroll-behavior: smooth;
+}
     .selectStreamButtons button{
     margin-bottom: 20px;
 }
-
+.fullcontainer{
+  font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+}
 .mainContainer{
     
     display: flex;
@@ -19,6 +25,10 @@
     margin-bottom: 2rem;
     color: hsl(229, 6%, 66%);
 }
+.mainContainer h1 span{
+  font-weight: 500;
+  font-size: large;
+}
 
 .card{
     border-top: 3px solid hsl(180, 62%, 55%);
@@ -27,6 +37,11 @@
     font-family: 'Poppins', sans-serif;
     border-radius: 5px;
     box-shadow: 0px 30px 40px -20px hsl(229, 6%, 66%);
+}
+.cardtwo .card-body h5 a{
+  text-decoration: none;
+  color: #352f64;
+  font-weight: bold;
 }
 .bn30 {
   border: 5em;
@@ -75,9 +90,10 @@
 .button_base{
     background-color: #101010;
     color:white;
-    padding: 5px;
-    border-radius: 2px;
-    width: 10%
+    padding: 15px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
 }
 
 .tariffCards {
@@ -90,6 +106,9 @@
   /* user-select: none; */
   transform: translate3d(0, 0, 0);
   transform-style: preserve-3d;
+}
+.tariffCards a{
+  color: white;
 }
 .tariffCards:after {
   position: absolute;
@@ -176,6 +195,21 @@
   transform: translateX(100%);
   transition: all 1.2s ease-in-out;
 }
+.datepicker{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+input[type="date"]
+{
+  background-color: rgba(255, 68, 0, 0.755);
+  padding: 15px;
+  color: #fff;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
 </style>
 <link
     href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;1,200;1,400;1,600&display=swap"
@@ -183,6 +217,8 @@
 <div class="mainContainer">
 <h1>
 ARCHIVES 📚
+<span> : Click On The Card Titles To See The Archives.</span>
+
 </h1>
 <div class="tariffCards">
    <div class="economy">
@@ -218,24 +254,25 @@ ARCHIVES 📚
 <div class="fullcontainer">
 <!--    {{ request.path }} url of this page-->
     <div class="container">
-    <div class="internships">
+    <div class="internships" >
         {% if internships %}
+        <div class="datepicker">
             <form action="{% url 'selector' %}" method="post">
                 {% csrf_token %}
-                <input type="text" name='selection' value="Internship" style="visibility: hidden">
                 <label for="date">Select a date:</label>
                 <input type="date" id="date" name="date">
                 <button class="button_base" type="submit">Submit</button>
+                <input type="text" name='selection' value="Internship" style="visibility: hidden">
+
             </form>
+          </div>
         {% endif %}
         {% for post in internships %}
         <div class="grid">
-            <div class="card cardtwo">
-                <div class="hover_color_bubble"></div>
+            <div class="card cardtwo" id="internships">
                 <div class="card-body">
                     <h5><a class="card-title" href="{% url 'specific_internship' post.title %}">Title: {{ post.title }}</a></h5>
                     <h6 class="card-subtitle mb-2 text-muted">Role: {{ post.role }}</h6>
-                    <p class="card-text ">"{{ post.description }}"</p>
                     <hr>
                     <p class="card-texttwo ">Registration open: {{ post.registration_open}}</p>
                     <p class="card-texttwo ">Registration close: {{ post.registration_close}}</p>
@@ -352,4 +389,8 @@ ARCHIVES 📚
     </div>
 </div>
 </div>
+<script>
+  var elmntToView = document.getElementById("internships");
+  elmntToView.scrollIntoView(); 
+</script>
 {% endblock content %}
