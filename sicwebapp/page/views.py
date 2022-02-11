@@ -190,11 +190,8 @@ def try2(request):
     if request.method == "POST":
         date = request.POST['date']
         selection = request.POST['selection']
-        print("==============  ", date, type(date), "==================")
-        # print("==============", selection, "===============")
         if selection == "Internship":
             posts = Internship.objects.filter(date_posted__lte=date)
-            print("=========== ok entering ============", posts)
             context = {
                 'allarchives': all_archives,
                 'internships': posts,
@@ -231,14 +228,6 @@ def try2(request):
     return render(request, 'page/archives.html', context)
 
 def stats(request):
-
-    context = {
-        'Internship-count': Internship.objects.all().count(),
-        'Scolarships-count': Scolarships.objects.all().count(),
-        'Hackathons': Hackathons.objects.all().count(),
-        'Fellowships': Fellowships.objects.all().count(),
-    }
-
     # internship model
     internshipsobj = []
     total_count = Internship.objects.all().count()
@@ -255,7 +244,6 @@ def stats(request):
     for branch in branches:
         scolar_str = "Scolarship "+branch+" count"
         scolar_str_val = Scolarships.objects.filter(branch=branch).count()
-        context[intern_str] = intern_str_val
         scholarshipobj.append([scolar_str, scolar_str_val])
 
     # hackathon model
