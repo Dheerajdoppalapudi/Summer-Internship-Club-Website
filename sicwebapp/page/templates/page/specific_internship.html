@@ -453,14 +453,14 @@ background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
             <li class="mb-3 d-flex align-items-center"><i class="fa fa-inbox mr-3 "></i>&nbsp;registration close :{{ post.registration_close }}</li>
             <li class="mb-3 d-flex align-items-center"><i class="fa fa-rocket mr-3 "></i>&nbsp;Eligibility : {{ post.eligibility }} </li>
             <li class="mb-3 d-flex align-items-center"><i class="fa fa-trophy mr-3 "></i>&nbsp;Branch : {{ post.branch }}</li>
-            <button type="button" class="btn btn-info">Apply</button>
+            <a href=https://{{ post.referral_link }}><button type="button" class="btn btn-info">Apply</button></a>
         </ul></div>
           <ul class="postcard__tagbox">
-            <li class="tag__item"><i class="fas fa-tag mr-2"></i>Engineering</li>
-            <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
-            <li class="tag__item play blue">
-              <a href=https://{{ event.event_link }}><i class="fas fa-calendar-day"></i>Play Event</a>
-            </li>
+            <li class="tag__item"><i class="fas fa-tag mr-2"></i>{{ post.branch }}</li>
+<!--            <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>-->
+<!--            <li class="tag__item play blue">-->
+<!--              <a href=https://{{ event.event_link }}><i class="fas fa-calendar-day"></i>Play Event</a>-->
+<!--            </li>-->
           </ul>
         </div>
       </article>
@@ -471,36 +471,26 @@ background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
           </h1>
           <hr>
           <div class="postcard__preview-txt"><ul class="list-unstyled list pl-5">
-            <h5>Event: USA-India Summer Research Experience in Manufacturing Security (Indian Applicants)</h5>
-            <h5>Event Host: USA-India Summer Research Experience in Manufacturing Security (Indian Applicants)</h5>
+            <h5>Format: {{ post.format }}</h5>
+            <h5>Role: {{ post.role }}</h5>
             <hr>
-            <h6>Eligibility : Majoring in Mechanical Engineering, Materials Science, Chemical Engineering or Electrical and Computer Engineering. Interest in 3D printing. Some familiarity with any CAD software. Enrolment in a Bachelor's degree program at an accredited institution is required for Indian applicants.</h6>
+            <h6>Eligibility : {{ post.eligibility }} </h6>
             <hr>
-
-            <h5>Link to register: https://www.nsfetap.org/award/39/opportunity/137</h5>
+            <h6>Description: {{ post.description }}</h6>
+            <h5>Link to register: {{ post.referral_link }}</h5>
             <hr>
 
             <li class="mb-3 d-flex align-items-center"><i class="fa fa-hourglass-end mr-3 text-primary"></i>registration open: {{ post.registration_open }}</li>
             <li class="mb-3 d-flex align-items-center"><i class="fa fa-inbox mr-3 text-primary"></i>registration close{{ post.registration_close }}</li>
             <hr>
-
-            <h6>Description: This NSF funded 8 week summer research program will provide the US students an opportunity work on cybersecurity in manufacturing problems.
-
- 
-
-                Due to COVID-19 related travel restrictions, the program will be conducted in the remote mode in Summer 2022. If travel restrictions are lifted, students will have an option for a 2-week visit to India to interact with the industry and visit cultural landmarks. The trip expenses will be paid by the program.
-                
-                 
-                
-                Selected Indian students will be paired with the US students during the internship to work collaboratively.</h6>
-            <button type="button" class="btn btn-info">Click here to Register</button>
+            <a href=https://{{ post.referral_link }}><button type="button" class="btn btn-info">Click here to Register</button></a>
         </ul></div>
-          <ul class="postcard__tagbox">
-            <li class="tag__item"><i class="fas fa-tag mr-2"></i>Engineering</li>
-            <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
-            <li class="tag__item play blue">
-              <a href=https://{{ event.event_link }}><i class="fas fa-calendar-day"></i>Play Event</a>
-            </li>
+<!--          <ul class="postcard__tagbox">-->
+<!--            <li class="tag__item"><i class="fas fa-tag mr-2"></i>{{ post.branch }}</li>-->
+<!--            <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>-->
+<!--            <li class="tag__item play blue">-->
+<!--              <a href=https://{{ event.event_link }}><i class="fas fa-calendar-day"></i>Play Event</a>-->
+<!--            </li>-->
           </ul>
         </div>
       </article>

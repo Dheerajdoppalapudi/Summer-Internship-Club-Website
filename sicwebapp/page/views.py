@@ -20,7 +20,7 @@ def internships(request):
                 'count': Internship.objects.filter(title__contains=form_data).count()
             }
             return render(request, 'page/internships.html', context)
-        except Post.DoesNotExist:
+        except post.DoesNotExist:
             context = {
                 'branches': branches,
                 'message': 'No Internship avaliable with that name.',
@@ -188,38 +188,42 @@ def archives_branch(request, section):
 
 def try2(request):
     if request.method == "POST":
-        date = request.POST['date']
+        to_date = request.POST['to-date']
+        from_date = request.POST['from-date']
         selection = request.POST['selection']
         if selection == "Internship":
-            posts = Internship.objects.filter(date_posted__lte=date)
+            #posts = Internship.objects.filter(date_posted__lte=date)
+            posts = Internship.objects.filter(date_posted__range=[from_date, to_date])
             context = {
                 'allarchives': all_archives,
                 'internships': posts,
-                'count': Internship.objects.filter(date_posted__lte=date).count(),
+                'count': Internship.objects.filter(date_posted__range=[from_date, to_date]).count(),
                 }
             return render(request, 'page/archives.html', context)
-        elif selection == 'Scolarships':
-            posts = Scolarships.objects.filter(date_posted__lte=date)
+        elif selection == 'Scholarships':
+            print("this is logging")
+            posts = Scolarships.objects.filter(date_posted__range=[from_date, to_date])
+            print(posts)
             context = {
                 'allarchives': all_archives,
-                'scolarships': posts,
-                'count': Scolarships.objects.filter(date_posted__lte=date).count(),
+                'scholarships': posts,
+                'count': Scolarships.objects.filter(date_posted__range=[from_date, to_date]).count(),
             }
             return render(request, 'page/archives.html', context)
         elif selection == 'Fellowships':
-            posts = Fellowships.objects.filter(date_posted__lte=date)
+            posts = Fellowships.objects.filter(date_posted__range=[from_date, to_date])
             context = {
                 'allarchives': all_archives,
                 'fellowships': posts,
-                'count': Fellowships.objects.filter(date_posted__lte=date).count(),
+                'count': Fellowships.objects.filter(date_posted__range=[from_date, to_date]).count(),
             }
             return render(request, 'page/archives.html', context)
         elif selection == 'Hackathons':
-            posts = Hackathons.objects.filter(date_posted__lte=date)
+            posts = Hackathons.objects.filter(date_posted__range=[from_date, to_date])
             context = {
                 'allarchives': all_archives,
                 'hackathons': posts,
-                'count': Hackathons.objects.filter(date_posted__lte=date).count(),
+                'count': Hackathons.objects.filter(date_posted__range=[from_date, to_date]).count(),
             }
             return render(request, 'page/archives.html', context)
     context = {

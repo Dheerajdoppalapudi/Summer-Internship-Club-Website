@@ -23,7 +23,7 @@ class Internship(models.Model):
     eligibility = models.TextField()
     referral_link = models.CharField(max_length=100, blank=False)
     branch = models.CharField(max_length=50, choices=BRANCH_CHOICES, default='Everyone')
-    date_posted = models.DateTimeField(default=timezone.now, blank=False)
+    date_posted = models.DateTimeField(default=timezone.now, blank=False, editable=False)
 
     def __str__(self):
         return f'Title: {self.title}'
