@@ -55,7 +55,7 @@ class Certifications(models.Model):
     referral_link = models.CharField(max_length=150)
     #duration = models.CharField(max_length=150)
     #duration?
-    date_posted = models.DateTimeField(default=timezone.now, blank=False)
+    date_posted = models.DateTimeField(default=timezone.now, blank=False, editable=False)
 
     def __str__(self):
         return f'Title: {self.name}'
@@ -73,7 +73,7 @@ class Fellowships(models.Model):
     funding = models.CharField(max_length=10, null=True)
     benifits = models.TextField()
     date_of_expiry = models.DateField()
-    date_posted = models.DateTimeField(default=timezone.now, blank=False)
+    date_posted = models.DateTimeField(default=timezone.now, blank=False, editable=False)
     referral_link = models.CharField(max_length=150)
     link_to_apply = models.CharField(max_length=150)
 
@@ -91,7 +91,7 @@ class Hackathons(models.Model):
     format = models.CharField(max_length=50)
     prize_money_description = models.TextField(blank=True)
     link_to_apply = models.CharField(max_length=150, blank=True)
-    date_posted = models.DateTimeField(default=timezone.now, blank=False)
+    date_posted = models.DateTimeField(default=timezone.now, blank=False, editable=False)
 
     def __str__(self):
         return f'Title: {self.name}'
@@ -108,7 +108,7 @@ class Scolarships(models.Model):
     branch = models.CharField(max_length=50, choices=BRANCH_CHOICES, default='Everyone')
     referral_link = models.CharField(max_length=150, null=True)
     link_to_apply = models.CharField(max_length=150)
-    date_posted = models.DateTimeField(default=timezone.now, blank=False)
+    date_posted = models.DateTimeField(default=timezone.now, blank=False, editable=False)
 
     def __str__(self):
         return f'Title: {self.name}'
