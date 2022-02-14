@@ -234,19 +234,21 @@ def try2(request):
 def stats(request):
     # internship model
     internshipsobj = []
-    total_count = Internship.objects.all().count()
-    internshipsobj.append(['Total Internships', total_count])
+    total_count_intern = Internship.objects.all().count()
+    # internshipsobj.append(['Total Internships', total_count_intern])
     for branch in branches:
-        intern_str = "Internship "+branch+" count"
+        # intern_str = "Internship "+branch+" count"
+        intern_str = branch + " count"
         intern_str_val = Internship.objects.filter(branch=branch).count()
         internshipsobj.append([intern_str, intern_str_val])
 
     # scolarship model
     scholarshipobj = []
-    total_count = Scolarships.objects.all().count()
-    scholarshipobj.append(['Total Scholarships', total_count])
+    total_count_scholar = Scolarships.objects.all().count()
+    # scholarshipobj.append(['Total Scholarships', total_count_scholar])
     for branch in branches:
-        scolar_str = "Scolarship "+branch+" count"
+        # scolar_str = "Scolarship "+branch+" count"
+        scolar_str = branch + " count"
         scolar_str_val = Scolarships.objects.filter(branch=branch).count()
         scholarshipobj.append([scolar_str, scolar_str_val])
 
@@ -262,7 +264,9 @@ def stats(request):
     #     context[intern_str] = intern_str_val
 
     context = {
+        'Internship_total': total_count_intern,
         'Internships': internshipsobj,
+        'Scholarship_total': total_count_scholar,
         'Scolarships': scholarshipobj,
         'Hackathons': Hackathons.objects.all().count(),
         'Fellowships': Fellowships.objects.all().count(),
