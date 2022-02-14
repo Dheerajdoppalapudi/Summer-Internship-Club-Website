@@ -110,14 +110,14 @@
       <i class="fas fa-trophy fa-3x"></i>
       <div>
         <span><b>Stipend</b></span>
-        <p>{{ post.stipend }}</p>
+        <p>{{ post.funding }}</p>
       </div>
     </div>
     <div class="banner2">
       <i class="fas fa-calendar-week fa-3x"></i>
       <div>
         <span><b>Last Date</b></span>
-        <p>{{ post.end_date }}</p>
+        <p>{{ post.date_of_expiry }}</p>
       </div>
     </div>
   </div>
@@ -132,19 +132,20 @@
   <div class="card">
     <h5 class="card-header">Featured</h5>
     <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
+      <h5 class="card-title">{{ post.name }}</h5>
       <p class="card-text">
-        With supporting text below as a natural lead-in to additional content.
+        {{ post.description }}
       </p>
       <div>
         <ul class="check-list">
-          <li>STIPEND: {{ post.stipend }}</li>
+          <li>FUNDING: {{ post.funding }}</li>
           <li>DURATION: {{ post.duration }}</li>
-          <li>END DATE: {{ post.end_date }}</li>
-          <li>COUNTRY: {{ post.country }}</li>
+          <li>END DATE: {{ post.date_of_expiry }}</li>
+          <li>UNIVERSITY/ORGANIZATION: {{ post.university_organization }}</li>
           <li>REFERRAL LINK: {{ post.referral_link }}</li>
           <li>LINK TO APPLY: {{ post.link_to_apply }}</li>
           <li>DATE POSTED: {{ post.date_posted }}</li>
+          <li>BENIFITS: {{ post.benifits }}</li>
         </ul>
       </div>
       <a href="{{ post.link_to_apply }}" class="btn btn-primary"

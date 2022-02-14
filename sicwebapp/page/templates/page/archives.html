@@ -260,9 +260,9 @@ ARCHIVES 📚
             <form action="{% url 'selector' %}" method="post">
                 {% csrf_token %}
                 <label for="from-date">From Date: </label>
-                <input type="date" id="from-date" name="from-date">
+                <input type="date" id="from-date" name="from-date" required>
                 <label for="to-date">To Date: </label>
-                <input type="date" id="to-date" name="to-date">
+                <input type="date" id="to-date" name="to-date" required>
                 <button class="button_base" type="submit">Submit</button>
                 <input type="text" name='selection' value="Internship" style="visibility: hidden">
             </form>
@@ -295,9 +295,9 @@ ARCHIVES 📚
                 {% csrf_token %}
                 <input type="text" name='selection' value="Fellowships" style="visibility: hidden">
                 <label for="from-date">From Date: </label>
-                <input type="date" id="from-date" name="from-date">
+                <input type="date" id="from-date" name="from-date" required>
                 <label for="to-date">To Date: </label>
-                <input type="date" id="to-date" name="to-date">
+                <input type="date" id="to-date" name="to-date" required>
                 <button type="submit">Submit</button>
             </form>
         {% endif %}
@@ -330,9 +330,9 @@ ARCHIVES 📚
                 {% csrf_token %}
                 <input type="text" name='selection' value="Hackathons" style="visibility: hidden">
                 <label for="from-date">From Date: </label>
-                <input type="date" id="from-date" name="from-date">
+                <input type="date" id="from-date" name="from-date" required>
                 <label for="to-date">To Date: </label>
-                <input type="date" id="to-date" name="to-date">
+                <input type="date" id="to-date" name="to-date" required>
                 <button type="submit">Submit</button>
             </form>
         {% endif %}
@@ -368,7 +368,7 @@ ARCHIVES 📚
                 <label for="from-date">From Date: </label>
                 <input type="date" id="from-date" name="from-date" required>
                 <label for="to-date">To Date: </label>
-                <input type="date" id="to-date" name="to-date">
+                <input type="date" id="to-date" name="to-date" required>
                 <button type="submit">Submit</button>
             </form>
         {% endif %}
