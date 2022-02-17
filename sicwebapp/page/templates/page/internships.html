@@ -13,6 +13,14 @@
         padding: 10px;
         width: 350px;
     }
+    .card{
+        background: rgba( 255, 255, 255, 0.6 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 4px );
+-webkit-backdrop-filter: blur( 4px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+    }
     .card-title{
         color: rgb(61, 61, 61);
         text-decoration: none;
@@ -33,7 +41,7 @@
     overflow: hidden;
     min-height: 265px;
     transition: 0.7s;
-    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Prompt', sans-serif;
 
     
     }
@@ -84,7 +92,7 @@
     }
     .card-text{
         font-size: small;
-        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        font-family: 'Prompt', sans-serif;
         
     }
     .card-texttwo{
@@ -156,6 +164,7 @@
     background-color: #00DBDE;
 background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
 
+font-family: 'Prompt', sans-serif;
 
     background-size: cover;
     z-index: 0
@@ -209,7 +218,9 @@ background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
     position: relative;
     z-index: 1
 }
-
+/* .shape{
+    overflow: hidden;
+} */
 .masthead .masthead-cards .shape {
     position: absolute;
     height: 100%;
@@ -262,6 +273,7 @@ background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
 }
 .selectStreamButtons button{
     margin-bottom: 20px;
+    font-family: 'Prompt', sans-serif;
 }
 .bn30 {
   border: 5em;
@@ -312,7 +324,7 @@ background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
     font-weight: bold;
     text-align: center;
     margin-top: 1rem;
-    font-family: 'Courier New', Courier, monospace;
+font-family: 'Prompt', sans-serif;
 }
 
 
@@ -377,50 +389,64 @@ background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
     width: 110px;
     background: blue
 }
+/* .blob-motion {
+        position: absolute;
+        transform: translateY(-20%);
+
+        z-index: 0;
+      }
+
+      .blob-content {
+        z-index: 1;
+      }
+
+      .blobs {
+        width: 100%;
+        background: url('./blobs.svg') no-repeat bottom / cover;
+      } */
 
 </style>
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Prompt:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/kute.js@2.1.2/dist/kute.min.js"></script>
 <header class="masthead">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-7 py-5">
-                <h1 class="mb-4">Let's Find An Internship For You!!</h1>
-                <h2 class="m-0">"Let's start to gain a good insight into how the industry works already." <a
-                        href="/themes">Exams</a>, <a href="/templates">Certifications</a>, and <a href="/snippets">Hackathons</a>
-                    for you to use on any project, <a href="/guides">Events</a> to help you learn more about designing
-                    and developing.</h2>
+                <h1 class="mb-4">Let us help you find an Internship.</h1>
+                <h2 class="m-0">Let's get a good understanding of how the industry works right away <a
+                        href="/scholarships/">Scholarships</a>, <a href="/fellowships/">Fellowships</a>, and <a href="/hackathons/">Hackathons</a>
+                    for you to use on any project, <a href="/events/">Events</a> that will help you learn more about design and development.</h2>
             </div>
             <div class="col-lg-5">
                 <div class="py-5 px-4 masthead-cards">
                     <div class="d-flex">
-                        <a href="#" class="w-50 pr-3 pb-4">
+                        <a href="/scholarships/" class="w-50 pr-3 pb-4">
                             <div class="card border-0 border-bottom-red shadow-lg shadow-hover">
                                 <div class="card-body text-center">
                                     <div class="text-center">
                                         <i class="fa fa-pencil fa-4x my-2"></i>
                                     </div>
-                                    EXAMS
+                                    SCHOLARSHIPS
                                 </div>
                             </div>
                         </a>
-                        <a href="#" class="w-50 pl-3 pb-4">
+                        <a href="/fellowships/" class="w-50 pl-3 pb-4">
                             <div class="card border-0 border-bottom-blue shadow-lg shadow-hover">
                                 <div class="card-body text-center">
                                     <div class="text-center">
                                         <i class="fa fa-th fa-4x my-2"></i>
                                     </div>
-                                    COURSES
+                                    FELLOWSHIPS
                                 </div>
                             </div>
                         </a>
                     </div>
                     <div class="d-flex">
-                        <a href="#" class="w-50 pr-3">
+                        <a href="/hackathons/" class="w-50 pr-3">
                             <div class="card border-0 border-bottom-yellow shadow-lg shadow-hover">
                                 <div class="card-body text-center">
                                     <div class="text-center">
@@ -430,7 +456,7 @@ background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
                                 </div>
                             </div>
                         </a>
-                        <a href="#" class="w-50 pl-3">
+                        <a href="/events/" class="w-50 pl-3">
                             <div class="card border-0 border-bottom-green shadow-lg shadow-hover">
                                 <div class="card-body text-center">
                                     <div class="text-center">
@@ -441,7 +467,34 @@ background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
                             </div>
                         </a>
                     </div>
-                    <div class="shape"></div>
+                    <!-- old one -->
+                    <div class="shape" ></div>
+                    <!-- new animated svg from fireship -->
+                    <!-- <svg
+                    class="blob-motion"
+                    id="visual"
+                    viewBox="0 0 960 540"
+                    width="960"
+                    height="540"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    version="1.1"
+                  >
+                    <g transform="translate(450.7256843113689 283.4942824330989)">
+                      <path
+                        id="blob1"
+                        d="M148.7 -134.9C193.7 -103.7 231.9 -51.9 232.4 0.6C233 53 196.1 106.1 151.1 128.6C106.1 151.1 53 143 -4.4 147.4C-61.8 151.8 -123.5 168.5 -151.2 146C-178.8 123.5 -172.4 61.8 -172.8 -0.4C-173.1 -62.5 -180.3 -124.9 -152.6 -156.1C-124.9 -187.3 -62.5 -187.1 -5.3 -181.8C51.9 -176.5 103.7 -166 148.7 -134.9"
+                        fill="#BB004B"
+                      ></path>
+                    </g>
+                    <g transform="translate(509.54377535978017 281.49390864595887)" style="visibility: hidden">
+                      <path
+                        id="blob2"
+                        d="M115.4 -137.9C137.9 -92.9 136.4 -46.4 133.6 -2.8C130.8 40.8 126.6 81.6 104.1 118.4C81.6 155.2 40.8 188.1 -8.4 196.5C-57.5 204.8 -115 188.7 -151 151.9C-187 115 -201.5 57.5 -190.8 10.7C-180.1 -36.1 -144.1 -72.1 -108.1 -117.1C-72.1 -162.1 -36.1 -216.1 5.2 -221.2C46.4 -226.4 92.9 -182.9 115.4 -137.9"
+                        fill="#BB004B"
+                      ></path>
+                    </g>
+                  </svg> -->
                 </div>
             </div>
         </div>
@@ -492,6 +545,8 @@ background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
                   d="M1998,484H-243V100c445.8,26.8,794.2-4.1,1035-39,141-20.4,231.1-40.1,378-45,349.6-11.6,636.7,73.8,828,150"></path>
         </g>
     </svg>
+  
+
 </header>
 <div class="container py-4">
     <!--<div>
@@ -558,4 +613,12 @@ background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
         {% endfor %}
     </div>
 </div>
+<script>
+    const tween = KUTE.fromTo(
+      '#blob1',
+      { path: '#blob1' },
+      { path: '#blob2' },
+      { repeat: 999, duration: 3000, yoyo: true }
+    ).start();
+  </script>
 {% endblock content %}
