@@ -35,17 +35,18 @@
       }
       .navbar-brand {
         padding-left: 1%;
-        margin-right: 2rem;
-        margin-left: 2rem;
+        margin-right: 1rem;
+        margin-left: 1rem;
         font-weight: bolder;
+        padding-left: 0%;
       }
     </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <!-- <div class="logo-image">
-        <img src="{% static 'images/logo2.jpg' %}" class="img-fluid">
-    </div> -->
+    <div class="logo-image">
+        <img src="{% static 'images/finallogo.png' %}" class="img-fluid">
+    </div>
       <a class="navbar-brand" href="{% url 'page-about' %}">SIC</a>
       <button
         class="navbar-toggler"
@@ -110,7 +111,7 @@
             <a
               class="nav-link"
               href="{% url 'logout' %}"
-              style="align-items: right; padding-left: 660%"
+              style="align-items: right; padding-left: 640%"
               >Logout</a
             >
           </li>
@@ -208,8 +209,8 @@
           </div>
           <div class="d-flex justify-content-between py-4 my-4 border-top">
             <p>
-              &copy; 2021 Summer Internship Club, GITAM Deemed To Be University,
-              All rights reserved.
+              &copy; 2022 Student Internship Club, GITAM Deemed To Be University, All rights
+              reserved.
             </p>
             <ul class="list-unstyled d-flex">
               <li class="ms-3">
