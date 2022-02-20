@@ -4,7 +4,7 @@ from .models import Internship, Member, Suggestions, Scolarships, Hackathons, Fe
 from django.http import JsonResponse, Http404
 from .forms import Dateform
 
-branches = ['Engineering', 'Management', 'Sciences', 'Humanities and Social Sciences', 'Law', 'Medical and  Para-medical', 'Pharmacy', 'Nursing']
+branches = ['Engineering', 'Management', 'Sciences', 'Humanities and Social Sciences', 'Medical and  Para-medical', 'Law', 'Pharmacy', 'Nursing']
 all_archives = ['Internships', 'Scolarships', 'Fellowships', 'Hackathons']
 
 

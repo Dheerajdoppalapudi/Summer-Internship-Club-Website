@@ -307,9 +307,9 @@ ARCHIVES 📚
             <form action="{% url 'selector' %}" method="post">
                 {% csrf_token %}
                 <label for="from-date">From Date: </label>
-                <input type="date" id="from-date" name="from-date">
+                <input type="date" id="from-date" name="from-date" required>
                 <label for="to-date">To Date: </label>
-                <input type="date" id="to-date" name="to-date">
+                <input type="date" id="to-date" name="to-date" required>
                 <button class="button_base" type="submit">Submit</button>
                 <input type="text" name='selection' value="Internship" style="visibility: hidden">
             </form>
@@ -344,9 +344,9 @@ ARCHIVES 📚
           <form action="{% url 'selector' %}" method="post">
               {% csrf_token %}
               <label for="from-date">From Date: </label>
-              <input type="date" id="from-date" name="from-date">
+              <input type="date" id="from-date" name="from-date" required>
               <label for="to-date">To Date: </label>
-              <input type="date" id="to-date" name="to-date">
+              <input type="date" id="to-date" name="to-date" required>
               <button class="button_base" type="submit">Submit</button>
               <input type="text" name='selection' value="Internship" style="visibility: hidden">
           </form>
@@ -356,7 +356,7 @@ ARCHIVES 📚
     <div class="fullcontainer">
         {% for post in fellowships %}
         <div class="grid">
-            <div class="card fellowcard  "id="fellowships"">
+            <div class="card fellowcard" id="fellowships">
                 <div class="card-body">
                     <h5><a class="card-title" href="{% url 'specific_fellowship' post.name %}">Title: {{ post.name }}</a></h5>
                     <h6 class="card-subtitle mb-2 text-muted">university_organization: {{ post.university_organization }}</h6>
@@ -383,9 +383,9 @@ ARCHIVES 📚
           <form action="{% url 'selector' %}" method="post">
               {% csrf_token %}
               <label for="from-date">From Date: </label>
-              <input type="date" id="from-date" name="from-date">
+              <input type="date" id="from-date" name="from-date" required>
               <label for="to-date">To Date: </label>
-              <input type="date" id="to-date" name="to-date">
+              <input type="date" id="to-date" name="to-date" required>
               <button class="button_base" type="submit">Submit</button>
               <input type="text" name='selection' value="Internship" style="visibility: hidden">
           </form>
@@ -424,9 +424,9 @@ ARCHIVES 📚
           <form action="{% url 'selector' %}" method="post">
               {% csrf_token %}
               <label for="from-date">From Date: </label>
-              <input type="date" id="from-date" name="from-date">
+              <input type="date" id="from-date" name="from-date" required>
               <label for="to-date">To Date: </label>
-              <input type="date" id="to-date" name="to-date">
+              <input type="date" id="to-date" name="to-date" required>
               <button class="button_base" type="submit">Submit</button>
               <input type="text" name='selection' value="Internship" style="visibility: hidden">
           </form>
@@ -436,7 +436,7 @@ ARCHIVES 📚
     <div class="fullcontainer">
         {% for post in scholarships %}
         <div class="grid">
-            <div class="card scholarshipcard  "id="scholarships">
+            <div class="card scholarshipcard"  id="scholarships">
                 <div class="card-body">
                     <h5><a class="card-title" href="{% url 'specific_scholarship' post.name %}">Title: {{ post.name }}</a></h5>
                     <h6 class="card-subtitle mb-2 text-muted">country: {{ post.country }}</h6>
@@ -461,11 +461,11 @@ ARCHIVES 📚
 <script>
   var internships = document.getElementById("internships");
   internships.scrollIntoView(); 
-  // var scholarships = document.getElementById("scholarships");
-  // scholarships.scrollIntoView(); 
-  // var hackathons = document.getElementById("hackathons");
-  // hackathons.scrollIntoView(); 
-  // var fellowships = document.getElementById("fellowships");
-  // fellowships.scrollIntoView(); 
+  var scholarships = document.getElementById("scholarships");
+  scholarships.scrollIntoView();
+  var hackathons = document.getElementById("hackathons");
+  hackathons.scrollIntoView();
+  var fellowships = document.getElementById("fellowships");
+  fellowships.scrollIntoView();
 </script>
 {% endblock content %}
