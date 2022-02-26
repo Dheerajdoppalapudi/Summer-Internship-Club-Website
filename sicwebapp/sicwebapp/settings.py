@@ -42,7 +42,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'import_export',
+    'dbbackup',
+    'django_crontab',
 ]
+
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DBBACKUP_STORAGE_OPTIONS = {'location': BASE_DIR/'backup'}
+
+# CRONJOBS = [
+#     ('* * */1 * *', 'page.cron.my_scheduled_job')
+# ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -55,7 +64,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'sicwebapp.urls'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
