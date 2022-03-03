@@ -19,30 +19,15 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+
     {% if title %}
     <title>SIC - {{ title }}</title>
     {% else %}
     <title>Summer Internship Club GITAM</title>
     {% endif %}
     <style>
-      .logo-image {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        overflow: hidden;
-        margin-top: 0px;
-        margin-left: 2%;
-      }
-      .navbar-brand {
-        padding-left: 1%;
-        margin-right: 1rem;
-        margin-left: 1rem;
-        font-weight: bolder;
-        padding-left: 0%;
-      }
       /* new footer styling */
       body {
-        margin-top: 20px;
         font-family: "Prompt", sans-serif;
       }
       .deneb_footer .widget_wrapper {
@@ -257,6 +242,20 @@
       .deneb_cta .cta_wrapper .button_box .deneb_btn:focus {
         box-shadow: 2.5px 4.33px 15px 0px rgba(0, 0, 0, 0.15);
       }
+
+      /* new navbar styling  */
+      .profile-menu .dropdown-menu {
+        right: 0;
+        left: unset;
+      }
+      .profile-menu .fa-fw {
+        margin-right: 10px;
+      }
+
+      .toggle-change::after {
+        border-top: 0;
+        border-bottom: 0.3em solid;
+      }
     </style>
   </head>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -267,208 +266,110 @@
   />
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="logo-image">
-        <img src="{% static 'images/finallogo.png' %}" class="img-fluid" />
-      </div>
-      <a class="navbar-brand" href="{% url 'page-about' %}">SIC</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarText"
-        aria-controls="navbarText"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'page-about' %}">About Us</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'page-internships' %}"
-              >Internships <span class="sr-only"></span
-            ></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'page-scholarships' %}"
-              >Scholarships</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'page-fellowships' %}"
-              >Fellowships</a
-            >
-          </li>
-          <!--          <li class="nav-item">-->
-          <!--            <a class="nav-link" href="{% url 'page-certifications' %}"-->
-          <!--              >Certifications</a>-->
-          <!--          </li>-->
-          <!--          <li class="nav-item">-->
-          <!--            <a class="nav-link" href="{% url 'page-competitive' %}"-->
-          <!--              >Competitive Exams</a>-->
-          <!--          </li>-->
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'page-hackathons' %}"
-              >Hackathons</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'contact-us' %}">Contact Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'archives' %}">Archives</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'stats' %}">Statistics</a>
-          </li>
-          {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'events' user.username %}"
-              >Events</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              href="{% url 'logout' %}"
-              style="align-items: right; padding-left: 640%"
-              >Logout</a
-            >
-          </li>
-          {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'register' %}">Register</a>
-          </li>
-          {% endif %}
-        </ul>
+      <div class="container-fluid">
+        <!-- <div class="logo-image">
+          <img src="{% static 'images/finallogo.png' %}" class="img-fluid" />
+        </div> -->
+        <a class="navbar-brand" href="#">SIC</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#"
+                >AboutUS</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Internships</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Scholarships</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Fellowships</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Hackathons</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">ContactUs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Archives</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Statistics</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Events</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Misc.
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Archives</a></li>
+                <li><a class="dropdown-item" href="#">Statistics</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#">Fellowships</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 profile-menu">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="fa fa-user"></i>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="fas fa-sliders-h fa-fw"></i> Login</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="fa fa-cog fa-fw"></i> Register</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="fas fa-sign-out-alt fa-fw"></i> Log Out</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
     {% block content %} {% endblock %}
-    <!-- <div class="text-white bg-dark">
-      <div class="container">
-        <footer class="py-5">
-          <div class="row">
-            <div class="col-2">
-              <h5>Section</h5>
-              <ul class="nav flex-column">
-                <li class="nav-item mb-2">
-                  <a
-                    href="{% url 'page-internships' %}"
-                    class="nav-link p-0 text-muted"
-                    >Home</a
-                  >
-                </li>
-                <li class="nav-item mb-2">
-                  <a
-                    href="{% url 'page-internships' %}"
-                    class="nav-link p-0 text-muted"
-                    >Internships</a
-                  >
-                </li>
-                <li class="nav-item mb-2">
-                  <a
-                    href="{% url 'page-about' %}"
-                    class="nav-link p-0 text-muted"
-                    >About</a
-                  >
-                </li>
-                <li class="nav-item mb-2">
-                  <a
-                    href="{% url 'page-about' %}"
-                    class="nav-link p-0 text-muted"
-                    >FAQs</a
-                  >
-                </li>
-                <li class="nav-item mb-2">
-                  <a
-                    href="{% url 'contact-us' %}"
-                    class="nav-link p-0 text-muted"
-                    >Contact US</a
-                  >
-                </li>
-              </ul>
-            </div>
-
-            <div class="col-5">
-              <h5>Section</h5>
-              <ul class="nav flex-column">
-                <li class="nav-item mb-2">
-                  <a href="#" class="nav-link p-0 text-muted">Login</a>
-                </li>
-                <li class="nav-item mb-2">
-                  <a href="#" class="nav-link p-0 text-muted">Register</a>
-                </li>
-                <li class="nav-item mb-2">
-                  <a href="#" class="nav-link p-0 text-muted">wanna join us?</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-4 offset-1">
-              <form action="{% url 'page-suggestions' %}" method="POST">
-                {% csrf_token %}
-                <h5>Check out our Website</h5>
-                <p>Any suggestions?</p>
-                <div class="d-flex w-100 gap-2">
-                  <label for="newsletter1" class="visually-hidden"
-                    >suggestion</label
-                  >
-                  <input
-                    id="newsletter1"
-                    type="text"
-                    class="form-control"
-                    placeholder="suggestion"
-                    name="suggestion"
-                  />
-                  <button class="btn btn-primary" type="submit">send</button>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="d-flex justify-content-between py-4 my-4 border-top">
-            <p>
-              &copy; 2022 Student Internship Club, GITAM Deemed To Be University, All rights
-              reserved.
-            </p>
-            <ul class="list-unstyled d-flex">
-              <li class="ms-3">
-                <a class="link-dark" href="#">
-                  <svg class="bi" width="24" height="24">
-                    <use xlink:href="#twitter" />
-                  </svg>
-                </a>
-              </li>
-              <li class="ms-3">
-                <a class="link-dark" href="#">
-                  <svg class="bi" width="24" height="24">
-                    <use xlink:href="#instagram" />
-                  </svg>
-                </a>
-              </li>
-              <li class="ms-3">
-                <a class="link-dark" href="#">
-                  <svg class="bi" width="24" height="24">
-                    <use xlink:href="#facebook" />
-                  </svg>
-                </a>
-              </li>
-              <li class="ms-3">
-                <a class="link-dark" href="#">
-                  <svg class="bi" width="24" height="24">
-                    <use xlink:href="#youtube" />
-                  </svg>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </footer>
-      </div>
-    </div> -->
 
     <!-- new footer -->
     <link
@@ -527,13 +428,6 @@
           <div class="row">
             <div class="col-lg-4 col-md-6 col-12">
               <div class="widget widegt_about">
-                <div class="widget_title">
-                  <img
-                    src="assets/images/logo_1.png"
-                    class="img-fluid"
-                    alt=""
-                  />
-                </div>
                 <p>
                   “Sometimes I’ll start a sentence and I don’t even know where
                   it’s going. I just hope I find it along the way.”
@@ -623,4 +517,17 @@
       </div>
     </footer>
   </body>
+  <script>
+    document.querySelectorAll(".dropdown-toggle").forEach((item) => {
+      item.addEventListener("click", (event) => {
+        if (event.target.classList.contains("dropdown-toggle")) {
+          event.target.classList.toggle("toggle-change");
+        } else if (
+          event.target.parentElement.classList.contains("dropdown-toggle")
+        ) {
+          event.target.parentElement.classList.toggle("toggle-change");
+        }
+      });
+    });
+  </script>
 </html>
