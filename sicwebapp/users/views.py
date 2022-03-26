@@ -17,10 +17,19 @@ def register(request):
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
 
-def events(request, username):
-    current_user = request.user
+# def events(request, username):
+#     current_user = request.user
+#     context = {
+#         "user": current_user,
+#         "events": Event.objects.all()
+#     }
+#     return render(request, 'users/events.html', context)
+
+@login_required
+def events(request):
+    # current_user = request.user
     context = {
-        "user": current_user,
+        # "user": current_user,
         "events": Event.objects.all()
     }
     return render(request, 'users/events.html', context)

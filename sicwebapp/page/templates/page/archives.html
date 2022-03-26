@@ -71,7 +71,7 @@ font-size: x-small;}
 /* stack cars */
 
 .tariffCards {
-  
+
   /* position: absolute; */
   margin: 20px;
   top: 50%;
@@ -328,7 +328,9 @@ ARCHIVES 📚
                     <!-- <p class="card-texttwo ">Registration open: {{ post.registration_open}}</p>
                     <p class="card-texttwo ">Registration close: {{ post.registration_close}}</p>
                     <hr> -->
-                    <p>Referral Link: <a href=https://{{ post.referral_link }} class="card-link">{{ post.referral_link }}</a>
+                    <p>Referral Link: <a href=https://{{ post.referral_link }} class="card-link" style="
+    font-size: 102%;
+">{{ post.referral_link }}</a>
                     </p>
                     <div class="card-footer text-muted" style="font-size:10px; text-align:left">Posted on: {{ post.date_posted }}
                     </div>
@@ -367,7 +369,9 @@ ARCHIVES 📚
 <!--                    <p class="card-subtitle mb-2 text-muted">tenure: {{ post.duration }}</p>-->
 <!--                    <p class="card-text text-danger">date of expiry: {{ post.date_of_expiry}}</p>-->
                     <hr>
-                    <p>Referral Link: <a href=https://{{ post.refer_link }} class="card-link">{{ post.referral_link }}</a>
+                    <p>Referral Link: <a href=https://{{ post.refer_link }} class="card-link" style="
+    font-size: 102%;
+">{{ post.referral_link }}</a>
                     </p>
                     <div class="card-footer text-muted" style="font-size:10px; text-align:left">Posted on: {{ post.date_posted }}
                     </div>
@@ -447,7 +451,9 @@ ARCHIVES 📚
 <!--                    <p class="card-text text-info">Stipend: {{ post.stipend }}</p>-->
 <!--                    <p class="card-text text-danger">Registration close: {{ post.end_date }}</p>-->
                     <hr>
-                    <p>Referral Link: <a href=https://{{ post.refer_link }} class="card-link">{{ post.referral_link }}</a>
+                    <p>Referral Link: <a href=https://{{ post.refer_link }} class="card-link" style="
+    font-size: 102%;
+">{{ post.referral_link }}</a>
                     </p>
                     <div class="card-footer text-muted" style="font-size:10px; text-align:left">Posted on: {{ post.date_posted }}
                     </div>
@@ -461,7 +467,7 @@ ARCHIVES 📚
 </div>
 <script>
   var internships = document.getElementById("internships");
-  internships.scrollIntoView(); 
+  internships.scrollIntoView();
   var scholarships = document.getElementById("scholarships");
   scholarships.scrollIntoView();
   var hackathons = document.getElementById("hackathons");

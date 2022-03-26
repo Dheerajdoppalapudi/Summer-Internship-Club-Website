@@ -28,9 +28,9 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     .card-subtitle{
         color: #2092ed;
     }
-   
+
     .cardtwo {
-   
+
     box-shadow: 0 2px 4px 0 rgba(136, 144, 195, 0.2),
       0 5px 15px 0 rgba(37, 44, 97, 0.15);
     border-radius: 15px;
@@ -43,7 +43,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     transition: 0.7s;
     font-family: 'Prompt', sans-serif;
 
-    
+
     }
     .cardtwo:hover {
         /* background: #46a3eb; */
@@ -54,7 +54,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     transform: scale(1.1);
     z-index: 9;
     }
-    
+
     .cardtwo:hover::before{
         background: rgb(85 108 214 / 10%);
     }
@@ -93,7 +93,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     .card-text{
         font-size: small;
         font-family: 'Prompt', sans-serif;
-        
+
     }
     .card-texttwo{
         font-family: 'Courier New', Courier, monospace;
@@ -136,12 +136,12 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     .card-texttwo:nth-of-type(2){
         color: rgb(182, 1, 1);
     } */
-    
-   .cardtwo 
+
+   .cardtwo
     hr {
     margin: 0
     }
-    .cardtwo 
+    .cardtwo
     p {
     font-weight: 500;
     }
@@ -149,7 +149,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
       display: flex;
       justify-content: space-around;
       align-items: center;
-    
+
     }
 
 
@@ -506,16 +506,16 @@ font-family: 'Prompt', sans-serif;
                 .a {
                     fill: none;
                 }
-                
+
                 .b {
                     clip-path: url(#a);
                 }
-                
+
                 .c,
                 .d {
                     fill: #f9f9fc;
                 }
-                
+
                 .d {
                     opacity: 0.5;
                     isolation: isolate;
@@ -545,7 +545,7 @@ font-family: 'Prompt', sans-serif;
                   d="M1998,484H-243V100c445.8,26.8,794.2-4.1,1035-39,141-20.4,231.1-40.1,378-45,349.6-11.6,636.7,73.8,828,150"></path>
         </g>
     </svg>
-  
+
 
 </header>
 <div class="container py-4">
@@ -563,7 +563,7 @@ font-family: 'Prompt', sans-serif;
         </div>
     </div>-->
     <div class="selectStreamButtons">
-       
+
     {% for branch in branches %}
             <a class="bn40" href="{% url 'internship_branch' branch %}"><button class="bn30">{{branch}}</button></a>
         {% endfor %}
