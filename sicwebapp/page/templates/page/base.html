@@ -369,6 +369,9 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 {% if user.is_authenticated %}
+                <li>
+                  <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-fw"></i> {{ user.username }}</a>
+                </li>
                 <li><hr class="dropdown-divider" /></li>
                 <li>
                   <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt fa-fw"></i> Log Out</a>
