@@ -1,5 +1,95 @@
 {% extends "page/base.html" %} {% block content %} {% load static %}
 <style>
+  .herotextContainer{
+    height: 100vh;
+    font-size: x-large;
+    padding: 10%;
+  }
+  .devHeading{
+    text-align: center;
+  }
+  .developers{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .carddev {
+    width: 350px;
+    background-color: #efefef;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s
+}
+
+.image img {
+    transition: all 0.5s;
+    border-radius: 50%;
+}
+.image button{
+  border: none;
+}
+
+.card:hover .image img {
+    transform: scale(1.5);
+}
+.name {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.idd {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.idd1 {
+    font-size: 12px;
+}
+
+.number {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.follow {
+    font-size: 12px;
+    font-weight: 500;
+    color: #444444;
+}
+
+.btn1 {
+    height: 40px;
+    width: 150px;
+    border: none;
+    background-color: #000;
+    color: #aeaeae;
+    font-size: 15px;
+}
+
+.text span {
+    font-size: 13px;
+    color: #545454;
+    font-weight: 500;
+}
+
+.icons i {
+    font-size: 19px;
+}
+
+hr .new1 {
+    border: 1px solid;
+}
+
+.join {
+    font-size: 14px;
+    color: #a0a0a0;
+    font-weight: bold;
+}
+
+.date {
+    background-color: #ccc;
+}
   .fullcontainer {
     display: flex;
     flex-wrap: wrap;
@@ -109,108 +199,43 @@
     background-color: rgba(255, 255, 255, 0.12);
   }
 </style>
-<div
-  id="carouselExampleCaptions"
-  class="carousel slide carousel-fade"
-  data-bs-ride="carousel"
->
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img
-        src="https://source.unsplash.com/1600x550/?Science"
-        class="d-block w-100"
-        alt="..."
-      />
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Science</h5>
-        <p>
-          nce is the pursuit and application of knowledge and understanding of
-          the natural and social world following a systematic methodology based
-          on evidence.
-        </p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img
-        src="https://source.unsplash.com/1600x550/?medical"
-        class="d-block w-100"
-        alt="..."
-      />
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Medicine</h5>
-        <p>
-          Medicines are chemicals or compounds used to cure, halt, or prevent
-          disease; ease symptoms
-        </p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img
-        src="https://source.unsplash.com/1600x550/?Technology"
-        class="d-block w-100"
-        alt="..."
-      />
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Technology</h5>
-        <p>
-          Technology is the sum of any techniques, skills, methods, and
-          processes used in the production of goods or services or in the
-          accomplishment of objectives, such as scientific investigation
-        </p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img
-        src="https://source.unsplash.com/1600x550/?Law"
-        class="d-block w-100"
-        alt="..."
-      />
-      <div class="carousel-caption d-none d-md-block">
-        <h5>LAW</h5>
-        <p>
-          The law is legislation created and enforced through social or
-          governmental institutions to regulate behavior, with its precise
-          definition a matter of longstanding debate. It has been variously
-          described as a science and the art of justice.
-        </p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img
-        src="https://source.unsplash.com/1600x550/?business"
-        class="d-block w-100"
-        alt="..."
-      />
-      <div class="carousel-caption d-none d-md-block">
-        <h5>BUSINESS</h5>
-        <h5>
-          Business is the activity of making one's living or making money by
-          producing or buying and selling products Simply put, it is "any
-          activity or enterprise
-        </h5>
-        <p></p>
-      </div>
-    </div>
-  </div>
-  <button
-    class="carousel-control-prev"
-    type="button"
-    data-bs-target="#carouselExampleCaptions"
-    data-bs-slide="prev"
-  >
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button
-    class="carousel-control-next"
-    type="button"
-    data-bs-target="#carouselExampleCaptions"
-    data-bs-slide="next"
-  >
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+
+<div class="herotextContainer">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aliquam, officia deleniti distinctio dolorem laborum aperiam quisquam nisi repellendus temporibus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid facilis suscipit tempora eos labore minus modi ipsa enim vel ratione.
 </div>
+<div class="developerContainer">
+  <div class="devHeading">
+  <h2>SIC Website Developers</h2>
+</div>
+<div class="developers">
+
+  <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+    <div class="carddev p-4">
+        <div class=" image d-flex flex-column justify-content-center align-items-center"> <button > <img src="https://avatars.githubusercontent.com/u/63925819?v=4" height="150" width="150" /></button> <span class="name mt-3">Dheeraj</span> <span class="idd">@dheeraj</span>
+            <div class="d-flex flex-row justify-content-center align-items-center gap-2"> <span class="idd1">B.tech CSE</span> <span><i class="fa fa-copy"></i></span> </div>
+            <div class="d-flex flex-row justify-content-center align-items-center mt-3"> <span class="number">1069 <span class="follow">Followers</span></span> </div>
+            <div class=" d-flex mt-2"> <button class="btn1 btn-dark">Edit Profile</button> </div>
+            <div class="text mt-3"> <span>Eleanor Pena is a creator of minimalistic x bold graphics and digital artwork.<br><br> Artist/ Creative Director by Day #NFT minting@ with FND night. </span> </div>
+            <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"> <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-facebook-f"></i></span> <span><i class="fa fa-instagram"></i></span> <span><i class="fa fa-linkedin"></i></span> </div>
+            <div class=" px-2 rounded mt-4 date "> <span class="join">Joined May,2021</span> </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+  <div class="carddev p-4">
+      <div class=" image d-flex flex-column justify-content-center align-items-center"> <button> <img src="https://avatars.githubusercontent.com/u/54280958?v=4" height="150" width="150" /></button> <span class="name mt-3">Krishna Chaitanya</span> <span class="idd">@xrishnachaitanya</span>
+          <div class="d-flex flex-row justify-content-center align-items-center gap-2"> <span class="idd1">Oxc4c16a645_b21a</span> <span><i class="fa fa-copy"></i></span> </div>
+          <div class="d-flex flex-row justify-content-center align-items-center mt-3"> <span class="number">1069 <span class="follow">Followers</span></span> </div>
+          <div class=" d-flex mt-2"> <button class="btn1 btn-dark">Edit Profile</button> </div>
+          <div class="text mt-3"> <span>Eleanor Pena is a creator of minimalistic x bold graphics and digital artwork.<br><br> Artist/ Creative Director by Day #NFT minting@ with FND night. </span> </div>
+          <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"> <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-facebook-f"></i></span> <span><i class="fa fa-instagram"></i></span> <span><i class="fa fa-linkedin"></i></span> </div>
+          <div class=" px-2 rounded mt-4 date "> <span class="join">Joined May,2021</span> </div>
+      </div>
+  </div>
+</div>
+</div>
+</div>
+
 <div class="bg-light">
   <div class="container py-5">
     <div class="row h-100 align-items-center pt-5">
@@ -311,7 +336,7 @@
 </div>
 <div class="fullcontainer">
     {% for member in members %}
-    <div class="card" style="">
+    <div class="card">
         <img src="{{ member.image.url }}" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">{{ member.name }}</h5>
