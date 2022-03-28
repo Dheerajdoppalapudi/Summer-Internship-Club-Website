@@ -40,9 +40,11 @@ def about(request):
     }
     return render(request, 'page/about.html', context)
 
+@login_required
 def contact_us(request):
     return render(request, 'page/contactus.html', {'title': 'SIC - ContactUs'})
 
+@login_required
 def feedback(request):
     if request.method == "POST":
         if request.POST.get('suggestion'):
@@ -55,6 +57,7 @@ def feedback(request):
     }
     return render(request, 'page/internships.html', context)
 
+@login_required
 def scholarships(request):
     context = {
         'branches': branches,
@@ -63,18 +66,21 @@ def scholarships(request):
     }
     return render(request, 'page/scholarships.html', context)
 
+@login_required
 def certifications(request):
     context = {
         'certifications': Certifications.objects.all()
     }
     return render(request, 'page/certifications.html', context)
 
+@login_required
 def competitive(request):
     context = {
         'competitive': Competetive.objects.all()
     }
     return render(request, 'page/competitive.html', context)
 
+@login_required
 def hackathons(request):
     context = {
         'count': Hackathons.objects.all().count(),
@@ -82,6 +88,7 @@ def hackathons(request):
     }
     return render(request, 'page/hackathons.html', context)
 
+@login_required
 def fellowships(request):
     context = {
         'count': Fellowships.objects.all().count(),
@@ -89,6 +96,7 @@ def fellowships(request):
     }
     return render(request, 'page/fellowships.html', context)
 
+@login_required
 def specific_internship(request, title):
     try:
         post = Internship.objects.get(title=title)
@@ -99,6 +107,7 @@ def specific_internship(request, title):
         }
     return render(request, 'page/specific_internship.html', context)
 
+@login_required
 def internship_branch(request, branch):
     context = {
         'branches': branches,
@@ -107,6 +116,7 @@ def internship_branch(request, branch):
     }
     return render(request, 'page/internships.html', context)
 
+@login_required
 def specific_fellowship(request, name):
     try:
         post = Fellowships.objects.get(name=name)
@@ -117,12 +127,13 @@ def specific_fellowship(request, name):
         }
     return render(request, 'page/specific_fellowship.html', context)
 
+@login_required
 def specific_scholarship(request, name):
-    print("================================")
-    print("function triggered")
-    print("name: ", name)
-    print("type: ", type(name))
-    print("================================")
+    # print("================================")
+    # print("function triggered")
+    # print("name: ", name)
+    # print("type: ", type(name))
+    # print("================================")
     try:
         post = Scolarships.objects.get(name=name)
     except post.DoesNotExist:
@@ -132,6 +143,7 @@ def specific_scholarship(request, name):
         }
     return render(request, 'page/specific_scholarship.html', context)
 
+@login_required
 def scolarship_branch(request, branch):
     context = {
         'count': Scolarships.objects.filter(branch=branch).count(),
@@ -139,6 +151,7 @@ def scolarship_branch(request, branch):
     }
     return render(request, 'page/scholarships.html', context)
 
+@login_required
 def specific_hackathon(request, name):
     try:
         post = Hackathons.objects.get(name=name)
@@ -149,12 +162,14 @@ def specific_hackathon(request, name):
         }
     return render(request, 'page/specific_hackathon.html', context)
 
+@login_required
 def archives(request):
     context = {
         'allarchives': all_archives
     }
     return render(request, 'page/archives.html', context)
 
+@login_required
 def archives_branch(request, section):
     if section == "Internships":
         context = {
@@ -186,6 +201,7 @@ def archives_branch(request, section):
         return render(request, 'page/archives.html', context)
     return render(request, 'page/archives.html', context)
 
+@login_required
 def try2(request):
     if request.method == "POST":
         to_date = request.POST['to-date']
@@ -231,6 +247,7 @@ def try2(request):
     }
     return render(request, 'page/archives.html', context)
 
+@login_required
 def stats(request):
     # internship model
     internshipsobj = []

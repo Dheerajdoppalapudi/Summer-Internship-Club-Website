@@ -256,6 +256,29 @@
         border-top: 0;
         border-bottom: 0.3em solid;
       }
+      .logo-image {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-top: 0px;
+        margin-left: 2%;
+      }
+      .navbar-brand {
+      padding-top: 0.3125rem;
+      padding-bottom: 0.3125rem;
+      margin-right: 0.7%;
+      margin-left: 1%;
+      font-size: 1.25rem;
+      text-decoration: none;
+      white-space: nowrap;
+      }
+.deneb_footer .widget_wrapper {
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding-top: 200px;
+      padding-bottom: 5px;
+      }
     </style>
   </head>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -267,10 +290,10 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <!-- <div class="logo-image">
+        <div class="logo-image">
           <img src="{% static 'images/finallogo.png' %}" class="img-fluid" />
-        </div> -->
-        <a class="navbar-brand" href="#">SIC</a>
+        </div>
+        <a class="navbar-brand" href="{% url 'page-about' %}">SIC X GCGC</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -285,54 +308,52 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"
-                >AboutUS</a
-              >
+              <a class="nav-link active" aria-current="page" href="{% url 'page-about' %}">About Us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Internships</a>
+              <a class="nav-link" href="{% url 'page-internships' %}">Internships</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Scholarships</a>
+              <a class="nav-link" href="{% url 'page-scholarships' %}">Scholarships</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Fellowships</a>
+              <a class="nav-link" href="{% url 'page-fellowships' %}">Fellowships</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Hackathons</a>
+              <a class="nav-link" href="{% url 'page-hackathons' %}">Hackathons</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">ContactUs</a>
+              <a class="nav-link" href="{% url 'events' %}">Events</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Archives</a>
+              <a class="nav-link" href="{% url 'archives' %}">Archives</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Statistics</a>
+              <a class="nav-link" href="{% url 'stats' %}">Demographics</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Events</a>
+              <a class="nav-link" href="{% url 'contact-us' %}">Contact Us</a>
             </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Misc.
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Archives</a></li>
-                <li><a class="dropdown-item" href="#">Statistics</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="#">Fellowships</a>
-                </li>
-              </ul>
-            </li>
+<!--            <li class="nav-item dropdown">-->
+<!--              <a-->
+<!--                class="nav-link dropdown-toggle"-->
+<!--                href="#"-->
+<!--                id="navbarDropdown"-->
+<!--                role="button"-->
+<!--                data-bs-toggle="dropdown"-->
+<!--                aria-expanded="false"-->
+<!--              >-->
+<!--                Misc.-->
+<!--              </a>-->
+<!--              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                <li><a class="dropdown-item" href="#">Archives</a></li>-->
+<!--                <li><a class="dropdown-item" href="#">Statistics</a></li>-->
+<!--                <li><hr class="dropdown-divider" /></li>-->
+<!--                <li>-->
+<!--                  <a class="dropdown-item" href="#">Fellowships</a>-->
+<!--                </li>-->
+<!--              </ul>-->
+<!--            </li>-->
           </ul>
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0 profile-menu">
             <li class="nav-item dropdown">
@@ -347,22 +368,22 @@
                 <i class="fa fa-user"></i>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                {% if user.is_authenticated %}
                 <li>
-                  <a class="dropdown-item" href="#"
-                    ><i class="fas fa-sliders-h fa-fw"></i> Login</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#"
-                    ><i class="fa fa-cog fa-fw"></i> Register</a
-                  >
+                  <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-fw"></i> {{ user.username }}</a>
                 </li>
                 <li><hr class="dropdown-divider" /></li>
                 <li>
-                  <a class="dropdown-item" href="#"
-                    ><i class="fas fa-sign-out-alt fa-fw"></i> Log Out</a
-                  >
+                  <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt fa-fw"></i> Log Out</a>
                 </li>
+                {% else %}
+                <li>
+                  <a class="dropdown-item" href="{% url 'login' %}"><i class="fas fa-sliders-h fa-fw"></i> Login</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'register' %}"><i class="fa fa-cog fa-fw"></i> Register</a>
+                </li>
+                {% endif %}
               </ul>
             </li>
           </ul>
