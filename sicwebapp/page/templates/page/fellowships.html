@@ -144,7 +144,7 @@ background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
             <div class="card cardtwo">
                 <div class="hover_color_bubble"></div>
                 <div class="card-body">
-                    <h4><a href="{% url 'specific_fellowship' post.name %}">{{ post.name }}</a></h4>
+                    <h4><a href="{% url 'specific_fellowship' post.name %}" target="_blank">{{ post.name }}</a></h4>
                     <h6 class="card-subtitle mb-2 text-muted">Duration: {{ post.duration }}</h6>
                     <p class="card-text ">University/Org: {{ post.university_organization }}</p>
                     <p class="card-text">Eligibility: {{post.eligibility}}</p>
