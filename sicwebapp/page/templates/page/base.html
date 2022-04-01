@@ -134,6 +134,9 @@
         color: #7a808d;
         text-decoration: none;
       }
+      .single_info .info {
+        color: #7a808d;
+      }
       .deneb_footer
         .widget_wrapper
         .widget_contact
@@ -265,19 +268,19 @@
         margin-left: 2%;
       }
       .navbar-brand {
-      padding-top: 0.3125rem;
-      padding-bottom: 0.3125rem;
-      margin-right: 0.7%;
-      margin-left: 1%;
-      font-size: 1.25rem;
-      text-decoration: none;
-      white-space: nowrap;
+        padding-top: 0.3125rem;
+        padding-bottom: 0.3125rem;
+        margin-right: 0.7%;
+        margin-left: 1%;
+        font-size: 1.25rem;
+        text-decoration: none;
+        white-space: nowrap;
       }
-.deneb_footer .widget_wrapper {
-      background-repeat: no-repeat;
-      background-size: cover;
-      padding-top: 200px;
-      padding-bottom: 5px;
+      .deneb_footer .widget_wrapper {
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding-top: 200px;
+        padding-bottom: 5px;
       }
     </style>
   </head>
@@ -308,19 +311,32 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'page-about' %}">About Us</a>
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="{% url 'page-about' %}"
+                >About Us</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'page-internships' %}">Internships</a>
+              <a class="nav-link" href="{% url 'page-internships' %}"
+                >Internships</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'page-scholarships' %}">Scholarships</a>
+              <a class="nav-link" href="{% url 'page-scholarships' %}"
+                >Scholarships</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'page-fellowships' %}">Fellowships</a>
+              <a class="nav-link" href="{% url 'page-fellowships' %}"
+                >Fellowships</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'page-hackathons' %}">Hackathons</a>
+              <a class="nav-link" href="{% url 'page-hackathons' %}"
+                >Hackathons</a
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'events' %}">Events</a>
@@ -334,26 +350,26 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'contact-us' %}">Contact Us</a>
             </li>
-<!--            <li class="nav-item dropdown">-->
-<!--              <a-->
-<!--                class="nav-link dropdown-toggle"-->
-<!--                href="#"-->
-<!--                id="navbarDropdown"-->
-<!--                role="button"-->
-<!--                data-bs-toggle="dropdown"-->
-<!--                aria-expanded="false"-->
-<!--              >-->
-<!--                Misc.-->
-<!--              </a>-->
-<!--              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-<!--                <li><a class="dropdown-item" href="#">Archives</a></li>-->
-<!--                <li><a class="dropdown-item" href="#">Statistics</a></li>-->
-<!--                <li><hr class="dropdown-divider" /></li>-->
-<!--                <li>-->
-<!--                  <a class="dropdown-item" href="#">Fellowships</a>-->
-<!--                </li>-->
-<!--              </ul>-->
-<!--            </li>-->
+            <!--            <li class="nav-item dropdown">-->
+            <!--              <a-->
+            <!--                class="nav-link dropdown-toggle"-->
+            <!--                href="#"-->
+            <!--                id="navbarDropdown"-->
+            <!--                role="button"-->
+            <!--                data-bs-toggle="dropdown"-->
+            <!--                aria-expanded="false"-->
+            <!--              >-->
+            <!--                Misc.-->
+            <!--              </a>-->
+            <!--              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+            <!--                <li><a class="dropdown-item" href="#">Archives</a></li>-->
+            <!--                <li><a class="dropdown-item" href="#">Statistics</a></li>-->
+            <!--                <li><hr class="dropdown-divider" /></li>-->
+            <!--                <li>-->
+            <!--                  <a class="dropdown-item" href="#">Fellowships</a>-->
+            <!--                </li>-->
+            <!--              </ul>-->
+            <!--            </li>-->
           </ul>
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0 profile-menu">
             <li class="nav-item dropdown">
@@ -370,18 +386,27 @@
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 {% if user.is_authenticated %}
                 <li>
-                  <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-fw"></i> {{ user.username }}</a>
+                  <a class="dropdown-item" href="#"
+                    ><i class="fas fa-sign-out-alt fa-fw"></i> {{ user.username
+                    }}</a
+                  >
                 </li>
                 <li><hr class="dropdown-divider" /></li>
                 <li>
-                  <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt fa-fw"></i> Log Out</a>
+                  <a class="dropdown-item" href="{% url 'logout' %}"
+                    ><i class="fas fa-sign-out-alt fa-fw"></i> Log Out</a
+                  >
                 </li>
                 {% else %}
                 <li>
-                  <a class="dropdown-item" href="{% url 'login' %}"><i class="fas fa-sliders-h fa-fw"></i> Login</a>
+                  <a class="dropdown-item" href="{% url 'login' %}"
+                    ><i class="fas fa-sliders-h fa-fw"></i> Login</a
+                  >
                 </li>
                 <li>
-                  <a class="dropdown-item" href="{% url 'register' %}"><i class="fa fa-cog fa-fw"></i> Register</a>
+                  <a class="dropdown-item" href="{% url 'register' %}"
+                    ><i class="fa fa-cog fa-fw"></i> Register</a
+                  >
                 </li>
                 {% endif %}
               </ul>
