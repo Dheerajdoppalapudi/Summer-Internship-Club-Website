@@ -322,7 +322,7 @@ ARCHIVES 📚
         <div class="grid">
             <div class="card internshipcard" id="internships">
                 <div class="card-body">
-                    <h5><a class="card-title" href="{% url 'specific_internship' post.title %}">Title: {{ post.title }}</a></h5>
+                    <h5><a class="card-title" href="{% url 'specific_internship' post.title %}" target="_blank">Title: {{ post.title }}</a></h5>
                     <h6 class="card-subtitle mb-2 text-muted">Role: {{ post.role }}</h6>
                     <hr>
                     <!-- <p class="card-texttwo ">Registration open: {{ post.registration_open}}</p>
@@ -361,7 +361,7 @@ ARCHIVES 📚
         <div class="grid">
             <div class="card fellowcard" id="fellowships">
                 <div class="card-body">
-                    <h5><a class="card-title" href="{% url 'specific_fellowship' post.name %}">Title: {{ post.name }}</a></h5>
+                    <h5><a class="card-title" href="{% url 'specific_fellowship' post.name %}" target="_blank">Title: {{ post.name }}</a></h5>
                     <h6 class="card-subtitle mb-2 text-muted">university_organization: {{ post.university_organization }}</h6>
                     <!-- <p class="card-text ">{{ post.description }}</p> -->
 <!--                    <hr>-->
@@ -443,7 +443,7 @@ ARCHIVES 📚
         <div class="grid">
             <div class="card scholarshipcard"  id="scholarships">
                 <div class="card-body">
-                    <h5><a class="card-title" href="{% url 'specific_scholarship' post.name %}">Title: {{ post.name }}</a></h5>
+                    <h5><a class="card-title" href="{% url 'specific_scholarship' post.name %}" target="_blank">Title: {{ post.name }}</a></h5>
                     <h6 class="card-subtitle mb-2 text-muted">country: {{ post.country }}</h6>
                     <!-- <p class="card-text ">{{ post.description }}</p> -->
 <!--                    <hr>-->
