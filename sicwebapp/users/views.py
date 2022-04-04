@@ -30,6 +30,6 @@ def events(request):
     # current_user = request.user
     context = {
         # "user": current_user,
-        "events": Event.objects.all()
+        "events": Event.objects.all().order_by('-date')
     }
     return render(request, 'users/events.html', context)
