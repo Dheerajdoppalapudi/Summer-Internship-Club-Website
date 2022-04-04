@@ -486,8 +486,7 @@
     </div>-->
   <div class="selectButtons">
     {% for branch in branches %}
-    <a class="bn40" href="{% url 'scholarship_branch' branch %}"
-      ><button class="bn30">{{branch}}</button></a
+    <a class="bn40" href="{% url 'scholarship_branch' branch %}"><button class="bn30">{{ branch }}</button></a
     >
 
     {% endfor %}
@@ -526,7 +525,7 @@
             </ol>
             <div class="widget-49-meeting-action">
               <a
-                href="{% url 'specific_scholarship' post.name %}"
+                href="{% url 'specific_scholarship' post.name %}" target="_blank"
                 class="btn btn-sm btn-flash-border-primary"
                 >View Details</a
               >

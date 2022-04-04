@@ -595,7 +595,7 @@ font-family: 'Prompt', sans-serif;
             <div class="card cardtwo">
                 <div class="hover_color_bubble"></div>
                 <div class="card-body">
-                    <h5 class="bn40div"><a class="card-title bn41" href="{% url 'specific_internship' post.title %}">{{ post.title }}</a></h5>
+                    <h5 class="bn40div"><a class="card-title bn41" href="{% url 'specific_internship' post.title %}" target="_blank">{{ post.title }}</a></h5>
                     <h6 class="card-subtitle mb-2 text-muted">Role: {{ post.role }}</h6>
                     <p class="card-text "><i class="fa fa-building mr-3 text-primary"></i>      <b>Company</b>:<br/>{{ post.comapny_org }}</p>
                     <p class="card-text"> <i class="fa fa-graduation-cap mr-3 text-primary"></i> <b>Eligibility</b>:<br/>{{post.eligibility}}</p>
