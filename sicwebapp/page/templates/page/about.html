@@ -198,19 +198,24 @@ hr .new1 {
   .btn:hover {
     background-color: rgba(255, 255, 255, 0.12);
   }
-  ul.images {
-  margin: 0;
-  padding: 0;
-  white-space: nowrap;
-  width: 600px;
-  overflow-x: auto;
-  background-color: #ddd;
+  .scroll-container{
+  overflow: auto;
+<!--  white-space: nowrap;-->
+  padding: 5px 70px 5px 20px;
+  background: transparent;
+  height: 100%;
+  border-radius:15px;
 }
-ul.images li {
-  display: inline;
-  width: 150px;
-  height: 150px;
+
+.gridscroll{
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
+
+<!--.gridscroll img {-->
+<!--  margin-right:22px;-->
+<!--}-->
 
   @media(max-width:992px){
     .developers{
@@ -231,7 +236,7 @@ ul.images li {
       <div class="col-lg-6">
         <h1 class="font-weight-light">About Us ✨</h1>
         <p class="lead mb-0 asliaboutus">
-          SUMMER INTERNSHIP CLUB is a special interest group of GITAM. We are
+          STUDENT INTERNSHIP CLUB is a special interest group of GITAM. We are
           oriented in all field of study. Our group focuses on upcoming training
           opportunities (Research Intern, Dissertation projects, Jobs, etc.) and
           related information with the latest workshops/conferences/webinars
@@ -262,11 +267,9 @@ ul.images li {
     <div class="carddev p-4">
         <div class=" image d-flex flex-column justify-content-center align-items-center"> <button > <img src="https://avatars.githubusercontent.com/u/63925819?v=4" height="150" width="150" /></button> <span class="name mt-3">Dheeraj</span> <span class="idd">@dheeraj</span>
             <div class="d-flex flex-row justify-content-center align-items-center gap-2"> <span class="idd1">B.tech CSE</span> <span><i class="fa fa-copy"></i></span> </div>
-
-
             <div class="text mt-3"> <span>Eleanor Pena is a creator of minimalistic x bold graphics and digital artwork.<br><br> Artist/ Creative Director by Day #NFT minting@ with FND night. </span> </div>
             <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"> <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-github"></i></span> <span><i class="fa fa-instagram"></i></span> <span><i class="fa fa-linkedin"></i></span> </div>
-
+           
         </div>
     </div>
 </div>
@@ -274,11 +277,9 @@ ul.images li {
     <div class="carddev p-4">
         <div class=" image d-flex flex-column justify-content-center align-items-center"> <button > <img src="https://media-exp1.licdn.com/dms/image/C5603AQGEw0BaoJsZ4A/profile-displayphoto-shrink_800_800/0/1517458148957?e=2147483647&v=beta&t=z0VZVtu3TTVoQKUcqyMSReyjcicRJXAnLkkOW079kds" height="150" width="150" /></button> <span class="name mt-3">Gurumoorthy G</span> <span class="idd">@Gurumoorthy</span>
             <div class="d-flex flex-row justify-content-center align-items-center gap-2"> <span class="idd1">Guide and mentor</span> <span><i class="fa fa-copy"></i></span> </div>
-
-
             <div class="text mt-3"> <span>Deputy Director at GITAM Career Guidance Center (GCGC), GITAM | Assistant Professor - CSE | UGC NET |<br><br> Artist/ Creative Director by Day #NFT minting@ with FND night. </span> </div>
             <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"> <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-github"></i></span> <span><i class="fa fa-instagram"></i></span> <span><i class="fa fa-linkedin"></i></span> </div>
-
+           
         </div>
     </div>
 </div>
@@ -286,11 +287,8 @@ ul.images li {
   <div class="carddev p-4">
       <div class=" image d-flex flex-column justify-content-center align-items-center"> <button > <img src="https://media-exp1.licdn.com/dms/image/C5603AQG5M1-Yvr2LXQ/profile-displayphoto-shrink_800_800/0/1647499890525?e=1654128000&v=beta&t=YCFySz-NX6xikLSeC4KqydsUe-CmITj09eFgvqwHmIQ" height="150" width="150" /></button> <span class="name mt-3">Vikas B</span> <span class="idd">@vikassir</span>
           <div class="d-flex flex-row justify-content-center align-items-center gap-2"> <span class="idd1">Guide and mentor</span> <span><i class="fa fa-copy"></i></span> </div>
-
-
           <div class="text mt-3"> <span>Deputy Director at GITAM Career Guidance Center (GCGC), GITAM | Assistant Professor - CSE | UGC NET |<br><br> Artist/ Creative Director by Day #NFT minting@ with FND night. </span> </div>
           <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"> <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-github"></i></span> <span><i class="fa fa-instagram"></i></span> <span><i class="fa fa-linkedin"></i></span> </div>
-
       </div>
   </div>
 </div>
@@ -298,19 +296,13 @@ ul.images li {
   <div class="carddev p-4">
       <div class=" image d-flex flex-column justify-content-center align-items-center"> <button> <img src="https://avatars.githubusercontent.com/u/54280958?v=4" height="150" width="150" /></button> <span class="name mt-3">Krishna Chaitanya</span> <span class="idd">@xrishnachaitanya</span>
           <div class="d-flex flex-row justify-content-center align-items-center gap-2"> <span class="idd1">B.tech CSE</span> <span><i class="fa fa-copy"></i></span> </div>
-
-
           <div class="text mt-3"> <span>Eleanor Pena is a creator of minimalistic x bold graphics and digital artwork.<br><br> Artist/ Creative Director by Day #NFT minting@ with FND night. </span> </div>
           <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"> <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-github"></i></span> <span><i class="fa fa-instagram"></i></span> <span><i class="fa fa-linkedin"></i></span> </div>
-
       </div>
   </div>
 </div>
 </div>
 </div>
-
-
-
 <div class="bg-white py-5">
   <div class="container py-5">
     <div class="row align-items-center mb-5">
@@ -381,14 +373,13 @@ ul.images li {
     <h1 class="display-4">OUR TEAM</h1>
     <p class="lead">Oh yeah, it's that good</p>
 </div>
-<div class="fullcontainer">
-  <ul class="images">
+<div class="scroll-container">
+  <div class="gridscroll">
     {% for member in members %}
-    <li>
-    <div class="card">
-        <img src="{{ member.image.url }}" class="card-img-top" alt="...">
+      <div class="card" style="min-width: 18rem; margin: 13px; padding: 10px 10px 10px 10px">
+          <img src="{{ member.image.url }}" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">{{ member.name }}</h5>
+          <h5 class="card-title">{{ member.name }}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{ member.domain }}</h6>
             <p class="card-text">{{ member.description }}</p>
             <div class="center justify-content">
@@ -414,11 +405,19 @@ ul.images li {
                     </svg>
                 </a>
             </div>
+
+          <!-- <a href="{{ post.application_link }}" class="btn mr-2"
+            ><i class="fa fa-link"></i> Visit Site</a
+          >
+          <a href="#" class="btn"
+            ><i class="fa fa-mouse-pointer"></i> Register</a
+          > -->
         </div>
-    </div>
-  </li>
+      </div>
+    
     {% endfor %}
-  </ul>
+ 
+</div>
 </div>
 <br>
 <div id="faq" class="faq bg-light">
