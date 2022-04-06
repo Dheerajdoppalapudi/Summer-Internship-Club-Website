@@ -456,7 +456,7 @@ background-image: linear-gradient(90deg, #e3ffe7 0%, #d0e1ff 100%);
         </a>
         <div class="postcard__text">
           <h1 class="postcard__title blue">
-            FrontEnd Developer
+            {{ post.title }}
           </h1>
           <div class="postcard__subtitle small">
             <time datetime="2020-05-25 12:00:00">
@@ -470,10 +470,11 @@ background-image: linear-gradient(90deg, #e3ffe7 0%, #d0e1ff 100%);
             <li class="mb-3 d-flex align-items-center"><i class="fa fa-inbox mr-3 "></i>&nbsp;Registration Close : {{ post.registration_close }}</li>
             <li class="mb-3 d-flex align-items-center"><i class="fa fa-rocket mr-3 "></i>&nbsp;Eligibility : {{ post.eligibility }} </li>
             <li class="mb-3 d-flex align-items-center"><i class="fa fa-trophy mr-3 "></i>&nbsp;Branch : {{ post.branch }}</li>
-            <a href=https://{{ post.referral_link }}><button type="button" class="btn btn-info">Apply</button></a>
+            <a href={{ post.referral_link }}><button type="button" class="btn btn-info">Apply</button></a>
         </ul></div>
           <ul class="postcard__tagbox">
             <li class="tag__item"><i class="fas fa-tag mr-2"></i>{{ post.branch }}</li>
+<!--            <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.< /li>-->
 <!--            <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.< /li>-->
 <!--            <li class="tag__item play blue">-->
 <!--              <a href=https://{{ event.event_link }}><i class="fas fa-calendar-day"></i>Play Event</a>-->
