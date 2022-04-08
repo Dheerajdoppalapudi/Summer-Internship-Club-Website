@@ -2,11 +2,10 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import Internship, Member, Suggestions, Scolarships, Hackathons, Fellowships, Certifications, Competetive
 from django.http import JsonResponse, Http404
-from .forms import Dateform
+# from .forms import Dateform
 
-branches = ['Engineering', 'Management', 'Sciences', 'Humanities and Social Sciences', 'Medical and  Para-medical', 'Law', 'Pharmacy', 'Nursing']
+branches = ['Engineering', 'Management', 'Sciences', 'Humanities and Social Sciences', 'Medical and  Paramedical', 'Law', 'Pharmacy', 'Nursing']
 all_archives = ['Internships', 'Scolarships', 'Fellowships', 'Hackathons']
-
 
 @login_required
 def internships(request):
@@ -109,10 +108,13 @@ def specific_internship(request, title):
 
 @login_required
 def internship_branch(request, branch):
+    # print("===========================", branch)
+    # tempval = Internship.objects.filter(multibranch=branch).order_by('-date_posted')
+    # print("==================: ", tempval.multibranch)
     context = {
         'branches': branches,
-        'count': Internship.objects.filter(branch=branch).count(),
-        "posts": Internship.objects.filter(branch=branch).order_by('-date_posted')
+        'count': Internship.objects.filter(multibranch__contains=branch).count(),
+        "posts": Internship.objects.filter(multibranch__contains=branch).order_by('-date_posted')
     }
     return render(request, 'page/internships.html', context)
 
@@ -146,8 +148,8 @@ def specific_scholarship(request, name):
 @login_required
 def scolarship_branch(request, branch):
     context = {
-        'count': Scolarships.objects.filter(branch=branch).count(),
-        "scholarships": Scolarships.objects.filter(branch=branch).order_by('-date_posted')
+        'count': Scolarships.objects.filter(multibranch__contains=branch).count(),
+        "scholarships": Scolarships.objects.filter(multibranch__contains=branch).order_by('-date_posted')
     }
     return render(request, 'page/scholarships.html', context)
 
@@ -256,7 +258,7 @@ def stats(request):
     for branch in branches:
         # intern_str = "Internship "+branch+" count"
         intern_str = branch + " count"
-        intern_str_val = Internship.objects.filter(branch=branch).count()
+        intern_str_val = Internship.objects.filter(multibranch__contains=branch).count()
         internshipsobj.append([intern_str, intern_str_val])
 
     # scolarship model
@@ -266,7 +268,7 @@ def stats(request):
     for branch in branches:
         # scolar_str = "Scolarship "+branch+" count"
         scolar_str = branch + " count"
-        scolar_str_val = Scolarships.objects.filter(branch=branch).count()
+        scolar_str_val = Scolarships.objects.filter(multibranch__contains=branch).count()
         scholarshipobj.append([scolar_str, scolar_str_val])
 
     # hackathon model
