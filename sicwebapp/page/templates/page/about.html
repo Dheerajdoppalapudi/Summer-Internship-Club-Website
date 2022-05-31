@@ -219,8 +219,24 @@ hr .new1 {
       align-items: center;
     }
   }
+ div.sticky {
+  position: sticky;
+  top: 0;
+    width: 71px;
+    top: 50%;
+    z-index: 9999999;
+    float: right;
+}
 </style>
-
+<div class="sticky">
+    <img src="{% static 'images/logo3.jpg' %}"/>
+</div>
+<div class="container">
+<div class="row">
+            <div class="col-lg-4 col-md-6 col-12">
+<div>
+                <img src="{% static 'images/gitamlogo.png' %}" class="img-fluid" style="margin-top: 16px; width: 60%;"/>
+</div></div></div></div>
 <div class="herotextContainer">
   Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium aliquam, officia deleniti distinctio dolorem laborum aperiam quisquam nisi repellendus temporibus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid facilis suscipit tempora eos labore minus modi ipsa enim vel ratione.
 </div>
@@ -404,7 +420,7 @@ hr .new1 {
     {% for member in members %}
       <div class="card" style="min-width: 18rem; margin: 13px; padding: 10px 10px 10px 10px">
           <img src="{{ member.image.url }}" class="card-img-top" alt="...">
-        <div class="card-body">
+        <div class="card-body" style="text-align: center;">
           <h5 class="card-title">{{ member.name }}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{ member.domain }}</h6>
             <p class="card-text">{{ member.description }}</p>

@@ -134,9 +134,6 @@
         color: #7a808d;
         text-decoration: none;
       }
-      .single_info .info {
-        color: #7a808d;
-      }
       .deneb_footer
         .widget_wrapper
         .widget_contact
@@ -268,35 +265,34 @@
         margin-left: 2%;
       }
       .navbar-brand {
-        padding-top: 0.3125rem;
-        padding-bottom: 0.3125rem;
-        margin-right: 0.7%;
-        margin-left: 1%;
-        font-size: 1.25rem;
-        text-decoration: none;
-        white-space: nowrap;
+      padding-top: 0.3125rem;
+      padding-bottom: 0.3125rem;
+      margin-right: 0.7%;
+      margin-left: 1%;
+      font-size: 1.25rem;
+      text-decoration: none;
+      white-space: nowrap;
       }
-      .deneb_footer .widget_wrapper {
-        background-repeat: no-repeat;
-        background-size: cover;
-        padding-top: 200px;
-        padding-bottom: 5px;
+.deneb_footer .widget_wrapper {
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding-top: 200px;
+      padding-bottom: 5px;
       }
-      .widget_wrapper {
-        display: block;
-        box-sizing: border-box;
-        height: 500px;
-        background-color: #5050ee;
-        clip-path: ellipse(108% 100% at 66.24% 100%);
-      }
+      /* Style the active class, and buttons on mouse-over */
+/* .active, .nav-item:hover {
+  color: white;
+} */
     </style>
   </head>
+  <link rel="icon" type="image/x-icon" href="{% static 'images/logo2.png' %}">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Anton&family=Prompt:wght@400;600&display=swap"
     rel="stylesheet"
   />
+
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
@@ -318,32 +314,22 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                href="{% url 'page-about' %}"
-                >About Us</a
-              >
+              <a class="nav-link" aria-current="page" href="{% url 'page-about' %}">About Us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'page-internships' %}"
-                >Internships</a
-              >
+              <a class="nav-link " href="{% url 'page-internships' %}">Internships</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'page-scholarships' %}"
-                >Scholarships</a
-              >
+              <a class="nav-link " href="{% url 'page-careerful' %}">Career Fulfillment</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'page-fellowships' %}"
-                >Fellowships</a
-              >
+              <a class="nav-link" href="{% url 'page-scholarships' %}">Scholarships</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'page-hackathons' %}"
-                >Hackathons</a
-              >
+              <a class="nav-link" href="{% url 'page-fellowships' %}">Fellowships</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'page-hackathons' %}">Hackathons</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'events' %}">Events</a>
@@ -351,32 +337,32 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'archives' %}">Archives</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item ">
               <a class="nav-link" href="{% url 'stats' %}">Demographics</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'contact-us' %}">Contact Us</a>
             </li>
-            <!--            <li class="nav-item dropdown">-->
-            <!--              <a-->
-            <!--                class="nav-link dropdown-toggle"-->
-            <!--                href="#"-->
-            <!--                id="navbarDropdown"-->
-            <!--                role="button"-->
-            <!--                data-bs-toggle="dropdown"-->
-            <!--                aria-expanded="false"-->
-            <!--              >-->
-            <!--                Misc.-->
-            <!--              </a>-->
-            <!--              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-            <!--                <li><a class="dropdown-item" href="#">Archives</a></li>-->
-            <!--                <li><a class="dropdown-item" href="#">Statistics</a></li>-->
-            <!--                <li><hr class="dropdown-divider" /></li>-->
-            <!--                <li>-->
-            <!--                  <a class="dropdown-item" href="#">Fellowships</a>-->
-            <!--                </li>-->
-            <!--              </ul>-->
-            <!--            </li>-->
+<!--            <li class="nav-item dropdown">-->
+<!--              <a-->
+<!--                class="nav-link dropdown-toggle"-->
+<!--                href="#"-->
+<!--                id="navbarDropdown"-->
+<!--                role="button"-->
+<!--                data-bs-toggle="dropdown"-->
+<!--                aria-expanded="false"-->
+<!--              >-->
+<!--                Misc.-->
+<!--              </a>-->
+<!--              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                <li><a class="dropdown-item" href="#">Archives</a></li>-->
+<!--                <li><a class="dropdown-item" href="#">Statistics</a></li>-->
+<!--                <li><hr class="dropdown-divider" /></li>-->
+<!--                <li>-->
+<!--                  <a class="dropdown-item" href="#">Fellowships</a>-->
+<!--                </li>-->
+<!--              </ul>-->
+<!--            </li>-->
           </ul>
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0 profile-menu">
             <li class="nav-item dropdown">
@@ -393,27 +379,18 @@
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 {% if user.is_authenticated %}
                 <li>
-                  <a class="dropdown-item" href="#"
-                    ><i class="fas fa-sign-out-alt fa-fw"></i> {{ user.username
-                    }}</a
-                  >
+                  <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-fw"></i> {{ user.username }}</a>
                 </li>
                 <li><hr class="dropdown-divider" /></li>
                 <li>
-                  <a class="dropdown-item" href="{% url 'logout' %}"
-                    ><i class="fas fa-sign-out-alt fa-fw"></i> Log Out</a
-                  >
+                  <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt fa-fw"></i> Log Out</a>
                 </li>
                 {% else %}
                 <li>
-                  <a class="dropdown-item" href="{% url 'login' %}"
-                    ><i class="fas fa-sliders-h fa-fw"></i> Login</a
-                  >
+                  <a class="dropdown-item" href="{% url 'login' %}"><i class="fas fa-sliders-h fa-fw"></i> Login</a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="{% url 'register' %}"
-                    ><i class="fa fa-cog fa-fw"></i> Register</a
-                  >
+                  <a class="dropdown-item" href="{% url 'register' %}"><i class="fa fa-cog fa-fw"></i> Register</a>
                 </li>
                 {% endif %}
               </ul>
@@ -436,7 +413,7 @@
           <div class="row align-items-center">
             <div class="col-lg-7">
               <div class="cta_content">
-                <h3>Any Suggestions on how to improve the Website ?</h3>
+                <h3>Any Suggestions ?</h3>
                 <!-- <p>
                   Curabitur libero eros, efficitur sit amet sodales tincidunt,
                   aliquet et leo sed ut nibh feugiat, auctor enim quis.
@@ -471,26 +448,36 @@
       </div>
     </section>
     <footer class="deneb_footer">
-      <div class="widget_wrapper">
+      <div
+        class="widget_wrapper"
+        style="
+          background-image: url(http://demo.tortoizthemes.com/deneb-html/deneb-ltr/assets/images/footer_bg.png);
+        "
+      >
         <div class="container">
           <div class="row">
             <div class="col-lg-4 col-md-6 col-12">
               <div class="widget widegt_about">
                 <p>
-                  “Sometimes I’ll start a sentence and I don’t even know where
-                  it’s going. I just hope I find it along the way.”
+                  “Nothing is more expensive than a missed opportunity”
                 </p>
                 <ul class="social">
                   <li>
-                    <a href="#"><i class="fa fa-facebook-f"></i></a>
+                    <a href="https://summerinterns_sig@gitam.in"><i class="fa fa-envelope"></i></a>
                   </li>
                   <li>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="https://linkedin.com/company/student-internship-club-gitam"><i class="fa fa-linkedin"></i></a>
                   </li>
                   <li>
-                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="https://instagram.com/student_internship_club"><i class="fa fa-instagram"></i></a>
+                  </li>
+                  <li>
+                    <a href="https://www.youtube.com/channel/UCDNjxFQCwZG5TQh9Dr6NsPg"><i class="fa fa-youtube-play"></i></a>
                   </li>
                 </ul>
+              </div>
+              <div>
+                <img src="{% static 'images/gitamlogo.png' %}" class="img-fluid" style="margin-top: 16px; width: 60%;"/>
               </div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12">
@@ -499,14 +486,14 @@
                   <h4>All Website Links</h4>
                 </div>
                 <ul>
-                  <li><a href="#">About Us</a></li>
+                  <!-- <li><a href="#">About Us</a></li> -->
                   <li><a href="#">Internships</a></li>
                   <li><a href="#">Scholarships</a></li>
                   <li><a href="#">Fellowships</a></li>
                   <li><a href="#">Hackathons</a></li>
-                  <li><a href="#">Contact Us</a></li>
-                  <li><a href="#">Archives</a></li>
-                  <li><a href="#">Statistics</a></li>
+                  <!-- <li><a href="#">Contact Us</a></li> -->
+                  <!-- <li><a href="#">Archives</a></li> -->
+                  <!-- <li><a href="#">Statistics</a></li> -->
                   <li><a href="#">Events</a></li>
                 </ul>
               </div>
@@ -517,21 +504,21 @@
                   <h4>Contact Us</h4>
                 </div>
                 <div class="contact_info">
-                  <div class="single_info">
+                  <!-- <div class="single_info">
                     <div class="icon">
                       <i class="fa fa-whatsapp fa-3x"></i>
                     </div>
                     <div class="info">
                       <p><a href="tel:+919246147999">1800-121-3637</a></p>
                     </div>
-                  </div>
+                  </div> -->
                   <div class="single_info">
                     <div class="icon">
                       <i class="fa fa-terminal fa-3x"></i>
                     </div>
                     <div class="info">
                       <p>
-                        <a href="mailto:sicgitamvizag.com">sicgitamvizag.com</a>
+                        <a href="mailto:sicgitamvizag.com">https://testsic.gitam.edu/</a>
                       </p>
                     </div>
                   </div>
@@ -540,7 +527,7 @@
                       <i class="fa fa-location-arrow fa-3x"></i>
                     </div>
                     <div class="info">
-                      <p>GITAM,Vizag<span>KRC Auditorium.</span></p>
+                      <p>Student Internship Club, <span>GCGC, </span><span>Old Civil Bhavan 308</span></p>
                     </div>
                   </div>
                 </div>
@@ -566,16 +553,33 @@
     </footer>
   </body>
   <script>
-    document.querySelectorAll(".dropdown-toggle").forEach((item) => {
-      item.addEventListener("click", (event) => {
-        if (event.target.classList.contains("dropdown-toggle")) {
-          event.target.classList.toggle("toggle-change");
-        } else if (
-          event.target.parentElement.classList.contains("dropdown-toggle")
-        ) {
-          event.target.parentElement.classList.toggle("toggle-change");
-        }
-      });
-    });
-  </script>
+    // document.querySelectorAll(".dropdown-toggle").forEach((item) => {
+    //   item.addEventListener("click", (event) => {
+    //     if (event.target.classList.contains("dropdown-toggle")) {
+    //       event.target.classList.toggle("toggle-change");
+    //     } else if (
+    //       event.target.parentElement.classList.contains("dropdown-toggle")
+    //     ) {
+    //       event.target.parentElement.classList.toggle("toggle-change");
+    //     }
+    //   });
+    // });
+    
+   // Add active class to the current button (highlight it)
+var header = document.getElementById("navbarSupportedContent");
+var btns = header.getElementsByClassName("nav-link");
+console.log(btns);
+for (var i = 0; i < btns.length; i++) {
+  console.log(btns[i])
+  btns[i].addEventListener("click", function() {
+    console.log("😊",event);
+  console.log(`test ======================================================> `)
+
+  var current = document.getElementsByClassName("active");
+  current[0].className = current[0].className.replace(" active", "");
+  this.className += " active";
+  });
+}
+console.log(btns);
+    </script>
 </html>

@@ -1,0 +1,537 @@
+{% extends "page/base.html" %}
+{% block content %}
+{% load static %}
+<style>
+    .fullcontainer {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .fullcontainer > div {
+        margin: 10px;
+        padding: 10px;
+        width: 350px;
+    }
+  body {
+    background: #f4f7fd;
+    /* margin-top: 20px; */
+  }
+  .heading {
+    font-family: "Prompt", sans-serif;
+    margin: 50px;
+  }
+  .heading h1 {
+    font-weight: bolder;
+    text-align: center;
+    margin: 20px;
+  }
+  .card-margin {
+    margin-bottom: 1.875rem;
+  }
+
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #ffffff;
+    background-clip: border-box;
+    border: 1px solid #e6e4e9;
+    border-radius: 8px;
+    transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+      0.3s box-shadow,
+      0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+  }
+  .card:hover {
+    transform: scale(1.05);
+    transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+      0.3s box-shadow,
+      0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+  }
+  .card-title {
+    margin: 10px;
+  }
+
+  .hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color: #0087ca;
+  }
+
+  .hover-underline-animation:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0087ca;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+
+  .hover-underline-animation:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  .card .card-header.no-border {
+    border: 0;
+  }
+  .card .card-header {
+    background: none;
+    padding: 0 0.9375rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    min-height: 50px;
+  }
+  .card-header:first-child {
+    border-radius: calc(8px - 1px) calc(8px - 1px) 0 0;
+  }
+
+  .widget-49 .widget-49-title-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .widget-49 .widget-49-title-wrapper .widget-49-date-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #edf1fc;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+  }
+
+  .widget-49
+    .widget-49-title-wrapper
+    .widget-49-date-primary
+    .widget-49-date-day {
+    color: #4e73e5;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .widget-49
+    .widget-49-title-wrapper
+    .widget-49-date-primary
+    .widget-49-date-month {
+    color: #4e73e5;
+    line-height: 1;
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+
+  .widget-49 .widget-49-title-wrapper .widget-49-date-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #fcfcfd;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+  }
+
+  .widget-49
+    .widget-49-title-wrapper
+    .widget-49-date-secondary
+    .widget-49-date-day {
+    color: #dde1e9;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .widget-49
+    .widget-49-title-wrapper
+    .widget-49-date-secondary
+    .widget-49-date-month {
+    color: #dde1e9;
+    line-height: 1;
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+
+  .widget-49 .widget-49-title-wrapper .widget-49-date-success {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #e8faf8;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+  }
+
+  .widget-49
+    .widget-49-title-wrapper
+    .widget-49-date-success
+    .widget-49-date-day {
+    color: #17d1bd;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .widget-49
+    .widget-49-title-wrapper
+    .widget-49-date-success
+    .widget-49-date-month {
+    color: #17d1bd;
+    line-height: 1;
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+
+  .widget-49 .widget-49-title-wrapper .widget-49-date-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #ebf7ff;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+  }
+
+  .widget-49 .widget-49-title-wrapper .widget-49-date-info .widget-49-date-day {
+    color: #36afff;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .widget-49
+    .widget-49-title-wrapper
+    .widget-49-date-info
+    .widget-49-date-month {
+    color: #36afff;
+    line-height: 1;
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+
+  .widget-49 .widget-49-title-wrapper .widget-49-date-warning {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: floralwhite;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+  }
+
+  .widget-49
+    .widget-49-title-wrapper
+    .widget-49-date-warning
+    .widget-49-date-day {
+    color: #ffc868;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .widget-49
+    .widget-49-title-wrapper
+    .widget-49-date-warning
+    .widget-49-date-month {
+    color: #ffc868;
+    line-height: 1;
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+
+  .widget-49 .widget-49-title-wrapper .widget-49-date-danger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #feeeef;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+  }
+
+  .widget-49
+    .widget-49-title-wrapper
+    .widget-49-date-danger
+    .widget-49-date-day {
+    color: #f95062;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .widget-49
+    .widget-49-title-wrapper
+    .widget-49-date-danger
+    .widget-49-date-month {
+    color: #f95062;
+    line-height: 1;
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+
+  .widget-49 .widget-49-title-wrapper .widget-49-date-light {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #fefeff;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+  }
+
+  .widget-49
+    .widget-49-title-wrapper
+    .widget-49-date-light
+    .widget-49-date-day {
+    color: #f7f9fa;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .widget-49
+    .widget-49-title-wrapper
+    .widget-49-date-light
+    .widget-49-date-month {
+    color: #f7f9fa;
+    line-height: 1;
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+
+  .widget-49 .widget-49-title-wrapper .widget-49-date-dark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #ebedee;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+  }
+
+  .widget-49 .widget-49-title-wrapper .widget-49-date-dark .widget-49-date-day {
+    color: #394856;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .widget-49
+    .widget-49-title-wrapper
+    .widget-49-date-dark
+    .widget-49-date-month {
+    color: #394856;
+    line-height: 1;
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+
+  .widget-49 .widget-49-title-wrapper .widget-49-date-base {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #f0fafb;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+  }
+
+  .widget-49 .widget-49-title-wrapper .widget-49-date-base .widget-49-date-day {
+    color: #68cbd7;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .widget-49
+    .widget-49-title-wrapper
+    .widget-49-date-base
+    .widget-49-date-month {
+    color: #68cbd7;
+    line-height: 1;
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+
+  .widget-49 .widget-49-title-wrapper .widget-49-meeting-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+  }
+
+  .widget-49
+    .widget-49-title-wrapper
+    .widget-49-meeting-info
+    .widget-49-pro-title {
+    color: #3c4142;
+    font-size: 14px;
+  }
+
+  .widget-49
+    .widget-49-title-wrapper
+    .widget-49-meeting-info
+    .widget-49-meeting-time {
+    color: #b1bac5;
+    font-size: 13px;
+  }
+
+  .widget-49 .widget-49-meeting-points {
+    font-weight: 400;
+    font-size: 13px;
+    margin-top: 0.5rem;
+  }
+
+  .widget-49 .widget-49-meeting-points .widget-49-meeting-item {
+    display: list-item;
+    color: #727686;
+  }
+
+  .widget-49 .widget-49-meeting-points .widget-49-meeting-item span {
+    margin-left: 0.5rem;
+  }
+
+  .widget-49 .widget-49-meeting-action {
+    text-align: right;
+  }
+
+  .widget-49 .widget-49-meeting-action a {
+    text-transform: uppercase;
+  }
+  .selectButtons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    font-family: "Prompt", sans-serif;
+  }
+  .selectButtons a {
+    margin: 5px;
+  }
+  .bn30 {
+    border: 5em;
+    cursor: pointer;
+    outline: none;
+    font-size: 16px;
+    -webkit-transform: translate(0);
+    transform: translate(0);
+    background-image: linear-gradient(45deg, #4568dc, #b06ab3);
+    padding: 0.7em 2em;
+    border-radius: 65px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.438);
+    -webkit-transition: box-shadow 0.25s;
+    transition: box-shadow 0.25s;
+    color: rgba(255, 255, 255, 0.623);
+  }
+
+  .bn30 .text {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(45deg, #4568dc, #b06ab3);
+  }
+
+  .bn30:after {
+    content: "";
+    border-radius: 18px;
+    position: absolute;
+    margin: 4px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    background: #101010;
+  }
+
+  .bn30:hover {
+    background-image: linear-gradient(-45deg, #4568dc, #b06ab3);
+    box-shadow: 0 12px 24px rgba(128, 128, 128, 0.1);
+  }
+
+  .bn30:hover .text {
+    background-image: linear-gradient(-45deg, #4568dc, #b06ab3);
+  }
+  .count {
+    font-size: larger;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 1rem;
+    font-family: "Prompt", sans-serif;
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Anton&family=Prompt:wght@400;600&display=swap"
+  rel="stylesheet"
+/>
+<div class="container py-4">
+    <!--<div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown button
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {% for branch in branches %}
+                    <a class="dropdown-item" href="{% url 'internship_branch' branch %}">{{ branch }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>-->
+    <div class="heading"><h1>Career fulfillment 😀</h1></div>
+    <div class="count">Count: {{ count }} 😲</div>
+
+    <div class="selectStreamButtons">
+
+    {% for branch in branches %}
+            <a class="bn40" href="{% url 'internship_branch' branch %}"><button class="bn30">{{branch}}</button></a>
+        {% endfor %}
+    </div>
+    </div>
+    <div class="fullcontainer">
+        {% for post in careerful %}
+        <div class="grid">
+            <div class="card cardtwo">
+                <div class="hover_color_bubble"></div>
+                <div class="card-body">
+                    <h5 class="bn40div"><a class="card-title bn41" href="{% url 'specific_careerful' post.corporate %}" target="_blank">{{ post.corporate }}</a></h5>
+                    {% if post.role %}
+                    <h6 class="card-subtitle mb-2 text-muted">Role: {{ post.role }}</h6>
+                    {% else %}
+                    {% endif %}
+                    <p class="card-text "><i class="fa fa-building mr-3 text-primary"></i><b>Package</b>:<br/>{{ post.package }}</p>
+                    <p class="card-text"> <i class="fa fa-graduation-cap mr-3 text-primary"></i> <b>Eligibility</b>:<br/>{{post.eligibility}}</p>
+                    <hr>
+                    {% if post.registration_open %}
+                        <p class="card-texttwo green"><b>Registration open</b>: {{ post.registration_open}}</p>
+                    {% else %}{% endif %}
+                    <p class="card-texttwo red"><b>Registration close</b>: {{ post.registration_close}}</p>
+                    <hr>
+                    <!-- <p>Referral Link: <a href=https://{{ post.referral_link }} class="card-l ink">{{ post.referral_link }}</a> -->
+                    </p>
+                    <div class="card-footer text-muted" style="font-size:10px; text-align:left">Posted on: {{ post.date_posted }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

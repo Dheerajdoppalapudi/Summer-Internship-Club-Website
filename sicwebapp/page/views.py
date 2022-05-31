@@ -1,21 +1,25 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .models import Internship, Member, Suggestions, Scolarships, Hackathons, Fellowships, Certifications, Competetive
+from .models import Internship, Member, Suggestions, Scolarships, Hackathons, Fellowships, Certifications, Competetive, CareerFul
 from django.http import JsonResponse, Http404
 # from .forms import Dateform
-from datetime import date
+# from datetime import date
+import datetime
 
-branches = ['Engineering', 'Management', 'Sciences', 'Humanities and Social Sciences', 'Medical and  Paramedical', 'Law', 'Pharmacy', 'Nursing']
+branches = ['Engineering', 'Management', 'Sciences', 'Humanities and Social Sciences', 'Medical and Paramedical', 'Law', 'Pharmacy', 'Nursing']
 all_archives = ['Internships', 'Scolarships', 'Fellowships', 'Hackathons']
+
 
 @login_required
 def internships(request):
-    today = date.today()
-    d1 = today.strftime("%Y-%m-%d")
+    # today = date.today()
+    # d1 = today.strftime("%Y-%m-%d")
+    # print("===================================")
+    # print(d1)
     if request.method == "POST":
         form_data = request.POST.get('search-bar')
         try:
-            post = Internship.objects.filter(title__contains=form_data, registration_close__gte=d1)
+            post = Internship.objects.filter(title__contains=form_data)
             context = {
                 'branches': branches,
                 'posts': post,
@@ -28,10 +32,11 @@ def internships(request):
                 'message': 'No Internship avaliable with that name.',
             }
             return render(request, 'page/internships.html', context)
+    q_posts = Internship.objects.filter(registration_close__gte=datetime.date.today()).order_by('-date_posted')
     context = {
         'branches': branches,
-        'count': Internship.objects.filter(registration_close__gte=d1).count(),
-        'posts': Internship.objects.filter(registration_close__gte=d1).order_by('-date_posted')
+        'count': q_posts.count(),
+        'posts': q_posts
     }
     return render(request, 'page/internships.html', context)
 
@@ -61,13 +66,11 @@ def feedback(request):
 
 @login_required
 def scholarships(request):
-    today = date.today()
-    d1 = today.strftime("%Y-%m-%d")
-    post = Scolarships.objects.filter(end_date__gte=d1).order_by('-date_posted')
+    q_post = Scolarships.objects.filter(end_date__gte=datetime.date.today()).order_by('-date_posted')
     context = {
         'branches': branches,
-        'count': post.count(),
-        'scholarships': post
+        'count': q_post.count(),
+        'scholarships': q_post
     }
     return render(request, 'page/scholarships.html', context)
 
@@ -87,9 +90,7 @@ def competitive(request):
 
 @login_required
 def hackathons(request):
-    today = date.today()
-    d1 = today.strftime("%Y-%m-%d")
-    q_posts = Hackathons.objects.filter(end_date__gte=d1).order_by('-date_posted')
+    q_posts = Hackathons.objects.filter(end_date__gte=datetime.date.today()).order_by('-date_posted')
     context = {
         'count': q_posts.count(),
         'hackathons': q_posts
@@ -98,11 +99,21 @@ def hackathons(request):
 
 @login_required
 def fellowships(request):
+    q_posts = Fellowships.objects.order_by('-date_posted')
     context = {
-        'count': Fellowships.objects.all().count(),
-        'fellowships': Fellowships.objects.order_by('-date_posted')
+        'count': q_posts.count(),
+        'fellowships': q_posts
     }
     return render(request, 'page/fellowships.html', context)
+
+@login_required
+def Careerful(request):
+    q_posts = CareerFul.objects.filter(registration_close__gte=datetime.date.today()).order_by('-date_posted')
+    context = {
+        'count': q_posts.count(),
+        'careerful': q_posts
+    }
+    return render(request, 'page/careerful.html', context)
 
 @login_required
 def specific_internship(request, title):
@@ -116,13 +127,23 @@ def specific_internship(request, title):
     return render(request, 'page/specific_internship.html', context)
 
 @login_required
+def specific_careerful(request, title):
+    try:
+        post = CareerFul.objects.get(corporate=title)
+    except post.DoesNotExist:
+        raise Http404("Internship Does Not Exist")
+    context = {
+            "post": post
+        }
+    return render(request, 'page/specific_careerful.html', context)
+
+@login_required
 def internship_branch(request, branch):
-    today = date.today()
-    d1 = today.strftime("%Y-%m-%d")
-    # print("===========================", branch)
+    print("===========================", branch)
     # tempval = Internship.objects.filter(multibranch=branch).order_by('-date_posted')
     # print("==================: ", tempval.multibranch)
-    q_post = Internship.objects.filter(multibranch__contains=branch, registration_close__gte=d1).order_by('-date_posted')
+    # print(branch)
+    q_post = Internship.objects.filter(multibranch__contains=branch, registration_close__gte=datetime.date.today()).order_by('-date_posted')
     context = {
         'branches': branches,
         'count': q_post.count(),
@@ -159,10 +180,11 @@ def specific_scholarship(request, name):
 
 @login_required
 def scolarship_branch(request, branch):
+    q_posts = Scolarships.objects.filter(branch=branch, end_date__gte=datetime.date.today()).order_by('-date_posted')
     context = {
         'branches': branches,
-        'count': Scolarships.objects.filter(multibranch__contains=branch).count(),
-        "scholarships": Scolarships.objects.filter(multibranch__contains=branch).order_by('-date_posted')
+        'count': q_posts.count(),
+        "scholarships": q_posts
     }
     return render(request, 'page/scholarships.html', context)
 
@@ -186,11 +208,12 @@ def archives(request):
 
 @login_required
 def archives_branch(request, section):
-    today = date.today()
+    today = datetime.date.today()
     d1 = today.strftime("%Y-%m-%d")
     if section == "Internships":
         q_posts = Internship.objects.all().order_by('-date_posted')
         context = {
+            'section': 'Internships',
             'allarchives': all_archives,
             'count': q_posts.count(),
             'internships': q_posts
@@ -199,6 +222,7 @@ def archives_branch(request, section):
     elif section == 'Scolarships':
         q_posts = Scolarships.objects.all().order_by('-date_posted')
         context = {
+            'section': 'Scholarships',
             'allarchives': all_archives,
             'count': q_posts.count(),
             'scholarships': q_posts
@@ -207,6 +231,7 @@ def archives_branch(request, section):
     elif section == 'Fellowships':
         q_posts = Fellowships.objects.all().order_by('-date_posted')
         context = {
+            'section': 'Fellowships',
             'allarchives': all_archives,
             'count': q_posts.count(),
             'fellowships': q_posts
@@ -215,6 +240,7 @@ def archives_branch(request, section):
     elif section == 'Hackathons':
         q_posts = Hackathons.objects.all().order_by('-date_posted')
         context = {
+            'section': 'Hackathons',
             'allarchives': all_archives,
             'count': q_posts.count(),
             'hackathons': q_posts
@@ -230,37 +256,41 @@ def try2(request):
         selection = request.POST['selection']
         if selection == "Internship":
             #posts = Internship.objects.filter(date_posted__lte=date)
-            posts = Internship.objects.filter(date_posted__range=[from_date, to_date])
+            q_posts = Internship.objects.filter(date_posted__range=[from_date, to_date])
             context = {
+                'section': 'Internships',
                 'allarchives': all_archives,
-                'internships': posts,
-                'count': Internship.objects.filter(date_posted__range=[from_date, to_date]).count(),
+                'internships': q_posts,
+                'count': q_posts.count(),
                 }
             return render(request, 'page/archives.html', context)
         elif selection == 'Scholarships':
             print("this is logging")
-            posts = Scolarships.objects.filter(date_posted__range=[from_date, to_date])
+            q_posts = Scolarships.objects.filter(date_posted__range=[from_date, to_date])
             print(posts)
             context = {
+                'section': 'Scholarships',
                 'allarchives': all_archives,
-                'scholarships': posts,
-                'count': Scolarships.objects.filter(date_posted__range=[from_date, to_date]).count(),
+                'scholarships': q_posts,
+                'count': q_posts.count(),
             }
             return render(request, 'page/archives.html', context)
         elif selection == 'Fellowships':
-            posts = Fellowships.objects.filter(date_posted__range=[from_date, to_date])
+            q_posts = Fellowships.objects.filter(date_posted__range=[from_date, to_date])
             context = {
+                'section': 'Fellowships',
                 'allarchives': all_archives,
-                'fellowships': posts,
-                'count': Fellowships.objects.filter(date_posted__range=[from_date, to_date]).count(),
+                'fellowships': q_posts,
+                'count': q_posts.count(),
             }
             return render(request, 'page/archives.html', context)
         elif selection == 'Hackathons':
-            posts = Hackathons.objects.filter(date_posted__range=[from_date, to_date])
+            q_posts = Hackathons.objects.filter(date_posted__range=[from_date, to_date])
             context = {
+                'section': 'Hackathons',
                 'allarchives': all_archives,
-                'hackathons': posts,
-                'count': Hackathons.objects.filter(date_posted__range=[from_date, to_date]).count(),
+                'hackathons': q_posts,
+                'count': q_posts.count(),
             }
             return render(request, 'page/archives.html', context)
     context = {
@@ -287,7 +317,8 @@ def stats(request):
     for branch in branches:
         # scolar_str = "Scolarship "+branch+" count"
         scolar_str = branch + " count"
-        scolar_str_val = Scolarships.objects.filter(multibranch__contains=branch).count()
+        scolar_str_val = Scolarships.objects.filter(branch=branch).count()
+        print(scolar_str, '=====>>>>', scolar_str_val)
         scholarshipobj.append([scolar_str, scolar_str_val])
 
     # hackathon model

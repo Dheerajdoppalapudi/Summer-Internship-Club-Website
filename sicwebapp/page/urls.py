@@ -21,4 +21,6 @@ urlpatterns = [
     path('archives/<str:section>/', views.archives_branch, name='archives-branch'),
     path('archives/selection/result', views.try2, name='selector'),
     path('demographics/', views.stats, name='stats'),
+    path('careerful/', views.Careerful, name='page-careerful'),
+    path('careerful/search/<str:title>/', views.specific_careerful, name='specific_careerful'),
 ]

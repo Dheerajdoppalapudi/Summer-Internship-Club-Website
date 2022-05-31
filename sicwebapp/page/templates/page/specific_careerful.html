@@ -445,7 +445,7 @@ background-image: linear-gradient(90deg, #e3ffe7 0%, #d0e1ff 100%);
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Prompt:wght@400;600&display=swap" rel="stylesheet">
 <section class="light">
     <div class="container py-4">
-      <h1 class="h1 text-center" id="pageHeaderTitle">Internship Details</h1>
+      <h1 class="h1 text-center" id="pageHeaderTitle">Job Details</h1>
       <article class="postcard dark blue">
         <a class="postcard__img_link" href="#">
           <img
@@ -456,7 +456,7 @@ background-image: linear-gradient(90deg, #e3ffe7 0%, #d0e1ff 100%);
         </a>
         <div class="postcard__text">
           <h1 class="postcard__title blue">
-            {{ post.title }}
+            {{ post.corporate }}
           </h1>
           <div class="postcard__subtitle small">
             <time datetime="2020-05-25 12:00:00">
@@ -465,10 +465,13 @@ background-image: linear-gradient(90deg, #e3ffe7 0%, #d0e1ff 100%);
           </div>
           <div class="postcard__bar"></div>
           <div class="postcard__preview-txt"><ul class="list-unstyled list pl-5">
-            <li class="mb-3 d-flex align-items-center"><i class="fa fa-building mr-3 "></i>&nbsp;Company : {{ post.comapny_org }}</li>
-            <li class="mb-3 d-flex align-items-center"><i class="fa fa-hourglass-end mr-3 "></i>&nbsp;Registration Open : {{ post.registration_open }}</li>
-            <li class="mb-3 d-flex align-items-center"><i class="fa fa-inbox mr-3 "></i>&nbsp;Registration Close : {{ post.registration_close }}</li>
+            <li class="mb-3 d-flex align-items-center"><i class="fa fa-money mr-3 "></i>&nbsp;Package : {{ post.package }}</li>
             <li class="mb-3 d-flex align-items-center"><i class="fa fa-rocket mr-3 "></i>&nbsp;Eligibility : {{ post.eligibility }} </li>
+<!--            <li class="mb-3 d-flex align-items-center"><i class="fa fa-building mr-3 "></i>&nbsp;corporate : {{ post.comapny_org }}</li>-->
+            {% if post.registration_open %}
+              <li class="mb-3 d-flex align-items-center"><i class="fa fa-hourglass-end mr-3 "></i>&nbsp;Registration Open : {{ post.registration_open }}</li>
+            {% else %}{% endif %}
+            <li class="mb-3 d-flex align-items-center"><i class="fa fa-inbox mr-3 "></i>&nbsp;Registration Close : {{ post.registration_close }}</li>
             <li class="mb-3 d-flex align-items-center"><i class="fa fa-trophy mr-3 "></i>&nbsp;Branch : {{ post.multibranch }}</li>
             <a href={{ post.referral_link }}><button type="button" class="btn btn-info">Apply</button></a>
         </ul></div>
@@ -497,10 +500,10 @@ background-image: linear-gradient(90deg, #e3ffe7 0%, #d0e1ff 100%);
             <h6><span>Description</span> :{{ post.description }}</h6>
             <h6><span>Link to register</span>: {{ post.referral_link }}</h6>
             <hr>
+            {% if post.registration_open %}
             <li class="mb-3 d-flex align-items-center"><i class="fa fa-hourglass-end mr-3 text-primary"></i>Registration Open: {{ post.registration_open }}</li>
+              {% else %}{% endif %}
             <li class="mb-3 d-flex align-items-center"><i class="fa fa-inbox mr-3 text-primary"></i>Registration Close: {{ post.registration_close }}</li>
-            <hr>
-            <h6><span>Brought to you by</span>: {{ post.brought_to_you_by }}</h6>
             <hr>
             <a href=https://{{ post.referral_link }}><button type="button" class="btn btn-info">Click here to Register</button></a>
         </ul></div>
