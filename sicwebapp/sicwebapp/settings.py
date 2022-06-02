@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'dbbackup',
 
     # google auth apps
-    # 'django.contrib.sites',
+    #'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
