@@ -1,6 +1,5 @@
 {% extends "page/base.html" %}
 {% load static %}
-{% load socialaccount %}
 {% load crispy_forms_tags %}
 {% block content %}
 <style>
@@ -40,7 +39,7 @@
 
                     <div class="form-group2">
                         OR 
-                        <a href="{% provider_login_url 'google' %}"><img src="{% static 'images/google_logo_dark.png' %}" class="img-fluid" /></a>
+                        <a href="{% url "social:begin" "google-oauth2" %}"><img src="{% static 'images/google_logo_dark.png' %}" class="img-fluid" /></a>
                     </div>
                 </form>
                 <br>

@@ -162,3 +162,18 @@ class CareerFul(models.Model):
     date_posted = models.DateTimeField(default=timezone.now, blank=False, editable=False)
     multibranch = MultiSelectField(choices=BRANCH_CHOICES, blank=True, default='Everyone')
     brought_to_you_by = models.CharField(max_length=70, choices=BROUGHT_TO_YOU_BY, blank=True, default='Student Internship Club')
+
+class Internship_archive(models.Model):
+    title = models.CharField(max_length=75, blank=False)
+    comapny_org = models.CharField(max_length=150, blank=True)
+    role = models.CharField(max_length=50, blank=False)
+    format = models.CharField(max_length=50, blank=False)
+    description = models.TextField()
+    registration_open = models.DateField()
+    registration_close = models.DateField()
+    eligibility = models.TextField()
+    referral_link = models.CharField(max_length=100, blank=False)
+    # branch = models.CharField(max_length=50, choices=BRANCH_CHOICES, default='Everyone')
+    date_posted = models.DateTimeField(default=timezone.now, blank=False, editable=False)
+    multibranch = MultiSelectField(choices=BRANCH_CHOICES, blank=True, default='Everyone')
+    brought_to_you_by = models.CharField(max_length=70, choices=BROUGHT_TO_YOU_BY, blank=True, default='Student Internship Club')
