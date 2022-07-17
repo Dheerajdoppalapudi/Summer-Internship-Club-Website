@@ -465,7 +465,9 @@ background-image: linear-gradient(90deg, #e3ffe7 0%, #d0e1ff 100%);
           </div>
           <div class="postcard__bar"></div>
           <div class="postcard__preview-txt"><ul class="list-unstyled list pl-5">
+            {% if post.package %}
             <li class="mb-3 d-flex align-items-center"><i class="fa fa-money mr-3 "></i>&nbsp;Package : {{ post.package }}</li>
+            {% else %}{% endif %}
             <li class="mb-3 d-flex align-items-center"><i class="fa fa-rocket mr-3 "></i>&nbsp;Eligibility : {{ post.eligibility }} </li>
 <!--            <li class="mb-3 d-flex align-items-center"><i class="fa fa-building mr-3 "></i>&nbsp;corporate : {{ post.comapny_org }}</li>-->
             {% if post.registration_open %}

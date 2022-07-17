@@ -605,7 +605,8 @@ font-family: 'Prompt', sans-serif;
                     <hr>
                     <!-- <p>Referral Link: <a href=https://{{ post.referral_link }} class="card-l ink">{{ post.referral_link }}</a> -->
                     </p>
-                    <div class="card-footer text-muted" style="font-size:10px; text-align:left">Posted on: {{ post.date_posted }}
+                    <div class="card-footer text-muted" style="font-size:10px; text-align:left">Brought to you by: {{ post.brought_to_you_by }}
+                        Posted on: {{ post.date_posted }} <br>
                     </div>
                 </div>
             </div>
@@ -613,12 +614,4 @@ font-family: 'Prompt', sans-serif;
         {% endfor %}
     </div>
 </div>
-<script>
-    const tween = KUTE.fromTo(
-      '#blob1',
-      { path: '#blob1' },
-      { path: '#blob2' },
-      { repeat: 999, duration: 3000, yoyo: true }
-    ).start();
-  </script>
 {% endblock content %}

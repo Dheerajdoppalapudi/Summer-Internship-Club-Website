@@ -151,7 +151,7 @@ class CareerFul(models.Model):
     corporate = models.CharField(max_length=75, blank=False)
     # comapny_org = models.CharField(max_length=150, blank=True)
     role = models.CharField(max_length=50)
-    package = models.CharField(max_length=80)
+    package = models.CharField(max_length=80, blank=True)
     format = models.CharField(max_length=50)
     description = models.TextField()
     registration_open = models.DateField(null=True, blank=True)
@@ -162,6 +162,9 @@ class CareerFul(models.Model):
     date_posted = models.DateTimeField(default=timezone.now, blank=False, editable=False)
     multibranch = MultiSelectField(choices=BRANCH_CHOICES, blank=True, default='Everyone')
     brought_to_you_by = models.CharField(max_length=70, choices=BROUGHT_TO_YOU_BY, blank=True, default='Student Internship Club')
+
+    def __str__(self):
+        return f'Title: {self.corporate} --> {self.role}'
 
 class Internship_archive(models.Model):
     title = models.CharField(max_length=75, blank=False)

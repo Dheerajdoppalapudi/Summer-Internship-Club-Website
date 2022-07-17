@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from . import utils
 
 urlpatterns = [
     path('internships/', views.internships, name='page-internships'),
@@ -23,4 +24,5 @@ urlpatterns = [
     path('demographics/', views.stats, name='stats'),
     path('careerful/', views.Careerful, name='page-careerful'),
     path('careerful/search/<str:title>/', views.specific_careerful, name='specific_careerful'),
+    path('sendmail/', utils.send_email, name='send_mail'),
 ]
