@@ -37,27 +37,24 @@ SITE_ID = 2
 INSTALLED_APPS = [
     'django.contrib.sites',
     'users',
-    'page',
+    'page.apps.PageConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'import_export',
     'dbbackup',
-
     # google auth apps
     # 'django.contrib.sites',
     'social_django',
-
 ]
 
 DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
 DBBACKUP_STORAGE_OPTIONS = {'location': BASE_DIR/'backup'}
-
-SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -68,7 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'social_django.middleware.SocialAuthExceptionMiddleware'
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'sicwebapp.urls'
@@ -197,3 +194,4 @@ EMAIL_HOST_USER = env('USER_EMAIL')
 EMAIL_HOST_PASSWORD = env('USER_EMAIL_PASSWORD')
 
 # Custom setting. To email
+

@@ -1,13 +1,13 @@
 from django.core.mail import BadHeaderError, send_mail
 from django.http import HttpResponse, HttpResponseRedirect
 
-def send_email(request):
+def send_email(content):
     try:
         send_mail(
             'Test Mail',
-            'using env variables!!!',
+            str(content),
             '121910317028@gitam.in',
-            ['dheerudoppalapudi@gmail.com'],
+            ['dheerudoppalapudi@gmail.com', '121910317026@gitam.in', 'Saitarun.boddu1@gmail.com', 'ddtech_gcgc@gitam.edu'],
             fail_silently=False,
         )
     except BadHeaderError:

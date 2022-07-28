@@ -180,7 +180,8 @@ def specific_scholarship(request, name):
 
 @login_required
 def scolarship_branch(request, branch):
-    q_posts = Scolarships.objects.filter(branch=branch, end_date__gte=datetime.date.today()).order_by('-date_posted')
+    # q_posts = Scolarships.objects.filter(branch=branch, end_date__gte=datetime.date.today()).order_by('-date_posted')
+    q_posts = Scolarships.objects.filter(multibranch__contains=branch, end_date__gte=datetime.date.today()).order_by('-date_posted')
     context = {
         'branches': branches,
         'count': q_posts.count(),
