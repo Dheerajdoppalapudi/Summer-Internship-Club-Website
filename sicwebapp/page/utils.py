@@ -19,20 +19,33 @@ def send_email(content):
             'multibranch': content.multibranch,
             'brought_to_you_by': content.brought_to_you_by
             }
-    
-
-
-    ### this is almost depricated ###
+    subject = 'hello'
+    from_email = '121910317028@gitam.in'
+    to = ['dheerudoppalapudi@gmail.com']
     html_content = render_to_string('page/mail_template.html', {'varname':data})
-    plain_message = strip_tags(html_content)
     try:
-        send_mail(
-            'Test Mail',
-            plain_message,
-            '121910317028@gitam.in',
-            ['dheerudoppalapudi@gmail.com'],
-            fail_silently=False,
-        )
+        msg = EmailMultiAlternatives(subject,
+                                    html_content, 
+                                    from_email, 
+                                    to)
+        msg.attach_alternative(html_content, "text/html")
+        msg.send()
     except BadHeaderError:
         return HttpResponse('Invalid header found.')
     return HttpResponseRedirect('/internships')
+
+
+    ### this is almost depricated ###
+    # html_content = render_to_string('page/mail_template.html', {'varname':data})
+    # plain_message = strip_tags(html_content)
+    # try:
+    #     send_mail(
+    #         'Test Mail',
+    #         plain_message,
+    #         '121910317028@gitam.in',
+    #         ['dheerudoppalapudi@gmail.com'],
+    #         fail_silently=False,
+    #     )
+    # except BadHeaderError:
+    #     return HttpResponse('Invalid header found.')
+    # return HttpResponseRedirect('/internships')
