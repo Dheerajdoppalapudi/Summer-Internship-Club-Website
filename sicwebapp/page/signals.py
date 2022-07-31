@@ -9,9 +9,9 @@ from threading import active_count
 def onCreate_sendmail(sender, instance, created, **kwargs):
     if created:
         context = Internship.objects.latest('date_posted')
-        # threading.Thread(target=send_email, args=(context,)).start()
+        threading.Thread(target=send_email, args=(context,)).start()
         # thread.start()
         # thread.join()
-        send_email(context)
+        # send_email(context)
         # count = active_count()
         # print("============>>", count)
