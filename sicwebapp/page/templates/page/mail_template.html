@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -30,4 +30,521 @@
     <p class="branch">{{ varname.multibranch }}</p>
     <strong class="btyb">{{ varname.brought_to_you_by }}</strong>
 </body>
-</html>
+</html> -->
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
+  
+      body {
+      font-family: 'Prompt', sans-serif;
+      font-size: 16px;
+      /* color: #ffffff; */
+      text-rendering: optimizeLegibility;
+      font-weight: initial;
+    }
+  
+    .dark {
+      background: #110f16;
+    }
+  
+    .light {
+      background: #ffffff;
+      font-family: "Baloo 2", cursive;
+  
+  
+    }
+    a,
+    a:hover {
+      text-decoration: none;
+      transition: color 0.3s ease-in-out;
+    }
+  
+    #pageHeaderTitle {
+      margin: 2rem 0;
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 2.5rem;
+      color: black;
+    }
+  
+    /* Cards */
+    .postcard {
+      flex-wrap: wrap;
+      display: flex;
+      box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
+      border-radius: 10px;
+      margin: 0 0 3px 0;
+      overflow: hidden;
+      position: relative;
+      color: black
+    }
+    .postcard.dark {
+      background-color: #18151f;
+    }
+    .postcard.light {
+      background-color: #e1e5ea;
+    }
+    .postcard .t-dark {
+      color: #18151f;
+    }
+    .postcard a {
+      color: inherit;
+    }
+    .postcard h1,
+    .postcard .h1 {
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+    .postcard .small {
+      font-size: 80%;
+    }
+    .postcard .postcard__title {
+      font-size: 1.75rem;
+    }
+    .postcard .postcard__img {
+      max-height: 180px;
+      width: 100%;
+      object-fit: cover;
+      position: relative;
+    }
+    .postcard .postcard__img_link {
+      display: contents;
+    }
+    .postcard .postcard__bar {
+      width: 50px;
+      height: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      background-color: #424242;
+      transition: width 0.2s ease;
+    }
+    .postcard .postcard__text {
+      padding: 1.5rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .postcard__preview-txt span{
+      font-weight: bold;
+    }
+    .postcard__preview-txt i{
+      margin-right: 10px;
+    }
+    .postcard .postcard__preview-txt {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: justify;
+      height: 100%;
+    }
+    .postcard .postcard__tagbox {
+      display: flex;
+      flex-flow: row wrap;
+      font-size: 14px;
+      margin: 20px 0 0 0;
+      padding: 0;
+      justify-content: center;
+    }
+    .postcard__tagbox i{
+      margin-right: 10px;
+    }
+    .postcard .postcard__tagbox .tag__item {
+      display: inline-block;
+      background-color: #f6ecc4;
+      background-image: linear-gradient(
+  315deg
+  , #f6ecc4 0%, #f7d4d4 74%);
+      border-radius: 3px;
+      padding: 2.5px 10px;
+      margin: 0 5px 5px 0;
+      cursor: default;
+      user-select: none;
+      transition: background-color 0.3s;
+    }
+    .postcard .postcard__tagbox .tag__item:hover {
+      background: rgba(83, 83, 83, 0.8);
+    }
+    .postcard:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: #f6f6f6;
+  background-image: linear-gradient(90deg, #e3ffe7 0%, #d0e1ff 100%);
+  /* background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%); */
+    }
+    .postcard:hover .postcard__bar {
+      width: 100px;
+    }
+    .btn-info{
+      color: white;
+      font-weight: bold;
+      width: 310px;
+      border-color: #4d4d4e9f;
+      /* background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%); */
+      background-color: #485461;
+  background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
+  
+    }
+    .postcard__text2{
+        margin-top: 20px;
+        border-radius: 10px;
+        background-color: #f6f6f6;
+  background-image: linear-gradient(90deg, #e3ffe7 0%, #d0e1ff 100%);
+        padding: 5%;
+      }
+  
+    @media screen and (min-width: 769px) {
+      .postcard {
+        flex-wrap: inherit;
+      }
+      .postcard .postcard__title {
+        font-size: 2rem;
+      }
+      .postcard .postcard__tagbox {
+        justify-content: start;
+      }
+      .postcard .postcard__img {
+        max-width: 300px;
+        max-height: 100%;
+        transition: transform 0.3s ease;
+      }
+      .postcard .postcard__text {
+        padding: 3rem;
+        width: 100%;
+      }
+      .postcard .media.postcard__text:before {
+        content: "";
+        position: absolute;
+        display: block;
+        background: #18151f;
+        top: -20%;
+        height: 130%;
+        width: 55px;
+      }
+      .postcard:hover .postcard__img {
+        transform: scale(1.1);
+      }
+      .postcard:nth-child(2n + 1) {
+        flex-direction: row;
+      }
+      .postcard:nth-child(2n + 0) {
+        flex-direction: row-reverse;
+      }
+      .postcard:nth-child(2n + 1) .postcard__text::before {
+        left: -12px !important;
+        transform: rotate(4deg);
+      }
+      .postcard:nth-child(2n + 0) .postcard__text::before {
+        right: -12px !important;
+        transform: rotate(-4deg);
+      }
+    }
+    @media screen and (min-width: 1024px) {
+  
+      .postcard__text {
+        padding: 2rem 3.5rem;
+  
+      }
+  
+  
+      .postcard__text:before {
+        content: "";
+        position: absolute;
+        display: block;
+        top: -20%;
+        height: 130%;
+        width: 55px;
+      }
+  
+      .postcard.dark .postcard__text:before {
+        background-color: #f6f6f6;
+  /* background-image: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%); */
+      }
+  
+      .postcard.light .postcard__text:before {
+        background: #e1e5ea;
+      }
+    }
+    /* COLORS */
+    .postcard .postcard__tagbox .green.play:hover {
+      background: #79dd09;
+      color: black;
+    }
+  
+    .green .postcard__title:hover {
+      color: #79dd09;
+    }
+  
+    .green .postcard__bar {
+      background-color: #79dd09;
+    }
+  
+    .green::before {
+      background-image: linear-gradient(
+        -30deg,
+        rgba(121, 221, 9, 0.1),
+        transparent 50%
+      );
+    }
+  
+    .green:nth-child(2n)::before {
+      background-image: linear-gradient(
+        30deg,
+        rgba(121, 221, 9, 0.1),
+        transparent 50%
+      );
+    }
+  
+    .postcard .postcard__tagbox .blue.play:hover {
+      background: #0076bd;
+    }
+  
+    .blue .postcard__title:hover {
+      color: #0076bd;
+    }
+  
+    .blue .postcard__bar {
+      background: linear-gradient(-90deg, #ff9100 0%, #f10366 50%, #6173ff 100%);
+  
+    }
+  
+    .blue::before {
+      background-image: linear-gradient(
+        -30deg,
+        rgba(0, 118, 189, 0.1),
+        transparent 50%
+      );
+    }
+  
+    .blue:nth-child(2n)::before {
+      background-image: linear-gradient(
+        30deg,
+        rgba(0, 118, 189, 0.1),
+        transparent 50%
+      );
+    }
+  
+    .postcard .postcard__tagbox .red.play:hover {
+      background: #bd150b;
+    }
+  
+    .red .postcard__title:hover {
+      color: #bd150b;
+    }
+  
+    .red .postcard__bar {
+      background-color: #bd150b;
+    }
+  
+    .red::before {
+      background-image: linear-gradient(
+        -30deg,
+        rgba(189, 21, 11, 0.1),
+        transparent 50%
+      );
+    }
+  
+    .red:nth-child(2n)::before {
+      background-image: linear-gradient(
+        30deg,
+        rgba(189, 21, 11, 0.1),
+        transparent 50%
+      );
+    }
+  
+    .postcard .postcard__tagbox .yellow.play:hover {
+      background: #bdbb49;
+      color: black;
+    }
+  
+    .yellow .postcard__title:hover {
+      color: #bdbb49;
+    }
+  
+    .yellow .postcard__bar {
+      background-color: #bdbb49;
+    }
+  
+    .yellow::before {
+      background-image: linear-gradient(
+        -30deg,
+        rgba(189, 187, 73, 0.1),
+        transparent 50%
+      );
+    }
+  
+    .yellow:nth-child(2n)::before {
+      background-image: linear-gradient(
+        30deg,
+        rgba(189, 187, 73, 0.1),
+        transparent 50%
+      );
+    }
+  
+    @media screen and (min-width: 769px) {
+      .green::before {
+        background-image: linear-gradient(
+          -80deg,
+          rgba(121, 221, 9, 0.1),
+          transparent 50%
+        );
+      }
+  
+      .green:nth-child(2n)::before {
+        background-image: linear-gradient(
+          80deg,
+          rgba(121, 221, 9, 0.1),
+          transparent 50%
+        );
+      }
+  
+      .blue::before {
+        background-image: linear-gradient(
+          -80deg,
+          rgba(0, 118, 189, 0.1),
+          transparent 50%
+        );
+      }
+  
+      .blue:nth-child(2n)::before {
+        background-image: linear-gradient(
+          80deg,
+          rgba(0, 118, 189, 0.1),
+          transparent 50%
+        );
+      }
+  
+      .red::before {
+        background-image: linear-gradient(
+          -80deg,
+          rgba(189, 21, 11, 0.1),
+          transparent 50%
+        );
+      }
+  
+      .red:nth-child(2n)::before {
+        background-image: linear-gradient(
+          80deg,
+          rgba(189, 21, 11, 0.1),
+          transparent 50%
+        );
+      }
+  
+      .yellow::before {
+        background-image: linear-gradient(
+          -80deg,
+          rgba(189, 187, 73, 0.1),
+          transparent 50%
+        );
+      }
+  
+      .yellow:nth-child(2n)::before {
+        background-image: linear-gradient(
+          80deg,
+          rgba(189, 187, 73, 0.1),
+          transparent 50%
+        );
+      }
+  
+      .postcard .postcard__text2 {
+          padding: 1.5rem;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+        }
+        .postcard .postcard__text2 {
+          padding: 3rem;
+          width: 100%;
+        }
+        .postcard .media.postcard__text2:before {
+          content: "";
+          position: absolute;
+          display: block;
+          background: #18151f;
+          top: -20%;
+          height: 130%;
+          width: 55px;
+        }
+  
+    }
+  
+  </style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Prompt:wght@400;600&display=swap" rel="stylesheet">
+  <section class="light">
+      <div class="container py-4">
+        <h1 class="h1 text-center" id="pageHeaderTitle">Internship Details</h1>
+        <article class="postcard dark blue">
+          <a class="postcard__img_link" href="#">
+            <img
+              class="postcard__img"
+              src="https://picsum.photos/501/501"
+              alt="Image Title"
+            />
+          </a>
+          <div class="postcard__text">
+            <h1 class="postcard__title blue">
+              {{ varname.title }}
+            </h1>
+            <div class="postcard__subtitle small">
+              <time datetime="2020-05-25 12:00:00">
+                <i class="fas fa-calendar-alt mr-2"></i>{{ varname.date }} December 24, 2021
+              </time>
+            </div>
+            <div class="postcard__bar"></div>
+            <div class="postcard__preview-txt"><ul class="list-unstyled list pl-5">
+              <li class="mb-3 d-flex align-items-center"><i class="fa fa-building mr-3 "></i>&nbsp;Company : {{ varname.company_org }}</li>
+              <li class="mb-3 d-flex align-items-center"><i class="fa fa-hourglass-end mr-3 "></i>&nbsp;Registration Open : {{ varname.registration_open }}</li>
+              <li class="mb-3 d-flex align-items-center"><i class="fa fa-inbox mr-3 "></i>&nbsp;Registration Close : {{ varname.registration_close }}</li>
+              <li class="mb-3 d-flex align-items-center"><i class="fa fa-rocket mr-3 "></i>&nbsp;Eligibility : {{ varname.eligibility }} </li>
+              <li class="mb-3 d-flex align-items-center"><i class="fa fa-trophy mr-3 "></i>&nbsp;Branch : {{ varname.multibranch }}</li>
+              <a href={{ varname.referral_link }}><button type="button" class="btn btn-info">Apply</button></a>
+          </ul></div>
+            <ul class="postcard__tagbox">
+              <li class="tag__item"><i class="fas fa-tag mr-2"></i>{{ varname.multibranch }}</li>
+  <!--            <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.< /li>-->
+  <!--            <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.< /li>-->
+  <!--            <li class="tag__item play blue">-->
+  <!--              <a href=https://{{ event.event_link }}><i class="fas fa-calendar-day"></i>Play Event</a>-->
+  <!--            </li>-->
+            </ul>
+          </div>
+        </article>
+        <!-- <article class="postcard dark blue"> -->
+          <div class="postcard__text2">
+            <h1 class="postcard__title blue">
+              JOB OVERVIEW
+            </h1>
+            <hr>
+            <div class="postcard__preview-txt"><ul class="list-unstyled list pl-5">
+              <h6><span>Format</span>: {{ varname.format }}</h6>
+              <h6><span>Role</span>: {{ varname.role }}</h6>
+              <hr>
+              <h6><span>Eligibility </span>: {{ varname.eligibility }} </</h6>
+              <hr>
+              <h6><span>Description</span> :{{ varname.description }}</h6>
+              <h6><span>Link to register</span>: {{ varname.referral_link }}</h6>
+              <hr>
+              <li class="mb-3 d-flex align-items-center"><i class="fa fa-hourglass-end mr-3 text-primary"></i>Registration Open: {{ varname.registration_open }}</li>
+              <li class="mb-3 d-flex align-items-center"><i class="fa fa-inbox mr-3 text-primary"></i>Registration Close: {{ varname.registration_close }}</li>
+              <hr>
+              <h6><span>Brought to you by</span>: {{ varname.brought_to_you_by }}</h6>
+              <hr>
+              <a href=https://{{ varname.referral_link }}><button type="button" class="btn btn-info">Click here to Register</button></a>
+          </ul></div>
+  <!--          <ul class="postcard__tagbox">-->
+  <!--            <li class="tag__item"><i class="fas fa-tag mr-2"></i>{{ varname.branch }}</li>-->
+  <!--            <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>-->
+  <!--            <li class="tag__item play blue">-->
+  <!--              <a href=https://{{ event.event_link }}><i class="fas fa-calendar-day"></i>Play Event</a>-->
+  <!--            </li>-->
+            </ul>
+          </div>
+        <!-- </article> -->
+      </div>
+  </section>
+  
