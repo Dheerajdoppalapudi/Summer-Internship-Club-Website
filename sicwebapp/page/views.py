@@ -2,7 +2,9 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import Internship, Member, Suggestions, Scolarships, Hackathons, Fellowships, Certifications, Competetive, CareerFul
 from django.http import JsonResponse, Http404
+from django.http import HttpResponse
 # from .forms import Dateform
+from users.models import User
 # from datetime import date
 import datetime
 
@@ -116,22 +118,26 @@ def Careerful(request):
     return render(request, 'page/careerful.html', context)
 
 @login_required
-def specific_internship(request, title):
+def specific_internship(request, id):
     try:
-        post = Internship.objects.get(title=title)
-    except post.DoesNotExist:
+        post = Internship.objects.get(id=id)
+    except Internship.DoesNotExist:
         raise Http404("Internship Does Not Exist")
+    except Internship.MultipleObjectsReturned:
+        raise Http404("Multiple objects Returned using Objects.get Method")
     context = {
             "post": post
         }
     return render(request, 'page/specific_internship.html', context)
 
 @login_required
-def specific_careerful(request, title):
+def specific_careerful(request, title, date_posted):
     try:
-        post = CareerFul.objects.get(corporate=title)
-    except post.DoesNotExist:
+        post = CareerFul.objects.get(corporate=title, date_posted=date_posted)
+    except CareerFul.DoesNotExist:
         raise Http404("Internship Does Not Exist")
+    except CareerFul.MultipleObjectsReturned:
+        raise Http404("Multiple objects Returned using Objects.get Method")
     context = {
             "post": post
         }
@@ -152,27 +158,31 @@ def internship_branch(request, branch):
     return render(request, 'page/internships.html', context)
 
 @login_required
-def specific_fellowship(request, name):
+def specific_fellowship(request, name, date_posted):
     try:
-        post = Fellowships.objects.get(name=name)
-    except post.DoesNotExist:
+        post = Fellowships.objects.get(name=name, date_posted=date_posted)
+    except Fellowships.DoesNotExist:
         raise Http404("Fellowship Does Not Exist")
+    except Fellowships.MultipleObjectsReturned:
+        raise Http404("Multiple objects Returned using Objects.get Method")
     context = {
             "post": post
         }
     return render(request, 'page/specific_fellowship.html', context)
 
 @login_required
-def specific_scholarship(request, name):
+def specific_scholarship(request, name, date_posted):
     # print("================================")
     # print("function triggered")
     # print("name: ", name)
     # print("type: ", type(name))
     # print("================================")
     try:
-        post = Scolarships.objects.get(name=name)
-    except post.DoesNotExist:
+        post = Scolarships.objects.get(name=name, date_posted=date_posted)
+    except Scolarships.DoesNotExist:
         raise Http404("Fellowship Does Not Exist")
+    except Scolarships.MultipleObjectsReturned:
+        raise Http404("Multiple objects Returned using Objects.get Method")
     context = {
             "post": post
         }
@@ -190,11 +200,13 @@ def scolarship_branch(request, branch):
     return render(request, 'page/scholarships.html', context)
 
 @login_required
-def specific_hackathon(request, name):
+def specific_hackathon(request, title, date_posted):
     try:
-        post = Hackathons.objects.get(name=name)
-    except post.DoesNotExist:
-        raise Http404("Hackathons Does Not Exist")
+        post = Hackathons.objects.get(name=title, date_posted=date_posted)
+    except Hackathons.DoesNotExist:
+        raise Http404("Hackathspecific_hackathonons Does Not Exist")
+    except Hackathons.MultipleObjectsReturned:
+        raise Http404("Multiple objects Returned using Objects.get Method")
     context = {
             "post": post
         }
@@ -245,6 +257,14 @@ def archives_branch(request, section):
             'allarchives': all_archives,
             'count': q_posts.count(),
             'hackathons': q_posts
+        }
+    elif section == 'Career Fulfillment':
+        q_posts = CareerFul.objects.all().order_by('-date_posted')
+        context = {
+            'section': 'Career Fulfillment',
+            'allarchives': all_archives,
+            'count': q_posts.count(),
+            'careerful': q_posts
         }
         return render(request, 'page/archives.html', context)
     return render(request, 'page/archives.html', context)
@@ -344,3 +364,23 @@ def stats(request):
 
 
     return render(request, 'page/stats.html', context)
+
+def userRegInter(request):
+    current_user = request.user
+    # print("Current user ID", current_user.id)
+    if request.method == 'POST':
+        try:
+            var = request.POST['selected']
+        except KeyError:
+            var = 0
+    if var:
+        Internobj = Internship.objects.get(id=var)
+        userobj = User.objects.get(id = current_user.id)
+        # print("Internhsip Object: ", Internobj)
+        # print("user Object: ", userobj)
+        Internobj.registered.add(userobj)
+        context = {
+            "userids": Internship.objects.get(id=var)
+        }
+
+    return render(request, "page/student_reg_template.html", context)

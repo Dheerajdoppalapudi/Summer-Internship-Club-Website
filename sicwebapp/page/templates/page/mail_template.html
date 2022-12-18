@@ -1,37 +1,88 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Welcome to the file</title>
-    <style>
-        .title{
-            color: blue;
-        }
-        .company{
-            background-color: aquamarine;
-        }
-        .role{
-            background-color: rgb(19, 148, 235);
-        }
-    </style>
+	<title>Broadcast mail</title>
+  <style>
+    table,tr,td{
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 10px;
+      background-color: #99cc00;
+    }
+    @media (min-width:900px){
+      table{
+        width: 80%;
+      }
+    }
+    @media (max-width:900px){
+      table{
+        width: 70%;
+      }
+    }
+    @media (max-width:700px){
+      table{
+        width: 60%;
+      }
+    }
+    @media (max-width:500px){
+      table{
+        width: 50%;
+      }
+    }
+    @media (max-width:400px){
+      table{
+        width: 45%;
+      }
+    }
+  </style>
 </head>
-<body>
-    <h1 class="title">{{ varname.title }}</h1>
-    <h4 class="comapny">{{ varname.comapny_org }}</h4>
-    <h3 class="role">{{ varname.role }}</h3>
-    <p class="format">{{ varname.format }}</p>
-    <p class="desc">{{ varname.description }}</p>
-    <p class="regopen">{{ varname.registration_open }}</p>
-    <p class="regclose">{{ varname.registration_close }}</p>
-    <p class="eligibility">{{ varname.eligibility }}</p>
-    <p class="referal">{{ varname.referral_link }}</p>
-    <p class="dtpost">{{ varname.date_posted }}</p>
-    <p class="branch">{{ varname.multibranch }}</p>
-    <strong class="btyb">{{ varname.brought_to_you_by }}</strong>
-</body>
-</html> -->
-<style>
+  <body>
+    <h4 style="font-weight: 100; font-size:15px">Dear Gitamites,</h4>
+      <h4 style="font-weight: 100 ;font-size :15px; ">Student Internship Club is glad to share</h4>
+      <table>
+        <tr>
+          <td>Event</td>
+          <td>{{ varname.title }}</td>
+        </tr>
+        <tr>
+          <td>Event Host</td>
+          <td>{{ varname.comapny_org }}</td>
+        </tr>
+        <tr>
+          <td>Eligibility</td>
+          <td>{{ varname.eligibility }}</td>
+        </tr>
+        <tr>
+          <td>Link to Register</td>
+          <td><a href= {{varname.referral_link}}>{{ varname.referral_link }}</a></td>
+        </tr>
+        <tr>
+          <td>Last Date to Register</td>
+          <td>{{ varname.registration_close }}</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>{{ varname.description }}</td>
+
+        </tr>
+      </table>
+      <!-- <h1 class="title">{{ varname.title }}</h1>
+      <h4 class="comapny">{{ varname.comapny_org }}</h4>
+      <h3 class="role">{{ varname.role }}</h3>
+      <p class="format">{{ varname.format }}</p>
+      <p class="desc">{{ varname.description }}</p>
+      <p class="regopen">{{ varname.registration_open }}</p>
+      <p class="regclose">{{ varname.registration_close }}</p>
+      <p class="eligibility">{{ varname.eligibility }}</p>
+      <p class="referal">{{ varname.referral_link }}</p>
+      <p class="dtpost">{{ varname.date_posted }}</p>
+      <p class="branch">{{ varname.multibranch }}</p>
+      <strong class="btyb">{{ varname.brought_to_you_by }}</strong> -->
+  </body>
+</html>
+<!-- <style>
     @import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
   
       body {
@@ -510,11 +561,11 @@
   <!--            <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.< /li>-->
   <!--            <li class="tag__item play blue">-->
   <!--              <a href=https://{{ event.event_link }}><i class="fas fa-calendar-day"></i>Play Event</a>-->
-  <!--            </li>-->
+             <!-- </li>
             </ul>
           </div>
         </article>
-        <!-- <article class="postcard dark blue"> -->
+        <article class="postcard dark blue">
           <div class="postcard__text2">
             <h1 class="postcard__title blue">
               JOB OVERVIEW
@@ -535,16 +586,15 @@
               <h6><span>Brought to you by</span>: {{ varname.brought_to_you_by }}</h6>
               <hr>
               <a href=https://{{ varname.referral_link }}><button type="button" class="btn btn-info">Click here to Register</button></a>
-          </ul></div>
+          </ul></div> -->
   <!--          <ul class="postcard__tagbox">-->
   <!--            <li class="tag__item"><i class="fas fa-tag mr-2"></i>{{ varname.branch }}</li>-->
   <!--            <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>-->
   <!--            <li class="tag__item play blue">-->
   <!--              <a href=https://{{ event.event_link }}><i class="fas fa-calendar-day"></i>Play Event</a>-->
   <!--            </li>-->
-            </ul>
-          </div>
+            <!-- </ul> -->
+          <!-- </div> -->
         <!-- </article> -->
-      </div>
-  </section>
-  
+      <!-- </div> -->
+  <!-- </section> -->

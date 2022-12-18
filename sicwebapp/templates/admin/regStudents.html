@@ -1,0 +1,50 @@
+{% extends "admin/base.html" %}
+{% block content %}
+
+<div class="results">
+    <table id="result_list">
+        <thead>
+        <tr>
+            <th scope="col" class="column-__str__">
+                <div class="text"><span>ID</span></div>
+                <div class="clear"></div>
+            </th>
+            <th scope="col" class="column-__str__">
+                <div class="text"><span>Username</span></div>
+                <div class="clear"></div>
+            </th>
+            <th scope="col" class="column-__str__">
+                <div class="text"><span>First Name</span></div>
+                <div class="clear"></div>
+            </th>
+            <th scope="col" class="column-__str__">
+                <div class="text"><span>Last Name</span></div>
+                <div class="clear"></div>
+            </th>
+            <th scope="col" class="column-__str__">
+                <div class="text"><span>Email</span></div>
+                <div class="clear"></div>
+            </th>
+            <th scope="col" class="column-__str__">
+                <div class="text"><span>Date Joined</span></div>
+                <div class="clear"></div>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for i in userids.registered.all %}
+        <tr>
+            <th class="field-__str__">{{ i.id }}</th>
+            <th class="field-__str__">{{ i.username }}</th>
+            <th class="field-__str__">{{ i.first_name }}</th>
+            <th class="field-__str__">{{ i.last_name }}</th>
+            <th class="field-__str__">{{ i.email }}</th>
+            <th class="field-__str__">{{ i.date_joined }}</th>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

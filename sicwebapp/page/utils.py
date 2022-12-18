@@ -21,7 +21,7 @@ def send_email(content):
             }
     subject = 'hello'
     from_email = '121910317028@gitam.in'
-    to = ['dheerudoppalapudi@gmail.com', '121910302022@gitam.in']
+    to = ['dheerudoppalapudi@gmail.com', '121910317026@gitam.in', '121910317007@gitam.in', 'ddcoord_gcgc@gitam.edu']
     html_content = render_to_string('page/mail_template.html', {'varname':data})
     try:
         msg = EmailMultiAlternatives(subject,

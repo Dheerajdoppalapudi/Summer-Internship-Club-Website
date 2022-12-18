@@ -35,9 +35,9 @@ SITE_ID = 2
 # Application definition
 
 INSTALLED_APPS = [
+    'page.apps.PageConfig',
     'django.contrib.sites',
     'users',
-    'page.apps.PageConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -52,9 +52,6 @@ INSTALLED_APPS = [
 
 DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
 DBBACKUP_STORAGE_OPTIONS = {'location': BASE_DIR/'backup'}
-
-
-SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -73,7 +70,7 @@ ROOT_URLCONF = 'sicwebapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -99,6 +96,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+SITE_ID = 1
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -133,7 +132,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATIC_URL = 'static/'
+STATIC_URL = 'static/TEMPLATE_DIRS/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')

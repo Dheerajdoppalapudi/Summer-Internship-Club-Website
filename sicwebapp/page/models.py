@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.dispatch import receiver
 from multiselectfield import MultiSelectField
 from django.db.models.signals import post_save, pre_save
+from users.models import User
 
 BRANCH_CHOICES = (
     ('Engineering', 'Engineering'),
@@ -38,6 +39,8 @@ class Internship(models.Model):
     date_posted = models.DateTimeField(default=timezone.now, blank=False, editable=False)
     multibranch = MultiSelectField(choices=BRANCH_CHOICES, blank=True, default='Everyone')
     brought_to_you_by = models.CharField(max_length=70, choices=BROUGHT_TO_YOU_BY, blank=True, default='Student Internship Club')
+    registered = models.ManyToManyField(User)
+    # upload = models.FileField(upload_to="media", blank=True, null=True)
 
     # def save(self ,*args, **kwargs):
     #     tempstr = self.multibranch

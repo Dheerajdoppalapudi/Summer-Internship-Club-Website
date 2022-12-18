@@ -460,7 +460,7 @@ background-image: linear-gradient(90deg, #e3ffe7 0%, #d0e1ff 100%);
           </h1>
           <div class="postcard__subtitle small">
             <time datetime="2020-05-25 12:00:00">
-              <i class="fas fa-calendar-alt mr-2"></i>{{ post.date }} December 24, 2021
+              <i class="fas fa-calendar-alt mr-2"></i> {{ post.date_posted }} 
             </time>
           </div>
           <div class="postcard__bar"></div>
@@ -499,7 +499,7 @@ background-image: linear-gradient(90deg, #e3ffe7 0%, #d0e1ff 100%);
             <hr>
             <h6><span>Eligibility </span>: {{ post.eligibility }} </</h6>
             <hr>
-            <h6><span>Description</span> :{{ post.description }}</h6>
+            <h6><span>Description</span> :{{ post.description | linebreaks  }}</h6>
             <h6><span>Link to register</span>: {{ post.referral_link }}</h6>
             <hr>
             {% if post.registration_open %}
@@ -507,7 +507,7 @@ background-image: linear-gradient(90deg, #e3ffe7 0%, #d0e1ff 100%);
               {% else %}{% endif %}
             <li class="mb-3 d-flex align-items-center"><i class="fa fa-inbox mr-3 text-primary"></i>Registration Close: {{ post.registration_close }}</li>
             <hr>
-            <a href=https://{{ post.referral_link }}><button type="button" class="btn btn-info">Click here to Register</button></a>
+            <a href={{ post.referral_link }}><button type="button" class="btn btn-info">Click here to Register</button></a>
         </ul></div>
 <!--          <ul class="postcard__tagbox">-->
 <!--            <li class="tag__item"><i class="fas fa-tag mr-2"></i>{{ post.branch }}</li>-->
