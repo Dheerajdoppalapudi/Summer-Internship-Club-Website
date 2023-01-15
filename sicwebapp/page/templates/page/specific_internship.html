@@ -502,6 +502,15 @@ background-image: linear-gradient(90deg, #e3ffe7 0%, #d0e1ff 100%);
             <hr>
             <h6><span>Brought to you by</span>: {{ post.brought_to_you_by }}</h6>
             <hr>
+            <form method="POST" id="applied-form">
+              {% csrf_token %}
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="{{ post.id }}" id="flexCheckDefault" name="selected">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Will you apply for this Internship?
+                </label>
+              </div>
+          </form>
             <a href=https://{{ post.referral_link }}><button type="button" class="btn btn-info">Click here to Register</button></a>
         </ul></div>
 <!--          <ul class="postcard__tagbox">-->
@@ -512,16 +521,6 @@ background-image: linear-gradient(90deg, #e3ffe7 0%, #d0e1ff 100%);
 <!--            </li>-->
           </ul>
 <!--          action="regstudents-submit/"-->
-          <form method="POST" id="applied-form">
-              {% csrf_token %}
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="{{ post.id }}" id="flexCheckDefault" name="selected">
-                <label class="form-check-label" for="flexCheckDefault">
-                  Have you Applied for this Internship
-                </label>
-              </div>
-              <input type="submit" value="Submit" class="btn btn-primary"/>
-          </form>
 <!--          <button type="button" class="btn btn-primary">Submit</button>-->
         </div>
       <!-- </article> -->
@@ -534,7 +533,7 @@ background-image: linear-gradient(90deg, #e3ffe7 0%, #d0e1ff 100%);
 </script>
 
 <script type="text/javascript">
-    $(document).on('submit','#applied-form',function(e){
+    $(document).on('change','#applied-form',function(e){
         e.preventDefault();
         $.ajax({
             type:'POST',

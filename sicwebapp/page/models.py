@@ -39,7 +39,7 @@ class Internship(models.Model):
     date_posted = models.DateTimeField(default=timezone.now, blank=False, editable=False)
     multibranch = MultiSelectField(choices=BRANCH_CHOICES, blank=True, default='Everyone')
     brought_to_you_by = models.CharField(max_length=70, choices=BROUGHT_TO_YOU_BY, blank=True, default='Student Internship Club')
-    registered = models.ManyToManyField(User)
+    registered = models.ManyToManyField(User, blank=True)
     # upload = models.FileField(upload_to="media", blank=True, null=True)
 
     # def save(self ,*args, **kwargs):

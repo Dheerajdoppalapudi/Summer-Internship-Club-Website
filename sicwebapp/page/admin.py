@@ -22,6 +22,7 @@ class ViewAdmin(ImportExportModelAdmin):
     pass
 
 class RegisteredStudetesAdmin(admin.ModelAdmin):
+    # exclude = ('registered',)
     def get_urls(self):
         urls = super().get_urls()
         my_urls = [
